@@ -1,0 +1,364 @@
+<!-- Venue Rental - Space Selection -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#b51a1e",
+                    "tertiary-fixed": "#cde6f4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "error-container": "#ffdad6",
+                    "background": "#f8f9fa",
+                    "surface-dim": "#d9dadb",
+                    "on-background": "#191c1d",
+                    "inverse-primary": "#aec7f7",
+                    "secondary-container": "#d93633",
+                    "on-tertiary-container": "#8aa3af",
+                    "on-secondary-fixed-variant": "#93000e",
+                    "secondary-fixed-dim": "#ffb4ac",
+                    "tertiary-container": "#223943",
+                    "surface-variant": "#e1e3e4",
+                    "tertiary": "#0a242d",
+                    "surface-tint": "#465f88",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary-fixed": "#001b3d",
+                    "primary-container": "#1b365d",
+                    "outline-variant": "#c4c6cf",
+                    "on-tertiary-fixed": "#051e28",
+                    "surface-container": "#edeeef",
+                    "on-secondary-fixed": "#410003",
+                    "on-secondary": "#ffffff",
+                    "outline": "#74777f",
+                    "secondary-fixed": "#ffdad6",
+                    "primary-fixed-dim": "#aec7f7",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#b1cad7",
+                    "on-surface-variant": "#44474e",
+                    "on-secondary-container": "#fffbff",
+                    "on-primary-fixed-variant": "#2e476f",
+                    "surface": "#f8f9fa",
+                    "inverse-surface": "#2e3132",
+                    "inverse-on-surface": "#f0f1f2",
+                    "primary-fixed": "#d6e3ff",
+                    "on-tertiary-fixed-variant": "#334a55",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#002046",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-primary-container": "#87a0cd",
+                    "surface-container-low": "#f3f4f5",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Public Sans"],
+                    "label": ["Public Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.8);
+      }
+      .asymmetric-hero {
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm h-20">
+<div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
+<div class="text-2xl font-black text-[#002046] dark:text-white tracking-tighter font-headline">
+                Next Level Recreation
+            </div>
+<div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight">
+<a class="text-[#b51a1e] border-b-2 border-[#b51a1e] pb-1" href="index.html">Spaces</a>
+<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Events</a>
+<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Programs</a>
+<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Membership</a>
+<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block px-6 py-2 text-[#002046] font-bold hover:bg-slate-100 transition-all rounded-lg">Login</button>
+<button onclick="window.location.href='booking.html'" class="bg-gradient-to-r from-primary to-primary-container text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all">
+                    Book Now
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative bg-primary overflow-hidden asymmetric-hero py-24 md:py-32 px-8 mb-16">
+<div class="absolute inset-0 opacity-20">
+<img class="w-full h-full object-cover" data-alt="wide shot of a pristine professional basketball court with polished wood floors and bright overhead lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu_FWBRpWNIXGnHDa9kn8y7kgHiuBZ61qYciZhk3vCGNf3KX2qqn46I6dVqNZV968zQLFCZ1x4JKCG574Y_E8vnN57dwWzfhcBTCnboaJ1tbEZvs7wUdc5ftU63Mn9PIaIiWpRMEUgTSnPLbCVkSum6rI77RuAhNQ-X6XmO5JYDlCSY6Qp6yq3XBI7c2cYAKPnQxwJQaiqkz_BJmgXSDEr9onUFQJBO8a70RFJZ8ylMaV94-yidDhCytvHwsMBowTcAL9Wu-yOJ9Nf"/>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-3/5 text-left">
+<span class="inline-block px-4 py-1.5 bg-secondary text-white font-bold text-xs uppercase tracking-[0.2em] mb-6 rounded-sm">Next Level Recreation Center, LLC</span>
+<h1 class="text-5xl md:text-7xl font-extrabold text-white font-headline leading-[1.1] mb-6 tracking-tight">
+                        Turning Potential <br/>Into <span class="text-secondary">Performance</span>
+</h1>
+<p class="text-xl text-slate-300 max-w-2xl mb-8 leading-relaxed">
+                        Reserve your spot in our elite facility. Whether you're training for the big game or hosting a community gala, we provide the canvas for your excellence.
+                    </p>
+</div>
+<div class="md:w-2/5 flex flex-col items-end">
+<div class="bg-secondary-container p-6 rounded-xl shadow-2xl rotate-3 border-4 border-white/10">
+<span class="material-symbols-outlined text-white text-5xl mb-4" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<p class="text-white font-bold text-lg">Veteran Owned &amp; Operated</p>
+<p class="text-white/80 text-sm">Committed to Discipline &amp; Community</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Filters & Discovery -->
+<section class="max-w-7xl mx-auto px-8 mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-8 border-b-2 border-surface-container-high">
+<div>
+<h2 class="text-3xl font-extrabold text-primary font-headline mb-2">Available Spaces</h2>
+<p class="text-on-surface-variant font-medium">Select a venue that fits your mission.</p>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="px-6 py-3 rounded-full bg-primary text-white font-bold flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+                        All Spaces
+                    </button>
+<button class="px-6 py-3 rounded-full bg-surface-container-highest text-primary font-bold flex items-center gap-2 hover:bg-slate-200 transition-all">
+<span class="material-symbols-outlined text-sm">sports_basketball</span>
+                        Athletic
+                    </button>
+<button class="px-6 py-3 rounded-full bg-surface-container-highest text-primary font-bold flex items-center gap-2 hover:bg-slate-200 transition-all">
+<span class="material-symbols-outlined text-sm">groups</span>
+                        Community/Private Event
+                    </button>
+</div>
+</div>
+</section>
+<!-- Space Grid - Bento Style -->
+<section class="max-w-7xl mx-auto px-8 pb-24">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Main Feature: Full Court -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-transform hover:-translate-y-2">
+<div class="h-96 relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="professional indoor full basketball court with polished hardwood and glass backboards under bright arena lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPkMmpGO6CXrszLRLlB0ISN2SwOb1EW_9eyQQYqjY-RhADk_0qI7C7oUHbfmym--vyvZXNLdvpw7T9HqIVU6GmqaUmnFLwgtyFepR10rd1JJq6kxtipT4pnFpxQuEbXxsYvie_X3qyRzcs0MshWoCGjaoeqWabk3Xu_JJYmAios-1Bu1fm1Y0uj709Fgrq6BlJyZ1phodr_TfeHySKwD7ew4QBlALtxZDM1RI35ERwpRyuaXlxudAzJP1Yej_aq68StFXM9RKZwjrF"/>
+<div class="absolute top-6 left-6 flex gap-2">
+<span class="bg-secondary text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-lg">Premium</span>
+<span class="bg-white/90 backdrop-blur-md text-primary px-4 py-1.5 rounded-full font-bold text-sm shadow-md">Athletic</span>
+</div>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-3xl font-extrabold text-primary font-headline mb-1">Full Basketball Court</h3>
+<p class="text-on-surface-variant leading-relaxed max-w-xl">
+                                    A professional-grade hardwood court designed for tournament play, high-intensity team training, and large-scale athletic events. Includes full glass backboards and digital scoreboards.
+                                </p>
+</div>
+<div class="text-right">
+<span class="text-3xl font-black text-primary font-headline">$100</span>
+<span class="text-on-surface-variant font-bold block">/ hr</span>
+</div>
+</div>
+<div class="mt-auto flex items-center justify-between pt-6">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">person</span>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">person</span>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">add</span>
+</div>
+</div>
+<button onclick="window.location.href='booking.html'" class="bg-primary text-white px-10 py-4 rounded-xl font-bold flex items-center gap-3 hover:bg-secondary transition-all">
+                                Select Space
+                                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Side Card: Half Court -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-transform hover:-translate-y-2">
+<div class="h-64 relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="half basketball court setup with focused training area and single hoop in a high-end indoor facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOVaOaDjGfineX9F8MMeRgXofH_CNxtZi79jhq8kiuuFNtoSPDFaVHtwu2V2Va9zlYgxTwLxMgMB_5dc7RBmhRHb-XZcp23AbLPZoG63BDT5g5pTtFVghH-23BVSxOoAU7B9FMWHMNTAC2pwFEy-HcMRgIy0ix7ybaCLzKEcUlmD0ggw4o8J0Gx7T7MCVPs-Jpt1FxC1jv2Nq-97m2uN1PGlvygvJfByvPNg73uvPGhEmK9N3gjTq1pt8QUcL3Q4XVLIOPx3t0SxS1"/>
+<div class="absolute top-4 left-4">
+<span class="bg-white/90 backdrop-blur-md text-primary px-4 py-1.5 rounded-full font-bold text-sm shadow-md">Athletic</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="text-xl font-extrabold text-primary font-headline mb-2">Half Court Training</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">
+                            Perfect for 1-on-1 coaching, shooting practice, or small-group drills. Dedicated space for focused improvement.
+                        </p>
+<div class="mt-auto pt-6 border-t border-surface-container flex justify-between items-center">
+<div>
+<span class="text-2xl font-black text-primary font-headline">$50</span>
+<span class="text-on-surface-variant text-xs font-bold">/ hr</span>
+</div>
+<button onclick="window.location.href='booking.html'" class="bg-surface-container-highest text-primary px-4 py-2 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
+                                Select
+                            </button>
+</div>
+</div>
+</div>
+<!-- Bottom Large: Multi-use Event Hall -->
+<div class="md:col-span-12 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col md:flex-row transition-transform hover:-translate-y-2">
+<div class="md:w-1/2 h-80 md:h-auto relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="modern industrial event hall with high ceilings exposed beams and ambient lighting set up for a community gathering" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDdwx9jTT2MmMkl5huhRGdIVy_isXwZVMuvNuB-Zfwq00Z-a4KXJMNDEPNDpI0tWFQ3b-wPIBGujM-f-uVUAG7fC9sk_KGrcOI14mHajIAMV4_nn551cZxY25OK3lFh06Nn7oP26Zj7_N6HngXDoFDaQxZGPFubxhnNQDfV5AqENYphJ3PhNTMCzhXVUyYiA1uDshljiLZbVeWFW3qA9ipMVYDozEIFvPPj8x5kO668SYRKKIhmvLHXmw-TDGaixzjhQutjFGkYN10"/>
+<div class="absolute top-6 left-6">
+<span class="bg-white/90 backdrop-blur-md text-primary px-4 py-1.5 rounded-full font-bold text-sm shadow-md">Community</span>
+</div>
+</div>
+<div class="md:w-1/2 p-10 flex flex-col justify-center">
+<span class="text-secondary font-bold text-sm uppercase tracking-widest mb-2">Versatile Space</span>
+<h3 class="text-4xl font-extrabold text-primary font-headline mb-4">Multi-use Event Hall</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                            Transform our 3,000 sq ft hall for your next milestone. From birthday celebrations and corporate meetings to community workshops, our flexible layout adapts to your vision. High-speed Wi-Fi and AV setup included.
+                        </p>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-3xl font-black text-primary font-headline">$85</span>
+<span class="text-on-surface-variant font-bold">/ hr</span>
+</div>
+<button onclick="window.location.href='booking.html'" class="bg-primary-container text-white px-12 py-4 rounded-xl font-bold hover:bg-primary transition-all shadow-lg flex items-center gap-2">
+                                Book Event Hall
+                                <span class="material-symbols-outlined">celebration</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Secondary Small Feature: Recovery Zone -->
+<div class="md:col-span-6 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-transform hover:-translate-y-2">
+<div class="h-64 relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="modern athlete recovery zone with therapy beds and high-end fitness equipment in a clean bright environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaFXnjLvbrNoo-uvqK2BZJbf598ZYmSwtnGaIracYUDe_JaIiaWNbKBfvfBWr-SoFUH29mwkO_jdM6a3ZBixhfYSyHX76S_RW5uOFhAHRodKF4rHcB86VJfdueLyI1BeC4rrUkRMpRkJBCKf8322Zfn-6otaAS6wpf4UQD-8UQ1a8yWwzODnQQAp9aYtAxqU5EjFM2yNJH7Bep24yGsVLAMEMk8QzOp-jQroCMTCynKn25BXViEP1-syUj3ABmd0OAKnqbRUx0ZtzD"/>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-extrabold text-primary font-headline mb-2">Performance Recovery Zone</h3>
+<p class="text-on-surface-variant mb-6">Equipped with state-of-the-art recovery tools and stretching areas for post-game cool downs.</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-black text-primary font-headline">$60<span class="text-sm font-bold text-on-surface-variant">/hr</span></span>
+<button onclick="window.location.href='booking.html'" class="bg-surface-container-highest text-primary px-6 py-2.5 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">Select Space</button>
+</div>
+</div>
+</div>
+<!-- Secondary Small Feature: Meeting Room -->
+<div class="md:col-span-6 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-transform hover:-translate-y-2">
+<div class="h-64 relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="professional glass walled meeting room with high end furniture and modern conference technology" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0ZvvSvoQo73NBVLrGbXhk3_XnfOoU7m2NTx36t_U2jYzUFImSpQJE3wt2JurteXM6pE3crqTllZQ-LGpNLsSrKN0TP8d3FvgyC_W4upScHkdOWixsT-4So4GBJL3NsnDN7SM07-PaMrfF5Z-KhutdUbElAgQBdxW4sTwgAF_UmdxqlvoDKbYhox0J12_3FyxTGkUyhTeAlAykjwKwdEKmTSqolQyF3ixWmFNGrPHtzLgkkbTS1-zjisCUbXUqjNtdZ_cf9dvf7P3f"/>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-extrabold text-primary font-headline mb-2">The War Room (Meeting Suite)</h3>
+<p class="text-on-surface-variant mb-6">Private, climate-controlled board room with seating for 12. Ideal for strategy sessions and team meetings.</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-black text-primary font-headline">$55<span class="text-sm font-bold text-on-surface-variant">/hr</span></span>
+<button onclick="window.location.href='booking.html'" class="bg-surface-container-highest text-primary px-6 py-2.5 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">Select Space</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Signature Component: Honor Badge Section -->
+<section class="bg-surface-container-low py-16">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="md:w-1/2">
+<h2 class="text-4xl font-extrabold text-primary font-headline mb-6">More Than Just A Facility</h2>
+<p class="text-on-surface-variant text-lg mb-8 leading-relaxed">
+                        At Next Level Recreation Center, LLC, we bring veteran-led discipline to community recreation. Our spaces are maintained to the highest standards, ensuring every athlete and organizer has the environment they need to succeed.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<div class="bg-secondary-container text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="font-bold">Veteran-Owned &amp; Operated</span>
+</div>
+<div class="bg-primary text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-bold">Community-First Certified</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 grid grid-cols-2 gap-4">
+<div class="h-40 rounded-2xl bg-white shadow-sm p-6 flex flex-col justify-center items-center text-center">
+<span class="text-3xl font-black text-secondary font-headline">24/7</span>
+<p class="text-on-surface-variant font-bold text-sm">Access Available</p>
+</div>
+<div class="h-40 rounded-2xl bg-white shadow-sm p-6 flex flex-col justify-center items-center text-center">
+<span class="text-3xl font-black text-primary font-headline">15k+</span>
+<p class="text-on-surface-variant font-bold text-sm">Sq Ft Facility</p>
+</div>
+<div class="h-40 rounded-2xl bg-white shadow-sm p-6 flex flex-col justify-center items-center text-center">
+<span class="text-3xl font-black text-primary font-headline">Elite</span>
+<p class="text-on-surface-variant font-bold text-sm">Equipment</p>
+</div>
+<div class="h-40 rounded-2xl bg-white shadow-sm p-6 flex flex-col justify-center items-center text-center">
+<span class="text-3xl font-black text-secondary font-headline">5.0</span>
+<p class="text-on-surface-variant font-bold text-sm">Member Rating</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#002046] dark:bg-black mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full text-white font-['Public_Sans'] font-normal text-sm">
+<div class="mb-8 md:mb-0">
+<div class="text-xl font-black text-white mb-4 font-headline">Next Level Recreation Center</div>
+<p class="text-slate-300 max-w-xs mb-6">
+                    Professional spaces for athletic and community excellence. Veteran owned and operated with a mission to serve.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-all" href="#">
+<span class="material-symbols-outlined text-white">social_leaderboard</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-all" href="#">
+<span class="material-symbols-outlined text-white">camera</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-12 mb-8 md:mb-0">
+<div class="flex flex-col gap-3">
+<span class="text-white font-bold uppercase tracking-widest text-xs mb-2">Legal</span>
+<a class="text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-white font-bold uppercase tracking-widest text-xs mb-2">Support</span>
+<a class="text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Facility Rules</a>
+<a class="text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Contact Us</a>
+</div>
+</div>
+<div class="text-center md:text-right">
+<p class="mb-2">© 2024 Next Level Recreation Center. All Rights Reserved.</p>
+<p class="text-slate-400 font-bold">Veteran Owned &amp; Operated.</p>
+</div>
+</div>
+</footer>
+</body></html>

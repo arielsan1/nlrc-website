@@ -1,0 +1,340 @@
+<!-- Admin Dashboard - Overview -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kinetic Admin - Next Level Recreation Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary-fixed-dim": "#b1cad7",
+                    "surface-container-low": "#f3f4f5",
+                    "secondary-fixed-dim": "#ffb4ac",
+                    "on-secondary-container": "#fffbff",
+                    "tertiary-fixed": "#cde6f4",
+                    "surface-bright": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "on-tertiary-fixed-variant": "#334a55",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "tertiary": "#0a242d",
+                    "inverse-primary": "#aec7f7",
+                    "primary-fixed-dim": "#aec7f7",
+                    "on-tertiary-fixed": "#051e28",
+                    "outline-variant": "#c4c6cf",
+                    "on-surface-variant": "#44474e",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#d93633",
+                    "on-primary-fixed-variant": "#2e476f",
+                    "primary-container": "#1b365d",
+                    "surface": "#f8f9fa",
+                    "on-tertiary-container": "#8aa3af",
+                    "secondary": "#b51a1e",
+                    "primary-fixed": "#d6e3ff",
+                    "secondary-fixed": "#ffdad6",
+                    "on-secondary-fixed": "#410003",
+                    "on-secondary-fixed-variant": "#93000e",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "background": "#f8f9fa",
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "surface-dim": "#d9dadb",
+                    "on-primary-fixed": "#001b3d",
+                    "on-primary-container": "#87a0cd",
+                    "surface-container": "#edeeef",
+                    "surface-variant": "#e1e3e4",
+                    "tertiary-container": "#223943",
+                    "primary": "#002046",
+                    "surface-tint": "#465f88",
+                    "on-error": "#ffffff",
+                    "outline": "#74777f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Public Sans"],
+                    "label": ["Public Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .sidebar-gradient {
+            background: linear-gradient(180deg, #002046 0%, #1b365d 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 z-50 bg-[#002046] flex flex-col py-8 shadow-2xl shadow-[#002046]/20">
+<div class="px-8 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center cursor-pointer" onclick="window.location.href='index.html'">
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+</div>
+<div>
+<h1 class="font-headline font-black text-white tracking-tighter text-lg leading-tight cursor-pointer" onclick="window.location.href='index.html'">Kinetic Admin</h1>
+<p class="text-[10px] text-slate-400 font-medium tracking-widest uppercase">The Disciplined Hub</p>
+</div>
+</div>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="bg-gradient-to-r from-[#002046] to-[#1b365d] text-white border-l-4 border-[#b51a1e] px-6 py-4 flex items-center gap-4 group" href="admin-dashboard.html">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span class="font-label text-sm">Dashboard</span>
+</a>
+<a class="text-slate-300 hover:bg-white/5 px-6 py-4 flex items-center gap-4 transition-all group" href="admin-bookings.html">
+<span class="material-symbols-outlined text-xl" data-icon="calendar_month">calendar_month</span>
+<span class="font-label text-sm">Booking Schedule</span>
+</a>
+<a class="text-slate-300 hover:bg-white/5 px-6 py-4 flex items-center gap-4 transition-all group" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="group">group</span>
+<span class="font-label text-sm">Membership Database</span>
+</a>
+<a class="text-slate-300 hover:bg-white/5 px-6 py-4 flex items-center gap-4 transition-all group" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="volunteer_activism">volunteer_activism</span>
+<span class="font-label text-sm">Donation Database</span>
+</a>
+</nav>
+<div class="px-6 mb-8">
+<button class="w-full py-3 px-4 rounded-xl bg-secondary text-white font-headline font-bold text-sm shadow-lg shadow-secondary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Registration
+            </button>
+</div>
+<div class="mt-auto border-t border-white/10 pt-4">
+<a class="text-slate-300 hover:bg-white/5 px-6 py-3 flex items-center gap-4 transition-all" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="help">help</span>
+<span class="font-label text-sm">Support</span>
+</a>
+<a class="text-slate-300 hover:bg-white/5 px-6 py-3 flex items-center gap-4 transition-all" href="index.html">
+<span class="material-symbols-outlined text-xl" data-icon="logout">logout</span>
+<span class="font-label text-sm">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 h-16 px-8 flex justify-between items-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_24px_48px_rgba(0,32,70,0.08)]">
+<div class="flex items-center gap-6">
+<h2 class="font-headline font-bold tracking-tight text-[#002046] text-xl">Next Level Recreation Center</h2>
+<div class="hidden lg:flex items-center gap-8 ml-4">
+<a class="text-[#b51a1e] font-bold border-b-2 border-[#b51a1e] py-5" href="#">Overview</a>
+<a class="text-slate-500 font-medium hover:text-[#b51a1e] transition-colors" href="#">Analytics</a>
+<a class="text-slate-500 font-medium hover:text-[#b51a1e] transition-colors" href="#">Team</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer p-2 hover:bg-surface-container rounded-full transition-all" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full border-2 border-white"></span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer p-2 hover:bg-surface-container rounded-full transition-all" data-icon="settings">settings</span>
+<div class="h-8 w-[1px] bg-outline-variant/30 mx-2"></div>
+<div class="flex items-center gap-3">
+<span class="text-sm font-semibold text-primary">Admin</span>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="Close-up portrait of a professional male administrator in a clean modern office setting, soft corporate lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9fOVtb5kMsp4w20HHOVpiVR6NtefAT6S878ErTkUgknILmalfew5CEoIB9zKCFw6lamq3SCvwxW0BVVoBc1eZL54mA2iu9WpqKeMWa0NWOzxd3R504jzzNyBf_YM4v3OWaaEF5AhqI-5qnvMFyy29JjKgpsBhoTc0bzRaPxKm9i4k4U6ETP_BLvugmrDTJ-b2g2uh-yF4TfIhtZWxGrsonw6KBZU1xIzfXIaZYGfSvJPaAM__tOZhMtgpyjj2yhQKlwd9t89W1VfR"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="pt-24 px-8 pb-12">
+<!-- Hero Header Section -->
+<section class="mb-12 relative overflow-hidden rounded-3xl bg-primary h-64 flex items-center px-12">
+<div class="absolute inset-0 opacity-40">
+<img alt="Gym interior" class="w-full h-full object-cover" data-alt="Cinematic wide shot of a premium high-end athletic training facility with high ceilings and sophisticated equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdhKnOrmD-7Qc-6IgI4TY5fPQwvmWjYNB61OH3l3eAYYwdxEDDB93nVF8WHdy33dd7y9FD0u8_9664bUNetQ9PHXFYm3fpkx7a_JmdbgTY7RSPvjPF2jbLnhcJPCgxQZ_fKekHih0SqrIhtjVS3tVhpCUK74vMnXCrIRJ9VJR8qwEWkYKq9iI3LnxnXYWcbdSIRQchBv69edhPkyQFWmpLCuD66YTmN9Hdpt0p6e7K_Zuoy0Sw3XjyziESbNuSZehFE9Dy61Z2p2lV"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-2xl">
+<span class="bg-secondary px-3 py-1 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-full inline-block mb-4">Daily Operations</span>
+<h3 class="font-headline text-5xl font-extrabold text-white mb-2 tracking-tighter">Turning Potential Into Performance</h3>
+<p class="text-on-primary-container text-lg font-light">Welcome back, Admin. Your facility is currently operating at 82% peak capacity.</p>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Active Members -->
+<div class="bg-surface-container-low rounded-[2rem] p-8 flex flex-col justify-between transition-all hover:shadow-xl hover:shadow-primary/5">
+<div class="flex justify-between items-start">
+<div class="p-4 bg-white rounded-2xl shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="group">group</span>
+</div>
+<span class="text-green-600 font-bold flex items-center text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                            +12%
+                        </span>
+</div>
+<div class="mt-8">
+<p class="text-on-surface-variant font-medium text-sm">Active Members</p>
+<h4 class="text-4xl font-headline font-black text-primary">1,284</h4>
+</div>
+</div>
+<!-- Total Bookings -->
+<div class="bg-surface-container-low rounded-[2rem] p-8 flex flex-col justify-between transition-all hover:shadow-xl hover:shadow-primary/5">
+<div class="flex justify-between items-start">
+<div class="p-4 bg-white rounded-2xl shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="event_available">event_available</span>
+</div>
+<span class="text-secondary font-bold flex items-center text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="trending_down">trending_down</span>
+                            -3%
+                        </span>
+</div>
+<div class="mt-8">
+<p class="text-on-surface-variant font-medium text-sm">Total Bookings</p>
+<h4 class="text-4xl font-headline font-black text-primary">342</h4>
+</div>
+</div>
+<!-- Monthly Donations -->
+<div class="bg-surface-container-low rounded-[2rem] p-8 flex flex-col justify-between transition-all hover:shadow-xl hover:shadow-primary/5 border-r-8 border-secondary">
+<div class="flex justify-between items-start">
+<div class="p-4 bg-white rounded-2xl shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="volunteer_activism">volunteer_activism</span>
+</div>
+<span class="text-green-600 font-bold flex items-center text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                            +24%
+                        </span>
+</div>
+<div class="mt-8">
+<p class="text-on-surface-variant font-medium text-sm">Monthly Donations</p>
+<h4 class="text-4xl font-headline font-black text-primary">$42,500</h4>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Upcoming Week Calendar Preview -->
+<div class="lg:col-span-7 bg-white rounded-[2rem] p-8 shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<h5 class="font-headline font-bold text-xl text-primary">Upcoming Sessions</h5>
+<button onclick="window.location.href='admin-bookings.html'" class="text-sm font-bold text-secondary flex items-center gap-1 hover:underline">
+                            View Full Schedule <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Calendar Item -->
+<div class="flex items-center gap-6 p-4 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col items-center justify-center bg-primary text-white w-14 h-14 rounded-xl">
+<span class="text-[10px] font-bold uppercase">Oct</span>
+<span class="text-xl font-headline font-black leading-none">12</span>
+</div>
+<div class="flex-grow">
+<h6 class="font-bold text-primary">Veteran Recovery Program</h6>
+<p class="text-xs text-on-surface-variant">08:00 AM - 10:00 AM • Main Studio</p>
+</div>
+<div class="flex -space-x-2">
+<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhDz9jq8GrNuc8C5mfi1JF0jx3MqxgwshX3UG_L5HRkS5ouWSKaf1zEynBVRaDlFJ5nSVOB9udcBWZJ5Cjfyt4H5ZqrWlVWk873Vv4XBxjDfh1EtCrYFTfyXJrj0kOPEbeJnVYN6Em6FyaSRZI8RIrHMIwnoRooo0rurYrGOxqXCEr8t-b0KA-PflDsw3YimF7poIv5gpdv0v4OX8RbWrKuc__egin2RvXg2kL7AI0Bv8x1mhGgXMwDKGmsfPiqgUIiR5JNxZwP_Yp"/>
+<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZv4Grf4aXQyK8zR6hNbPmpQxfbhzW_kWazk1P5L1CvfH3mz9cHSbZUeGnxxSHMDZ6dW80arXI56JYdj1aCPIW_6N0KrHFM_zViEjxnZpwQuDWHYX9qbYvPK0bIlMQvYwx2zp0DGaw9cHzP8FUTD-QBrWpZase8fuf6JH477X26x-kLob23lASO93LOecNqucjb3wYPcxvGD7PuC5--ZwX6ZiuvAeEj-NlsY3AborUlAfo4xIPcMZ9GAMwrUnW3vAGH6I7C99adc5Y"/>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+</div>
+<!-- Calendar Item -->
+<div class="flex items-center gap-6 p-4 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col items-center justify-center bg-surface-container-highest text-primary w-14 h-14 rounded-xl">
+<span class="text-[10px] font-bold uppercase">Oct</span>
+<span class="text-xl font-headline font-black leading-none">14</span>
+</div>
+<div class="flex-grow">
+<h6 class="font-bold text-primary">Elite Youth Basketball</h6>
+<p class="text-xs text-on-surface-variant">04:00 PM - 06:00 PM • Court A</p>
+</div>
+<div class="flex -space-x-2">
+<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIb5xz5zAyxY7yafw3qS2CyFceOmOuIWBfOuXec-LL6g9MKryNmtaNd0wtY3GbCsN1jWN-CAXuLQRMr-NcSAdDTb_d8CrbCsWsZ_T2dqGcj1l8wbPj18kB9rDAx_pNhX_XUMFTFj3qzh9ohg37z7EePMOMjBXaebLEOfJROqNlWGSZTrWBcuekmrNqU04C9884hTG2jw-5IHPhU4Hpypii-Nlbo4B0TkSDdcxpJsDvcPZ-vmaE_39t-7n5PXaij-6fMY2Xxki01aJ7"/>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+28</div>
+</div>
+</div>
+<!-- Calendar Item -->
+<div class="flex items-center gap-6 p-4 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col items-center justify-center bg-surface-container-highest text-primary w-14 h-14 rounded-xl">
+<span class="text-[10px] font-bold uppercase">Oct</span>
+<span class="text-xl font-headline font-black leading-none">15</span>
+</div>
+<div class="flex-grow">
+<h6 class="font-bold text-primary">Mobility Workshop</h6>
+<p class="text-xs text-on-surface-variant">11:00 AM - 12:30 PM • Training Room 2</p>
+</div>
+<div class="flex -space-x-2">
+<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="avatar 4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzYk2Os-qsu5DZ73iDP6_VtWs-dQLOerG-EW640w9Bes3N03GekrFfzS-YLQ08Zm4C0kPzUs89q_eBqbC_TbTMcAIUzkbFXPcHUF7R9wRFyBSeSJqinAWjms44P6D3G3dQZ9vskEbvhid4PahDyYFAoj_rKWUiKK4KLi1TUXn07V8fkjpAG7KygO9Fya-zceVJti9kZGbdta0uj5lyUYLHx8HiJsyQe2a4zXv64GnV91K8wddx16dm-WbhnvckARDFZ980bABtOtCc"/>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+8</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity -->
+<div class="lg:col-span-5 bg-[#f3f4f5] rounded-[2rem] p-8">
+<div class="flex items-center justify-between mb-8">
+<h5 class="font-headline font-bold text-xl text-primary">Recent Activity</h5>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="more_horiz">more_horiz</span>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-green-100 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-700 text-xl" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<p class="text-sm text-primary font-bold">New Platinum Member Joined</p>
+<p class="text-xs text-on-surface-variant">Marcus Thorne registered for annual membership.</p>
+<p class="text-[10px] text-slate-400 mt-1">2 minutes ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-blue-100 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-700 text-xl" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="text-sm text-primary font-bold">Donation Received: $1,500</p>
+<p class="text-xs text-on-surface-variant">Received from Corporate Partners: First National Bank.</p>
+<p class="text-[10px] text-slate-400 mt-1">45 minutes ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-amber-100 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-amber-700 text-xl" data-icon="report">report</span>
+</div>
+<div>
+<p class="text-sm text-primary font-bold">Facility Alert</p>
+<p class="text-xs text-on-surface-variant">Maintenance reported for HVAC system in Court B.</p>
+<p class="text-[10px] text-slate-400 mt-1">3 hours ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-red-100 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-700 text-xl" data-icon="cancel">cancel</span>
+</div>
+<div>
+<p class="text-sm text-primary font-bold">Booking Cancelled</p>
+<p class="text-xs text-on-surface-variant">Individual Personal Training session with Trainer Sarah.</p>
+<p class="text-[10px] text-slate-400 mt-1">5 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

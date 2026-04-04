@@ -1,0 +1,422 @@
+<!-- Admin Dashboard - Memberships -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Membership Database | Kinetic Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary-fixed-dim": "#b1cad7",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-fixed-dim": "#ffb4ac",
+                        "on-secondary-container": "#fffbff",
+                        "tertiary-fixed": "#cde6f4",
+                        "surface-bright": "#f8f9fa",
+                        "on-background": "#191c1d",
+                        "on-tertiary-fixed-variant": "#334a55",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1d",
+                        "tertiary": "#0a242d",
+                        "inverse-primary": "#aec7f7",
+                        "primary-fixed-dim": "#aec7f7",
+                        "on-tertiary-fixed": "#051e28",
+                        "outline-variant": "#c4c6cf",
+                        "on-surface-variant": "#44474e",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#d93633",
+                        "on-primary-fixed-variant": "#2e476f",
+                        "primary-container": "#1b365d",
+                        "surface": "#f8f9fa",
+                        "on-tertiary-container": "#8aa3af",
+                        "secondary": "#b51a1e",
+                        "primary-fixed": "#d6e3ff",
+                        "secondary-fixed": "#ffdad6",
+                        "on-secondary-fixed": "#410003",
+                        "on-secondary-fixed-variant": "#93000e",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "background": "#f8f9fa",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-surface": "#2e3132",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-fixed": "#001b3d",
+                        "on-primary-container": "#87a0cd",
+                        "surface-container": "#edeeef",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary-container": "#223943",
+                        "primary": "#002046",
+                        "surface-tint": "#465f88",
+                        "on-error": "#ffffff",
+                        "outline": "#74777f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Public Sans"],
+                        "label": ["Public Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Public Sans', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full w-64 z-50 bg-[#002046] dark:bg-slate-950 flex flex-col h-full py-8 shadow-2xl shadow-[#002046]/20">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center cursor-pointer" onclick="window.location.href='index.html'">
+<span class="material-symbols-outlined text-[#002046]" data-icon="bolt">bolt</span>
+</div>
+<div>
+<h2 class="font-['Manrope'] font-black text-white tracking-tighter text-lg cursor-pointer" onclick="window.location.href='index.html'">Kinetic Admin</h2>
+<p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">The Disciplined Hub</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-slate-300 hover:bg-white/5 px-6 py-4 flex items-center gap-4 transition-all hover:text-white" href="admin-dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Public_Sans'] font-medium text-sm">Dashboard</span>
+</a>
+<a class="text-slate-300 hover:bg-white/5 px-6 py-4 flex items-center gap-4 transition-all hover:text-white" href="admin-bookings.html">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-['Public_Sans'] font-medium text-sm">Booking Schedule</span>
+</a>
+<a class="bg-gradient-to-r from-[#002046] to-[#1b365d] text-white border-l-4 border-[#b51a1e] px-6 py-4 flex items-center gap-4" href="admin-members.html">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-['Public_Sans'] font-medium text-sm">Membership Database</span>
+</a>
+<a class="text-slate-300 hover:bg-white/5 px-6 py-4 flex items-center gap-4 transition-all hover:text-white" href="admin-donations.html">
+<span class="material-symbols-outlined" data-icon="volunteer_activism">volunteer_activism</span>
+<span class="font-['Public_Sans'] font-medium text-sm">Donation Database</span>
+</a>
+</nav>
+<div class="px-6 mt-auto space-y-4">
+<button class="w-full py-3 px-4 bg-[#b51a1e] hover:bg-[#d93633] text-white rounded-xl text-sm font-bold transition-all shadow-lg shadow-[#b51a1e]/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Registration
+            </button>
+<div class="pt-6 border-t border-white/10 space-y-1">
+<a class="text-slate-400 hover:text-white flex items-center gap-4 py-2 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+<span class="text-sm">Support</span>
+</a>
+<a class="text-slate-400 hover:text-white flex items-center gap-4 py-2 transition-colors" href="index.html">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span class="text-sm">Log Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 right-0 w-full z-40 border-b border-transparent bg-white/80 dark:bg-slate-900/80 backdrop-blur-md flex justify-between items-center h-16 px-8 ml-64 shadow-[0_24px_48px_rgba(0,32,70,0.08)] pl-[18rem]">
+<div class="flex-1 flex items-center">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search members by name, ID or email..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-[#b51a1e] transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-[#b51a1e] transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-outline-variant/30">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold text-[#002046]">Admin User</p>
+<p class="text-[10px] text-on-surface-variant font-medium">System Controller</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary-container/20" data-alt="professional portrait of a confident middle-aged man in business attire, clean studio lighting, neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvZ_EWgfTyeIk_gzxRJyija1duXJ-w91iYG84VI9suNyVJxjvNtFHS2P2U0PhWXepApxdtKniWi0TRW9bPwRhpXsnSmV98ESVsD-2nWUdyp0Fftj9raV5Z8m4JdgyYmUfc3R17AmSWOQigVQMAJEg7vypfI1nL68pc94orGa6qFNmvIf6vLMo2r6JglgwzPOW0QOdoIViyrFVaafpAHGvKZl6ZTvu8YnSdAUv-GF0RvSvzKJxLGIbmmf3ZHBfOXN989ayqmGu2aMnd"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-24 pl-64 min-h-screen bg-surface">
+<div class="p-8 max-w-7xl mx-auto">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-10">
+<div>
+<h1 class="text-4xl font-black text-primary tracking-tighter mb-2">Membership Database</h1>
+<p class="text-on-surface-variant font-medium">Manage and monitor the Kinetic Community core membership status.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 bg-surface-container-highest text-primary rounded-xl font-bold text-sm flex items-center gap-2 hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="ios_share">ios_share</span>
+                        Export CSV
+                    </button>
+<button class="px-6 py-2.5 bg-primary text-white rounded-xl font-bold text-sm flex items-center gap-2 hover:shadow-lg hover:shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="person_add">person_add</span>
+                        Manual Entry
+                    </button>
+</div>
+</div>
+<!-- Database Stats Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Total Members</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-black text-primary">1,284</span>
+<span class="text-xs text-emerald-600 font-bold mb-1.5 flex items-center">+4%</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Active Now</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-black text-primary">1,102</span>
+<span class="text-xs text-on-surface-variant font-bold mb-1.5">85.8%</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Veteran Accounts</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-black text-primary">342</span>
+<span class="bg-secondary-container/10 text-secondary px-2 py-0.5 rounded text-[10px] mb-2 font-bold">HONOR</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Expiring Soon</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-black text-secondary">28</span>
+<span class="text-xs text-on-surface-variant font-bold mb-1.5 flex items-center">Next 30d</span>
+</div>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-white rounded-2xl shadow-[0_24px_48px_rgba(0,32,70,0.04)] overflow-hidden">
+<div class="p-6 border-b border-surface-container-high flex flex-wrap gap-4 items-center justify-between">
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-primary text-white rounded-lg text-xs font-bold">All Members</button>
+<button class="px-4 py-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg text-xs font-bold transition-all">Veteran Only</button>
+<button class="px-4 py-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg text-xs font-bold transition-all">Pending</button>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium text-on-surface-variant">Filter by date:</span>
+<select class="bg-surface-container-low border-none rounded-lg text-xs font-bold text-primary py-2 px-4 focus:ring-0">
+<option>Last 30 Days</option>
+<option>Last 6 Months</option>
+<option>Year to Date</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-8 py-4 text-[10px] font-black text-on-surface-variant uppercase tracking-widest">Member Name</th>
+<th class="px-6 py-4 text-[10px] font-black text-on-surface-variant uppercase tracking-widest">Membership Type</th>
+<th class="px-6 py-4 text-[10px] font-black text-on-surface-variant uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-[10px] font-black text-on-surface-variant uppercase tracking-widest">Renewal Date</th>
+<th class="px-8 py-4 text-[10px] font-black text-on-surface-variant uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary font-bold text-sm">
+                                            JS
+                                        </div>
+<div>
+<p class="text-sm font-bold text-primary">James Sterling</p>
+<p class="text-xs text-on-surface-variant">j.sterling@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-surface-container-highest text-primary text-[10px] font-bold rounded-full uppercase tracking-tighter">Individual</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-bold text-emerald-700">Active</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant font-medium">Oct 12, 2024</td>
+<td class="px-8 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg transition-all text-primary" title="Edit Profile">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-secondary-container/10 rounded-lg transition-all text-secondary" title="View History">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<img alt="Sarah Chen" class="w-10 h-10 rounded-full object-cover" data-alt="portrait of a professional woman with glasses, soft natural lighting, warm office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU9IGbqyEuRUDc9gIkKfWv22CozXOkRRYFkeZqIORyk3LNzZ9T6jQkz8-y1oSNv3bPzXMzpVPXphl1GkwHjzH51wCZxb1pS0iK1jzicCHDp0mq0qbTzEFX16zWwAjd58rNH0nUmEWepl1SqSFrjmQGjBhwLMmdapJ7wQXd5TwM_6fDJ9YJweDZAdy9xrb1kk9-lO7FmGi84HgE8RxVjEkcZXrIYCgBHSSaHeRpA60anJiw-vhSC5MV_6xg64cHNjFDRP-pPSwpsv2o"/>
+<div>
+<p class="text-sm font-bold text-primary">Sarah Chen</p>
+<p class="text-xs text-on-surface-variant">chen.s@kinetichub.org</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-secondary-container/10 text-secondary text-[10px] font-bold rounded-full uppercase tracking-tighter">Veteran</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-bold text-emerald-700">Active</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant font-medium">Nov 24, 2024</td>
+<td class="px-8 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg transition-all text-primary" title="Edit Profile">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-secondary-container/10 rounded-lg transition-all text-secondary" title="View History">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center font-bold text-sm">
+                                            ML
+                                        </div>
+<div>
+<p class="text-sm font-bold text-primary">Marcus Laurent</p>
+<p class="text-xs text-on-surface-variant">m.laurent@outlook.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-surface-container-highest text-primary text-[10px] font-bold rounded-full uppercase tracking-tighter">Family</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="text-xs font-bold text-amber-700">Pending</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant font-medium">Pending Review</td>
+<td class="px-8 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg transition-all text-primary" title="Edit Profile">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-secondary-container/10 rounded-lg transition-all text-secondary" title="View History">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<img alt="David Miller" class="w-10 h-10 rounded-full object-cover" data-alt="portrait of a smiling man in casual athletic wear, outdoor park setting, soft morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYaf5Rou0-67gA-Xnis0gUpzPn9p_X-srzzALYyMLhztEVfECXiUZvnRauJ48LbvXD5n_tq-MmA0B6LHuDZrnFfsCJ28lp7ueIyGfyDEs2DzLRe-48cBDD2oLtcv8Hpsrqh64nEVRSyGjbcPW_RSFAJknct7PQUKgC5ucbNhox-gswFLr7mX-7IvgpmefPgxX9uBGKLbC_rpesmYGW4Ea3FCpd68M-OiFfIoQv18oZ9k0un3J7sIavL9vgBYVEKwsuY2G0zVrQ8VoH"/>
+<div>
+<p class="text-sm font-bold text-primary">David Miller</p>
+<p class="text-xs text-on-surface-variant">dave.miller@gmail.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-surface-container-highest text-primary text-[10px] font-bold rounded-full uppercase tracking-tighter">Individual</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-bold text-emerald-700">Active</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-[#b51a1e] font-bold italic">Oct 05, 2024 (Expired)</td>
+<td class="px-8 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg transition-all text-primary" title="Edit Profile">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-secondary-container/10 rounded-lg transition-all text-secondary" title="View History">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-8 py-6 border-t border-surface-container-high flex items-center justify-between">
+<p class="text-xs font-medium text-on-surface-variant">Showing 1 to 10 of 1,284 members</p>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white text-xs font-bold shadow-md shadow-primary/10">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface-variant text-xs font-bold">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface-variant text-xs font-bold">3</button>
+<span class="px-2 text-on-surface-variant text-xs">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface-variant text-xs font-bold">129</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Info Section -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-primary p-8 rounded-2xl relative overflow-hidden flex flex-col justify-center">
+<div class="absolute right-0 top-0 w-32 h-32 bg-white/5 rounded-full -mr-10 -mt-10 blur-3xl"></div>
+<h3 class="text-white text-xl font-black mb-4 tracking-tight">Need a Detailed Report?</h3>
+<p class="text-primary-fixed/60 text-sm mb-6 max-w-sm">Generate quarterly demographic analytics and membership growth projections for the upcoming board review.</p>
+<button class="self-start px-6 py-3 bg-secondary text-white rounded-xl font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                        Advanced Analytics Hub
+                    </button>
+</div>
+<div class="bg-surface-container-high/50 p-8 rounded-2xl border-2 border-dashed border-outline-variant/30 flex items-center justify-center text-center">
+<div>
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mx-auto mb-4 text-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+</div>
+<h3 class="text-primary font-bold mb-2">Import Legacy Data</h3>
+<p class="text-on-surface-variant text-xs max-w-xs mx-auto">Bulk upload members from XLS or CSV formats. Auto-merges duplicates based on email.</p>
+<button class="mt-4 text-secondary font-black text-[10px] uppercase tracking-widest hover:underline">Start Bulk Import</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

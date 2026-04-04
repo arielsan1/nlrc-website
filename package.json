@@ -1,0 +1,14 @@
+{
+  "name": "nlrc-website",
+  "version": "1.0.0",
+  "description": "Next Level Recreation Center - Static Site",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}

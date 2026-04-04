@@ -1,0 +1,268 @@
+<!-- Venue Rental - Payment & Confirmation -->
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Complete Your Booking | Next Level Recreation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#b51a1e",
+                    "tertiary-fixed": "#cde6f4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "error-container": "#ffdad6",
+                    "background": "#f8f9fa",
+                    "surface-dim": "#d9dadb",
+                    "on-background": "#191c1d",
+                    "inverse-primary": "#aec7f7",
+                    "secondary-container": "#d93633",
+                    "on-tertiary-container": "#8aa3af",
+                    "on-secondary-fixed-variant": "#93000e",
+                    "secondary-fixed-dim": "#ffb4ac",
+                    "tertiary-container": "#223943",
+                    "surface-variant": "#e1e3e4",
+                    "tertiary": "#0a242d",
+                    "surface-tint": "#465f88",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary-fixed": "#001b3d",
+                    "primary-container": "#1b365d",
+                    "outline-variant": "#c4c6cf",
+                    "on-tertiary-fixed": "#051e28",
+                    "surface-container": "#edeeef",
+                    "on-secondary-fixed": "#410003",
+                    "on-secondary": "#ffffff",
+                    "outline": "#74777f",
+                    "secondary-fixed": "#ffdad6",
+                    "primary-fixed-dim": "#aec7f7",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#b1cad7",
+                    "on-surface-variant": "#44474e",
+                    "on-secondary-container": "#fffbff",
+                    "on-primary-fixed-variant": "#2e476f",
+                    "surface": "#f8f9fa",
+                    "inverse-surface": "#2e3132",
+                    "inverse-on-surface": "#f0f1f2",
+                    "primary-fixed": "#d6e3ff",
+                    "on-tertiary-fixed-variant": "#334a55",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#002046",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-primary-container": "#87a0cd",
+                    "surface-container-low": "#f3f4f5",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Public Sans"],
+                    "label": ["Public Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #002046 0%, #1b365d 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface flex flex-col min-h-screen">
+<!-- TopNavBar Suppressed per Shell Visibility Rules for Transactional screens -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
+<div class="text-2xl font-black text-primary tracking-tighter font-headline cursor-pointer" onclick="window.location.href='index.html'">Next Level Recreation</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-medium text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">lock</span> Secure Checkout
+                </span>
+<a class="text-primary hover:text-secondary transition-colors font-bold text-sm" href="index.html">Cancel &amp; Return</a>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Column: Payment Details -->
+<div class="lg:col-span-7 space-y-8">
+<section>
+<h1 class="font-headline text-4xl font-extrabold tracking-tight text-primary mb-2">Finalize Your Booking</h1>
+<p class="text-on-surface-variant body-lg mb-8">Securely complete your reservation using our encrypted payment portal.</p>
+<!-- Payment Methods -->
+<div class="bg-surface-container-low p-8 rounded-xl shadow-sm space-y-6">
+<div class="flex items-center justify-between mb-2">
+<h2 class="font-headline text-xl font-bold text-primary">Payment Information</h2>
+<div class="flex gap-2">
+<div class="w-10 h-6 bg-surface-container-highest rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">credit_card</span>
+</div>
+<div class="w-10 h-6 bg-surface-container-highest rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">account_balance_wallet</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="md:col-span-2 space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Cardholder Name</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary h-12 px-4 outline-none" placeholder="John R. Veteran" type="text"/>
+</div>
+<div class="md:col-span-2 space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Card Number</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary h-12 px-4 outline-none" placeholder="•••• •••• •••• ••••" type="text"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 flex gap-1">
+<span class="material-symbols-outlined text-on-surface-variant">contactless</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Expiry Date</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary h-12 px-4 outline-none" placeholder="MM / YY" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">CVC</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary h-12 px-4 outline-none" placeholder="•••" type="text"/>
+</div>
+</div>
+<div class="flex items-start gap-3 p-4 bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-primary" data-weight="fill">shield</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                Your payment is processed through a secure 256-bit encrypted gateway. Next Level Recreation Center does not store your full card details.
+                            </p>
+</div>
+<button onclick="document.getElementById('success-state').classList.remove('hidden')" class="w-full py-4 hero-gradient text-white font-headline font-bold text-lg rounded-lg shadow-lg hover:brightness-110 transition-all flex items-center justify-center gap-3">
+                            Confirm &amp; Pay $150.00
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Veteran Badge -->
+<div class="inline-flex items-center gap-3 bg-secondary-container px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-white text-sm" data-weight="fill">verified</span>
+<span class="text-white font-bold text-xs uppercase tracking-widest">Veteran Owned &amp; Operated</span>
+</div>
+</div>
+<!-- Right Column: Summary Card -->
+<aside class="lg:col-span-5">
+<div class="bg-primary text-white p-8 rounded-xl shadow-2xl relative overflow-hidden sticky top-32">
+<div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-9xl">event_available</span>
+</div>
+<h3 class="font-headline text-2xl font-extrabold mb-6 relative z-10">Booking Summary</h3>
+<div class="space-y-6 relative z-10">
+<div class="flex items-start gap-4">
+<img class="w-20 h-20 rounded-lg object-cover shadow-md" data-alt="high-end indoor basketball court with polished hardwood floors and professional lighting in a modern sports facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCccceJpJyhlPmwt3Mi4w8WhyPorG3NVc19a_iy7dg4vPKEgmQ_wOx0hElsNAUILCyQ0SFFo7P2ULrA52URv9aPl2xabFfUFjm16xMmS0pUWEXANk6DmYHSOom7FXhTPjq8riia2DJf_5Sct9zVOOgXSyMyLQ9BES4RTIAG0A_Abp7zfGMoFdaffa2iyT5ewvUj0gu6pONExwTPhScMm3kub7HJ4p5bJOta2xTTo362PUGpS_E434Vp0-PmjnYO-Z-MuGwbp8Z9KPj5"/>
+<div>
+<h4 class="font-bold text-lg">Elite Performance Court</h4>
+<p class="text-on-primary-container text-sm">Full Court Reservation</p>
+</div>
+</div>
+<div class="border-t border-white/10 pt-6 space-y-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">calendar_today</span>
+<span class="text-sm opacity-80">Date</span>
+</div>
+<span class="font-bold">Saturday, Oct 12, 2024</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">schedule</span>
+<span class="text-sm opacity-80">Time</span>
+</div>
+<span class="font-bold">06:00 PM - 08:00 PM</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">group</span>
+<span class="text-sm opacity-80">Capacity</span>
+</div>
+<span class="font-bold">Up to 20 Guests</span>
+</div>
+</div>
+<div class="border-t border-white/10 pt-6 space-y-3">
+<div class="flex justify-between text-sm">
+<span class="opacity-70">Court Rental (2 hrs)</span>
+<span>$120.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="opacity-70">Facility Service Fee</span>
+<span>$20.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="opacity-70">Equipment Package (Standard)</span>
+<span>$10.00</span>
+</div>
+<div class="flex justify-between items-end pt-4">
+<span class="font-headline font-bold text-xl">Total Amount</span>
+<span class="font-headline font-extrabold text-3xl text-secondary">$150.00</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex items-center justify-center gap-6">
+<img class="h-6 grayscale opacity-50" data-alt="Visa payment network logo in a clean monochrome style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3D5JKWb09NbKC0XCmlfUcL9bISClVR72qKP33OiHrOOBAOKJAujVY7oyxi_z4X0-IQTvxWiyOB5JwKYX1WrBEtcQlwfiBzDotlJvxeOGql7BbpfQ3M827smVPr3kR2ngsVbptjTDKuhGdXkbjjBmZ99WaZrOMa5GAPMKy5TC-7Y5CwDKTD_O8_bUiHUqpNLg3coq1WvK2lu4Rx3BjTMlocYc4RNaRuwJTh1V_gLcsxXUN_UTmt7jDNfLBoPPAAMkwIcssZbW102AO"/>
+<img class="h-6 grayscale opacity-50" data-alt="Mastercard payment network logo in a clean monochrome style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP0umDzJUlVOb_oQboiXAwR2Re1tglZLavTmRTRmR4qUicgYzfS5JqBKFQYB3DdSk9fg9P_KQlMkjjL9IZ19mLk-dhhKDQYtTteGZMz98tYY6UuIPsQmZfrBbRHqruomcHYwOiHoatEz6c1ouDhgPiKWRIjgIi3Eeou-X47Srl028yhuxbcAeWmPkDAZh-SaEb-QSR-mP3YBJxa1LjlfKEyv-pKQqAWSKN9XNcb4CQ7i7_BkwtTZdZjPMdmk_CvZXZXPAXjQwZ50Nr"/>
+<img class="h-6 grayscale opacity-50" data-alt="American Express payment network logo in a clean monochrome style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrCJPiit2zBdxVUgbOXZfTzrslwFoLA98aOEZH2Auczdsa6IzNSSEoJ0APMyNOWrQ0O1NBJLieEs7qSwTNu-pQ86_Z5i4NKIGwOgEoCykTz2P8nsmi98Dk5YRCryOP91CZcglyZjdR8j8yTSP7-tU-rK8PCCy_gsVyKRvJznLCQyvWtgV0PaHDsMqJCgYT2pb_9LNpK9VOUCEe_kPxPsCmx8jFpyl720LJPWByuiBIAKdNDfIb9I0N-Hy9kjJNvSTW0yAw_yY9gRFa"/>
+</div>
+</aside>
+</div>
+</main>
+<!-- Success Modal Overlay (Hidden by Default - Displayed after JS trigger) -->
+<!-- Note: Designed for visibility in the UI layout test -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-primary/40 backdrop-blur-sm hidden" id="success-state">
+<div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-10 text-center space-y-6">
+<div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-white text-5xl" data-weight="fill">check_circle</span>
+</div>
+<h2 class="font-headline text-3xl font-extrabold text-primary">Booking Confirmed!</h2>
+<p class="text-on-surface-variant">Your reservation for the Elite Performance Court has been successfully processed. A confirmation email and digital receipt have been sent to your inbox.</p>
+<div class="bg-surface-container-low p-4 rounded-xl text-left border-l-4 border-secondary">
+<p class="text-xs font-bold uppercase text-on-surface-variant mb-1">Confirmation ID</p>
+<p class="font-mono text-primary font-bold">NLR-8294-XP-2024</p>
+</div>
+<button onclick="window.location.href='index.html'" class="w-full py-4 bg-primary text-white font-bold rounded-lg hover:bg-primary-container transition-colors">
+                Return to Home
+            </button>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-black w-full mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full">
+<div class="mb-8 md:mb-0">
+<div class="text-xl font-black text-white mb-2">Next Level Recreation Center, LLC</div>
+<p class="font-['Public_Sans'] font-normal text-sm text-slate-300">© 2024 Next Level Recreation Center. All Rights Reserved. Veteran Owned &amp; Operated.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Public_Sans'] font-normal text-sm text-slate-300 hover:text-secondary transition-colors" href="index.html">Spaces</a>
+<a class="font-['Public_Sans'] font-normal text-sm text-slate-300 hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Public_Sans'] font-normal text-sm text-slate-300 hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="font-['Public_Sans'] font-normal text-sm text-slate-300 hover:text-secondary transition-colors" href="#">Facility Rules</a>
+<a class="font-['Public_Sans'] font-normal text-sm text-slate-300 hover:text-secondary transition-colors" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

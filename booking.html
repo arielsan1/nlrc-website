@@ -1,0 +1,304 @@
+<!-- Venue Rental - Configure Booking -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Configuration - Next Level Recreation Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#b51a1e",
+                      "tertiary-fixed": "#cde6f4",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#191c1d",
+                      "error-container": "#ffdad6",
+                      "background": "#f8f9fa",
+                      "surface-dim": "#d9dadb",
+                      "on-background": "#191c1d",
+                      "inverse-primary": "#aec7f7",
+                      "secondary-container": "#d93633",
+                      "on-tertiary-container": "#8aa3af",
+                      "on-secondary-fixed-variant": "#93000e",
+                      "secondary-fixed-dim": "#ffb4ac",
+                      "tertiary-container": "#223943",
+                      "surface-variant": "#e1e3e4",
+                      "tertiary": "#0a242d",
+                      "surface-tint": "#465f88",
+                      "surface-container-high": "#e7e8e9",
+                      "surface-bright": "#f8f9fa",
+                      "on-primary-fixed": "#001b3d",
+                      "primary-container": "#1b365d",
+                      "outline-variant": "#c4c6cf",
+                      "on-tertiary-fixed": "#051e28",
+                      "surface-container": "#edeeef",
+                      "on-secondary-fixed": "#410003",
+                      "on-secondary": "#ffffff",
+                      "outline": "#74777f",
+                      "secondary-fixed": "#ffdad6",
+                      "primary-fixed-dim": "#aec7f7",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#b1cad7",
+                      "on-surface-variant": "#44474e",
+                      "on-secondary-container": "#fffbff",
+                      "on-primary-fixed-variant": "#2e476f",
+                      "surface": "#f8f9fa",
+                      "inverse-surface": "#2e3132",
+                      "inverse-on-surface": "#f0f1f2",
+                      "primary-fixed": "#d6e3ff",
+                      "on-tertiary-fixed-variant": "#334a55",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#002046",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-primary-container": "#87a0cd",
+                      "surface-container-low": "#f3f4f5",
+                      "on-error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Public Sans"],
+                      "label": ["Public Sans"]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #002046 0%, #1b365d 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+      </style>
+</head>
+<body class="bg-background font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
+<div class="text-2xl font-black text-[#002046] dark:text-white tracking-tighter font-headline cursor-pointer" onclick="window.location.href='index.html'">
+                Next Level Recreation
+            </div>
+<div class="hidden md:flex items-center gap-8 font-headline font-bold tracking-tight">
+<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="index.html">Spaces</a>
+<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Events</a>
+<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Programs</a>
+<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Membership</a>
+<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 rounded-lg font-headline font-bold text-[#002046] hover:bg-slate-100 transition-all">Login</button>
+<button onclick="window.location.href='booking.html'" class="px-6 py-2 rounded-lg font-headline font-bold text-white hero-gradient hover:opacity-90 transition-all">Book Now</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto w-full">
+<!-- Selected Space Header -->
+<div class="mb-12 relative overflow-hidden rounded-xl bg-surface-container-low p-1 flex flex-col md:flex-row items-center gap-8">
+<div class="w-full md:w-1/3 h-64 md:h-48 overflow-hidden rounded-lg">
+<img alt="Elite Training Facility" class="w-full h-full object-cover" data-alt="Modern indoor basketball court with polished hardwood floors and bright professional lighting in a premium fitness center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzhvprVdGEu85w47HomGRkOaSy-7kxS-yUDW5QEl0WYMS_YVXGkjtpbXWT9xBJ84nqYbvlWzGW8JbyKOLW4MpN7AuQzRQ9CFXz7cPZLGmSIGz6b5wv5Yl3drboCZy_KJSPt8ObkAa6dMGxJXTfpx4b2cphQzDpCO3nRAFM5nI1vEilfUNUDe1cy-AlPUUKwxMT0B9PJhu-PhUpvJ5MU-yc7_lT5PkBq_bbMahAjdCxCuJ6uggcDJxMuskl8hRYvSYDkoYgXoju0CUE"/>
+</div>
+<div class="flex-grow pr-8 py-4 px-4 md:px-0">
+<div class="inline-block bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold mb-3 tracking-widest uppercase">
+                    VETERAN OWNED
+                </div>
+<h1 class="text-3xl md:text-4xl font-headline font-extrabold text-primary tracking-tight mb-2">Elite Performance Court A</h1>
+<p class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                    Main Arena - North Wing
+                </p>
+<div class="flex gap-4 mt-4">
+<span class="text-sm px-3 py-1 bg-surface-container-high rounded-full font-semibold">$85.00 / Hour</span>
+<span class="text-sm px-3 py-1 bg-surface-container-high rounded-full font-semibold">Max 25 Guests</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Configurator -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Date Selection -->
+<section>
+<header class="mb-6 flex justify-between items-end">
+<div>
+<h2 class="text-2xl font-headline font-extrabold text-primary">Select Date</h2>
+<p class="text-on-surface-variant">Choose your preferred rental date</p>
+</div>
+<div class="text-primary font-bold text-lg">December 2024</div>
+</header>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden p-6">
+<div class="grid grid-cols-7 gap-2 mb-4">
+<div class="text-center text-xs font-bold text-outline uppercase tracking-wider py-2">Sun</div>
+<div class="text-center text-xs font-bold text-outline uppercase tracking-wider py-2">Mon</div>
+<div class="text-center text-xs font-bold text-outline uppercase tracking-wider py-2">Tue</div>
+<div class="text-center text-xs font-bold text-outline uppercase tracking-wider py-2">Wed</div>
+<div class="text-center text-xs font-bold text-outline uppercase tracking-wider py-2">Thu</div>
+<div class="text-center text-xs font-bold text-outline uppercase tracking-wider py-2">Fri</div>
+<div class="text-center text-xs font-bold text-outline uppercase tracking-wider py-2">Sat</div>
+</div>
+<div class="grid grid-cols-7 gap-2">
+<!-- Placeholder Calendar Days -->
+<div class="h-12 md:h-20 flex items-center justify-center text-outline-variant">26</div>
+<div class="h-12 md:h-20 flex items-center justify-center text-outline-variant">27</div>
+<div class="h-12 md:h-20 flex items-center justify-center text-outline-variant">28</div>
+<div class="h-12 md:h-20 flex items-center justify-center text-outline-variant">29</div>
+<div class="h-12 md:h-20 flex items-center justify-center text-outline-variant">30</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold">1</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold">2</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold">3</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold">4</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold">5</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold">6</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold">7</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold">8</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold">9</div>
+<div class="h-12 md:h-20 flex flex-col items-center justify-center rounded-lg hero-gradient text-white font-bold relative group cursor-pointer ring-4 ring-primary-container ring-offset-2">
+                                10
+                                <span class="absolute bottom-2 w-1 h-1 bg-white rounded-full"></span>
+</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">11</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">12</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">13</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">14</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">15</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">16</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">17</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">18</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">19</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">20</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">21</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">22</div>
+<div class="h-12 md:h-20 flex items-center justify-center font-bold hover:bg-surface-container transition-colors cursor-pointer rounded-lg">23</div>
+</div>
+</div>
+</section>
+<!-- Time Slot Selection -->
+<section>
+<div class="mb-6">
+<h2 class="text-2xl font-headline font-extrabold text-primary">Available Times</h2>
+<p class="text-on-surface-variant">Select a duration and start time</p>
+</div>
+<div class="flex flex-wrap gap-3 mb-8">
+<button class="px-6 py-3 rounded-full bg-primary text-white font-bold text-sm">1 Hour</button>
+<button class="px-6 py-3 rounded-full bg-surface-container-high text-on-surface font-bold text-sm hover:bg-outline-variant transition-colors">2 Hours</button>
+<button class="px-6 py-3 rounded-full bg-surface-container-high text-on-surface font-bold text-sm hover:bg-outline-variant transition-colors">3 Hours</button>
+<button class="px-6 py-3 rounded-full bg-surface-container-high text-on-surface font-bold text-sm hover:bg-outline-variant transition-colors">Custom</button>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+<button class="p-4 rounded-xl border border-outline-variant hover:border-secondary hover:text-secondary transition-all text-center font-bold">08:00 AM</button>
+<button class="p-4 rounded-xl border border-outline-variant hover:border-secondary hover:text-secondary transition-all text-center font-bold">09:00 AM</button>
+<button class="p-4 rounded-xl border-2 border-secondary bg-secondary/5 text-secondary transition-all text-center font-bold relative">
+                            10:00 AM
+                            <span class="absolute -top-2 -right-2 bg-secondary text-white rounded-full p-0.5">
+<span class="material-symbols-outlined text-xs">check</span>
+</span>
+</button>
+<button class="p-4 rounded-xl border border-outline-variant hover:border-secondary hover:text-secondary transition-all text-center font-bold">11:00 AM</button>
+<button class="p-4 rounded-xl bg-surface-container text-outline-variant cursor-not-allowed text-center font-bold line-through">12:00 PM</button>
+<button class="p-4 rounded-xl bg-surface-container text-outline-variant cursor-not-allowed text-center font-bold line-through">01:00 PM</button>
+<button class="p-4 rounded-xl border border-outline-variant hover:border-secondary hover:text-secondary transition-all text-center font-bold">02:00 PM</button>
+<button class="p-4 rounded-xl border border-outline-variant hover:border-secondary hover:text-secondary transition-all text-center font-bold">03:00 PM</button>
+<button class="p-4 rounded-xl border border-outline-variant hover:border-secondary hover:text-secondary transition-all text-center font-bold">04:00 PM</button>
+<button class="p-4 rounded-xl border border-outline-variant hover:border-secondary hover:text-secondary transition-all text-center font-bold">05:00 PM</button>
+<button class="p-4 rounded-xl border border-outline-variant hover:border-secondary hover:text-secondary transition-all text-center font-bold">06:00 PM</button>
+<button class="p-4 rounded-xl border border-outline-variant hover:border-secondary hover:text-secondary transition-all text-center font-bold">07:00 PM</button>
+</div>
+</section>
+</div>
+<!-- Right Column: Summary Card -->
+<div class="lg:col-span-4">
+<div class="sticky top-28 bg-white rounded-2xl shadow-xl shadow-primary/5 p-8 border border-surface-container">
+<h3 class="text-xl font-headline font-extrabold text-primary mb-6 border-b border-surface-container pb-4">Booking Summary</h3>
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-bold text-outline uppercase tracking-widest mb-1">Space</p>
+<p class="font-bold text-primary">Elite Performance Court A</p>
+</div>
+<span class="material-symbols-outlined text-outline">sports_basketball</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-bold text-outline uppercase tracking-widest mb-1">Date</p>
+<p class="font-bold text-primary">Tuesday, Dec 10, 2024</p>
+</div>
+<span class="material-symbols-outlined text-outline">calendar_today</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-bold text-outline uppercase tracking-widest mb-1">Time</p>
+<p class="font-bold text-primary">10:00 AM - 11:00 AM (1 Hr)</p>
+</div>
+<span class="material-symbols-outlined text-outline">schedule</span>
+</div>
+<div class="pt-6 border-t border-surface-container">
+<div class="flex justify-between items-center mb-2">
+<span class="text-on-surface-variant">Rental Fee</span>
+<span class="font-bold">$85.00</span>
+</div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-on-surface-variant">Facility Fee</span>
+<span class="font-bold">$5.00</span>
+</div>
+<div class="flex justify-between items-center mt-4 pt-4 border-t border-dashed border-outline-variant">
+<span class="text-lg font-headline font-extrabold text-primary">Total Cost</span>
+<span class="text-2xl font-headline font-black text-secondary">$90.00</span>
+</div>
+</div>
+<button onclick="window.location.href='payment.html'" class="w-full py-4 rounded-xl hero-gradient text-white font-headline font-extrabold text-lg shadow-lg shadow-primary/20 hover:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+                            Confirm Booking
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-outline italic">
+                            By clicking confirm, you agree to our <a class="underline" href="#">Facility Rules</a> and <a class="underline" href="#">Cancellation Policy</a>.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#002046] dark:bg-black w-full mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full">
+<div class="mb-8 md:mb-0">
+<div class="text-xl font-black text-white font-headline mb-4">Next Level Recreation</div>
+<div class="flex gap-6">
+<a class="text-slate-300 hover:text-[#b51a1e] transition-colors font-body text-sm" href="index.html">Spaces</a>
+<a class="text-slate-300 hover:text-[#b51a1e] transition-colors font-body text-sm" href="#">Privacy Policy</a>
+<a class="text-slate-300 hover:text-[#b51a1e] transition-colors font-body text-sm" href="#">Terms of Service</a>
+<a class="text-slate-300 hover:text-[#b51a1e] transition-colors font-body text-sm" href="#">Facility Rules</a>
+<a class="text-slate-300 hover:text-[#b51a1e] transition-colors font-body text-sm" href="#">Contact Us</a>
+</div>
+</div>
+<div class="text-right">
+<p class="text-white font-body font-normal text-sm mb-2">© 2024 Next Level Recreation Center. All Rights Reserved. Veteran Owned &amp; Operated.</p>
+<div class="flex justify-center md:justify-end gap-4 mt-4">
+<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-secondary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-secondary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">mail</span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,99 @@
+<!-- Events Calendar - Updated Imagery -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Events Calendar | VetsCenter</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#002046",
+                    "secondary": "#b51a1e",
+                    "surface-container-lowest": "#ffffff"
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+<img alt="Next Level Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhXld5D2NpJWKaMyjc6MuECVQGBnFUzcEuEA2IxpYl68FaNU-nMmC5EnZFGXJoz0HoGRaiAEpdnmBuDFT9X3RDaebMNmCKrcr4sgS2DbeaODd6_1suUqUaxyW-VFhzhHENhFZLHhS9zJSt0LaWQ7YstORsg10SvIccEP9FRu41KIiiyWeFtlQrvG31axoh23c6ZY07qIuj2-tezsoLmZlO4dXj70duXFH6Ll7AfosQ0xumf7LRD4KUErjkf_mMBOzlu5RVQDCsMeBU"/>
+<div class="text-2xl font-black text-blue-900 dark:text-blue-50 uppercase tracking-tighter">
+                VetsCenter
+            </div>
+</div>
+<div class="hidden md:flex items-center space-x-8 font-bold tracking-tight">
+<a class="text-slate-600 hover:text-blue-900 transition-colors" href="memberships.html">Memberships</a>
+<a class="text-blue-900 border-b-2 border-red-700 pb-1" href="events.html">Events</a>
+<a class="text-slate-600 hover:text-blue-900 transition-colors" href="rentals.html">Rentals</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="bg-primary text-white px-6 py-2 rounded-xl font-bold hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
+<span class="material-symbols-outlined text-3xl text-blue-900 cursor-pointer" onclick="window.location.href='admin-dashboard.html'">account_circle</span>
+</div>
+</div>
+</nav>
+
+<main class="pt-24 pb-20">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 mb-12">
+<div class="relative overflow-hidden rounded-[2.5rem] bg-primary py-24 px-12 text-white">
+<div class="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
+<div class="relative z-10 max-w-3xl">
+<h1 class="font-extrabold text-5xl md:text-7xl tracking-tighter mb-4 leading-none">
+                    COMMUNITY <br/><span class="text-red-500">IN MOTION</span>
+</h1>
+<p class="text-xl text-slate-300 max-w-xl font-light">
+                    Discover veteran-led workshops, local tournaments, and celebrations.
+                </p>
+</div>
+</div>
+</section>
+
+<!-- Calendar Bento Layout -->
+<section class="max-w-7xl mx-auto px-8">
+<div class="bg-white p-8 rounded-3xl border border-slate-200 mb-12">
+<h2 class="font-black text-4xl mb-2 text-primary">JUNE 2024 Schedule</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+<!-- Event Card 1 -->
+<div class="group bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-xl transition-all">
+<img alt="Event" class="w-full h-48 object-cover rounded-xl mb-6 shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq01JTmV1T_DmVj29JvYBeLTIif974KsPnqmJxQTXxefiDfyVPEyByGv2rsUTIMTS6I8ULdy7FZYgUxlRXkzImU0IBJ9Xzkkocn5GZ971RCktrr3tFQXb48HiCpV0l2BJfH9cf3Dk6wmHT7u-OEDOO9VVri-LL7jDX6S6FD3kjF44-AKZFtRnmBUFf-ElMbXVj5q26NZArWbGKVC9ug5KiDvs3TUwV9XNrVRYfr6PPFzDM6-MucT2458SSdo9x1D7vL0LglkGK0vVH"/>
+<h3 class="text-2xl font-bold text-primary mb-2">Career Transition Workshop</h3>
+<p class="text-slate-600 mb-6">June 11, 2024 | 10:00 AM</p>
+<button class="bg-primary text-white px-6 py-2 rounded-lg font-bold hover:bg-secondary transition-all">Register</button>
+</div>
+<!-- Event Card 2 -->
+<div class="group bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-xl transition-all">
+<img alt="Event" class="w-full h-48 object-cover rounded-xl mb-6 shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYUWjAZpQxoNCML9FiigJhs9yWOCftQa3Uvwlf57XF-xoaqJ4yQgFtdyYldFh0LuFsVF5vPg_9Klr_iFVBsiHOgSFlsFsa0CB6Mdcgmna8P4duhyUouT2l1IskrPDSg7QKbtD7xJYZz24XQ9EagfwcWJszLztgBMa5GDBFmTEcsVaFjy4aepVOR7d1ePqXFJCamMX76hM_WAyfvziBvO3ABiEsfJiMOspi06Eq6zdAKlmASH8yBWt7_CzMK7hlsBUm8ZqBYv09n1Zq"/>
+<h3 class="text-2xl font-bold text-primary mb-2">Next Gen Basketball Invitational</h3>
+<p class="text-slate-600 mb-6">June 15, 2024 | 03:00 PM</p>
+<button class="bg-primary text-white px-6 py-2 rounded-lg font-bold hover:bg-secondary transition-all">Register</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="bg-primary text-white py-12">
+<div class="max-w-7xl mx-auto px-8 text-center text-slate-400 text-sm">
+<p>© 2024 Next Level Recreation Center. All rights reserved.</p>
+</div>
+</footer>
+</body></html>
