@@ -1,10 +1,9 @@
-<!-- Memberships - Updated Imagery -->
 <!DOCTYPE html>
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Memberships | Next Level Recreation Center</title>
+<title>Memberships | NLRC - Next Level Recreation Center</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -17,34 +16,23 @@
                     "surface": "#f8f9fa",
                     "primary": "#002046",
                     "secondary": "#b51a1e",
-                    "on-primary-container": "#87a0cd",
-                    "secondary-container": "#d93633",
+                    "on-surface": "#191c1d",
+                    "on-surface-variant": "#44474e",
                     "surface-container-low": "#f3f4f5",
                     "surface-container-highest": "#e1e3e4",
-                    "primary-fixed": "#d6e3ff",
                     "primary-container": "#1b365d"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
             },
             "fontFamily": {
                     "headline": ["Manrope"],
-                    "body": ["Public Sans"],
-                    "label": ["Public Sans"]
+                    "body": ["Public Sans"]
             }
-          },
-        },
+          }
+        }
       }
     </script>
 <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .premium-shadow {
-            box-shadow: 0 24px 48px rgba(0, 32, 70, 0.08);
         }
         #registration-modal {
             display: none;
@@ -61,133 +49,139 @@
         }
     </style>
 </head>
-<body class="bg-surface font-body text-on-surface">
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen">
 <!-- Registration Modal -->
-<div id="registration-modal" onclick="closeModal(event)">
-<div class="bg-white w-full max-w-2xl h-[90vh] md:h-auto md:max-h-[85vh] rounded-2xl shadow-2xl overflow-hidden relative flex flex-col mx-4" onclick="event.stopPropagation()">
-<button class="absolute top-6 right-6 text-slate-400 hover:text-primary transition-colors" onclick="closeModal()">
+<div id="registration-modal" onclick="closeModal()">
+<div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden relative flex flex-col mx-4" onclick="event.stopPropagation()">
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors" onclick="closeModal()">
 <span class="material-symbols-outlined">close</span>
 </button>
-<div class="p-8 md:p-12 overflow-y-auto">
-<div class="mb-10">
-<h2 class="text-3xl font-black font-headline text-primary mb-2 text-center md:text-left">Member Registration</h2>
-<p class="text-slate-600 text-center md:text-left">Secure your spot in the Greater Houston veteran community.</p>
+<div class="p-10 md:p-14">
+<div class="mb-10 text-center md:text-left">
+<h2 class="text-4xl font-black font-headline text-primary mb-3 tracking-tighter">Member Registration</h2>
+<p class="text-on-surface-variant text-lg">Secure your spot in the Greater Houston veteran community.</p>
 </div>
 <form class="space-y-8" onsubmit="event.preventDefault(); alert('Registration submitted successfully!')">
-<div class="space-y-2">
-<label class="block text-sm font-bold uppercase tracking-wider text-primary">Full Name</label>
-<input class="w-full border-b-2 border-slate-200 focus:border-primary outline-none py-3 text-lg transition-all bg-transparent px-0" placeholder="Type your answer here..." required="" type="text"/>
+<div class="space-y-3">
+<label class="block text-xs font-black uppercase tracking-[0.2em] text-primary/60">Full Name</label>
+<input class="w-full border-b-2 border-surface-container-highest focus:border-secondary outline-none py-3 text-xl transition-all bg-transparent font-headline font-bold text-primary" placeholder="Type your answer here..." required="" type="text"/>
 </div>
-<div class="space-y-2">
-<label class="block text-sm font-bold uppercase tracking-wider text-primary">Email Address</label>
-<input class="w-full border-b-2 border-slate-200 focus:border-primary outline-none py-3 text-lg transition-all bg-transparent px-0" placeholder="name@example.com" required="" type="email"/>
+<div class="space-y-3">
+<label class="block text-xs font-black uppercase tracking-[0.2em] text-primary/60">Email Address</label>
+<input class="w-full border-b-2 border-surface-container-highest focus:border-secondary outline-none py-3 text-xl transition-all bg-transparent font-headline font-bold text-primary" placeholder="name@example.com" required="" type="email"/>
 </div>
-<div class="space-y-2">
-<label class="block text-sm font-bold uppercase tracking-wider text-primary">Preferred Plan</label>
-<div class="grid grid-cols-1 gap-3 pt-2">
-<label class="flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-primary transition-all">
+<div class="space-y-3">
+<label class="block text-xs font-black uppercase tracking-[0.2em] text-primary/60">Preferred Plan</label>
+<div class="grid grid-cols-1 gap-4 pt-4">
+<label class="flex items-center p-5 border-2 border-surface-container-highest rounded-2xl cursor-pointer hover:border-secondary transition-all group">
 <input checked="" class="hidden" name="plan" type="radio"/>
-<span class="text-lg font-bold">Individual - $49/mo</span>
+<span class="text-xl font-bold font-headline text-primary group-hover:text-secondary transition-colors">Individual - $49/mo</span>
 </label>
-<label class="flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-primary transition-all">
+<label class="flex items-center p-5 border-2 border-surface-container-highest rounded-2xl cursor-pointer hover:border-secondary transition-all group">
 <input class="hidden" name="plan" type="radio"/>
-<span class="text-lg font-bold">Family - $89/mo</span>
+<span class="text-xl font-bold font-headline text-primary group-hover:text-secondary transition-colors">Family - $89/mo</span>
 </label>
-<label class="flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-primary transition-all">
+<label class="flex items-center p-5 border-2 border-surface-container-highest rounded-2xl cursor-pointer hover:border-secondary transition-all group">
 <input class="hidden" name="plan" type="radio"/>
-<span class="text-lg font-bold">Veteran - $29/mo</span>
+<span class="text-xl font-bold font-headline text-primary group-hover:text-secondary transition-colors">Veteran - $29/mo</span>
 </label>
 </div>
 </div>
-<div class="pt-6">
-<button class="w-full py-4 bg-primary text-white rounded-lg font-bold hover:bg-secondary transition-all uppercase tracking-widest text-sm" type="submit">Submit Registration</button>
+<div class="pt-8">
+<button class="w-full py-5 bg-primary text-white rounded-2xl font-headline font-bold text-lg hover:bg-secondary transition-all shadow-xl hover:shadow-secondary/20" type="submit">Submit Registration</button>
 </div>
 </form>
 </div>
 </div>
 </div>
 
-<!-- Nav -->
-<nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm transition-all h-20">
-<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto h-20">
-<div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.href='index.html'">
-<img alt="Next Level Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhXld5D2NpJWKaMyjc6MuECVQGBnFUzcEuEA2IxpYl68FaNU-nMmC5EnZFGXJoz0HoGRaiAEpdnmBuDFT9X3RDaebMNmCKrcr4sgS2DbeaODd6_1suUqUaxyW-VFhzhHENhFZLHhS9zJSt0LaWQ7YstORsg10SvIccEP9FRu41KIiiyWeFtlQrvG31axoh23c6ZY07qIuj2-tezsoLmZlO4dXj70duXFH6Ll7AfosQ0xumf7LRD4KUErjkf_mMBOzlu5RVQDCsMeBU"/>
-<div class="flex flex-col">
-<div class="text-2xl font-black text-blue-900 dark:text-blue-50 uppercase tracking-tighter font-headline leading-none">
-                        Next Level
-                    </div>
-<span class="text-[10px] font-bold text-secondary uppercase tracking-[0.2em] mt-1 text-red-700">Recreation Center, LLC</span>
-</div>
-</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm h-20">
+<div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
+<div class="text-2xl font-black text-primary tracking-tighter font-headline cursor-pointer" onclick="window.location.href='index.html'">
+                Next Level Recreation
+            </div>
 <div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight">
-<a class="text-blue-900 dark:text-white border-b-2 border-red-700 pb-1" href="memberships.html">Memberships</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-100 transition-colors" href="events.html">Events</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-100 transition-colors" href="rentals.html">Rentals</a>
+<a class="text-primary hover:text-secondary transition-colors" href="index.html#spaces">Spaces</a>
+<a class="text-primary hover:text-secondary transition-colors" href="events.html">Events</a>
+<a class="text-primary hover:text-secondary transition-colors" href="events.html">Programs</a>
+<a class="text-secondary border-b-2 border-secondary pb-1" href="memberships.html">Membership</a>
+<a class="text-primary hover:text-secondary transition-colors" href="about.html">About</a>
 </div>
-<div class="flex items-center space-x-4">
-<button class="bg-primary text-white px-6 py-2 rounded-lg font-bold hover:bg-secondary transition-colors" onclick="window.location.href='donations.html'">Donate</button>
-<span class="material-symbols-outlined text-blue-900 cursor-pointer text-3xl" onclick="window.location.href='admin-dashboard.html'">account_circle</span>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
+<span class="material-symbols-outlined text-3xl text-primary cursor-pointer" onclick="window.location.href='admin-login.html'">account_circle</span>
 </div>
 </div>
 </nav>
 
 <main class="pt-20">
 <!-- Hero Section -->
-<section class="relative h-[500px] flex items-center overflow-hidden mb-20">
-<div class="absolute inset-0 z-0">
-<img alt="Athletic Photography" class="w-full h-full object-cover brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1RX7RjMXvWx48UjiwIZT52pEccQ5wxLkgTtHmNH7i6fzK4GBAvgQ0K9Cu7fBXcp9DHE5OLF9HhP83tWhxKTQg1vynMxSfTFf8uZaddEmJbZAqr6lT7ouvVVJS7w5YsBs0WhzLW2LXQnFY8RK5Bm70gFGH_Az9Z4Fe6x3S1J3A8dRca1BgtkYz7mB1KF-ZwKV-IMMrNzUgXqQpUo_zSG8q3otgOKup-GfPWfmQ8WIQrsDDkTGCV31Jb-6ZJUpGHRSkQ5pM32YOUE4W"/>
+<section class="relative h-[600px] flex items-center overflow-hidden mb-20 bg-primary">
+<div class="absolute inset-0 z-0 opacity-40">
+<img alt="Athletic Photography" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1RX7RjMXvWx48UjiwIZT52pEccQ5wxLkgTtHmNH7i6fzK4GBAvgQ0K9Cu7fBXcp9DHE5OLF9HhP83tWhxKTQg1vynMxSfTFf8uZaddEmJbZAqr6lT7ouvVVJS7w5YsBs0WhzLW2LXQnFY8RK5Bm70gFGH_Az9Z4Fe6x3S1J3A8dRca1BgtkYz7mB1KF-ZwKV-IMMrNzUgXqQpUo_zSG8q3otgOKup-GfPWfmQ8WIQrsDDkTGCV31Jb-6ZJUpGHRSkQ5pM32YOUE4W"/>
 </div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/60 to-transparent"></div>
 <div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
-<div class="max-w-2xl">
-<span class="bg-secondary text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6 inline-block">Greater Houston's Elite Hub</span>
-<h1 class="text-6xl md:text-8xl font-black text-white font-headline leading-[0.9] tracking-tighter mb-6">
-                        INVEST IN THE NEXT <br/><span class="text-secondary text-red-600">GENERATION.</span>
+<div class="max-w-3xl">
+<span class="bg-secondary text-white px-4 py-1.5 rounded-sm text-xs font-bold uppercase tracking-[0.2em] mb-8 inline-block">Greater Houston's Elite Hub</span>
+<h1 class="text-6xl md:text-8xl font-extrabold text-white font-headline leading-[0.95] tracking-tighter mb-8 italic">
+                        INVEST IN THE NEXT <br/><span class="text-secondary NOT-italic">GENERATION.</span>
 </h1>
-<p class="text-xl text-white/90 max-w-lg leading-relaxed font-light">
-                        The gold standard in community wellness for Houston's veterans and families.
+<p class="text-xl text-slate-300 max-w-lg leading-relaxed font-body">
+                        The gold standard in community wellness for Houston's veterans and families. Level up your performance today.
                     </p>
 </div>
 </div>
 </section>
 
 <!-- Membership Tiers -->
-<section class="max-w-7xl mx-auto px-8 py-16">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-<div class="lg:col-span-4 bg-white p-10 rounded-xl premium-shadow border-t-4 border-primary">
-<h3 class="text-3xl font-black font-headline text-primary mb-2">Individual</h3>
-<p class="text-slate-600 mb-8 font-light">For the dedicated Houston athlete seeking personal excellence.</p>
-<div class="flex items-baseline mb-8">
-<span class="text-5xl font-black font-headline text-primary">$49</span>
-<span class="text-slate-500 ml-2">/ month</span>
+<section class="max-w-7xl mx-auto px-8 py-24 mb-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+<div class="lg:col-span-4 bg-white p-12 rounded-[2.5rem] shadow-xl border border-surface-container-highest group hover:-translate-y-2 transition-all duration-500">
+<h3 class="text-3xl font-black font-headline text-primary mb-3">Individual</h3>
+<p class="text-on-surface-variant mb-10 leading-relaxed">For the dedicated athlete seeking personal excellence in our world-class facility.</p>
+<div class="flex items-baseline mb-10">
+<span class="text-6xl font-black font-headline text-primary">$49</span>
+<span class="text-on-surface-variant font-bold ml-2 tracking-widest text-sm uppercase">/ month</span>
 </div>
-<button class="w-full py-4 bg-primary text-white rounded-lg font-bold hover:bg-secondary transition-all" onclick="openModal()">Join Now</button>
+<button class="w-full py-5 bg-surface-container-low text-primary rounded-2xl font-headline font-bold text-lg hover:bg-primary hover:text-white transition-all shadow-sm group-hover:shadow-lg" onclick="openModal()">Join Individual</button>
 </div>
-<div class="lg:col-span-4 bg-primary-container p-10 rounded-xl premium-shadow relative overflow-hidden transform lg:-translate-y-8">
-<div class="absolute top-4 right-4 bg-secondary text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter shadow-lg">Most Popular</div>
-<h3 class="text-3xl font-black font-headline text-white mb-2">Family</h3>
-<p class="text-on-primary-container mb-8 font-light text-slate-200">Comprehensive wellness for up to 4 household members.</p>
-<div class="flex items-baseline mb-8">
-<span class="text-5xl font-black font-headline text-white">$89</span>
-<span class="text-on-primary-container ml-2 text-slate-300">/ month</span>
+
+<div class="lg:col-span-4 bg-primary p-12 rounded-[2.5rem] shadow-[0_32px_64px_rgba(0,32,70,0.2)] relative overflow-hidden transform lg:-translate-y-12">
+<div class="absolute top-6 right-6 bg-secondary text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Elite Choice</div>
+<h3 class="text-4xl font-black font-headline text-white mb-3">Family</h3>
+<p class="text-slate-300 mb-10 leading-relaxed">Comprehensive wellness and facility access for up to 4 household members.</p>
+<div class="flex items-baseline mb-10">
+<span class="text-7xl font-black font-headline text-white">$89</span>
+<span class="text-slate-400 font-bold ml-2 tracking-widest text-sm uppercase">/ month</span>
 </div>
-<button class="w-full py-4 bg-secondary text-white rounded-lg font-bold hover:bg-red-700 transition-all font-headline tracking-widest text-sm shadow-xl" onclick="openModal()">Join Family Plan</button>
+<button class="w-full py-5 bg-secondary text-white rounded-2xl font-headline font-bold text-lg hover:bg-neutral-100 hover:text-primary transition-all shadow-xl" onclick="openModal()">Join Family Plan</button>
 </div>
-<div class="lg:col-span-4 bg-white p-10 rounded-xl premium-shadow border-t-4 border-secondary">
-<h3 class="text-3xl font-black font-headline text-primary mb-2">Veteran</h3>
-<p class="text-slate-600 mb-8 font-light">Honoring those who served in Greater Houston. Specialized support programs.</p>
-<div class="flex items-baseline mb-8">
-<span class="text-5xl font-black font-headline text-primary">$29</span>
-<span class="text-slate-500 ml-2">/ month</span>
+
+<div class="lg:col-span-4 bg-white p-12 rounded-[2.5rem] shadow-xl border border-surface-container-highest group hover:-translate-y-2 transition-all duration-500">
+<h3 class="text-3xl font-black font-headline text-primary mb-3">Veteran</h3>
+<p class="text-on-surface-variant mb-10 leading-relaxed">Honoring those who served in Greater Houston. Specialized programs and support.</p>
+<div class="flex items-baseline mb-10">
+<span class="text-6xl font-black font-headline text-primary">$29</span>
+<span class="text-on-surface-variant font-bold ml-2 tracking-widest text-sm uppercase">/ month</span>
 </div>
-<button class="w-full py-4 border-2 border-primary text-primary rounded-lg font-bold hover:bg-primary hover:text-white transition-all" onclick="openModal()">Claim Discount</button>
+<button class="w-full py-5 border-4 border-primary text-primary rounded-2xl font-headline font-bold text-lg hover:bg-primary hover:text-white transition-all group-hover:shadow-lg" onclick="openModal()">Claim Veteran Rate</button>
 </div>
 </div>
 </section>
 </main>
 
-<footer class="bg-primary text-white py-12 mt-20">
-<div class="max-w-7xl mx-auto px-8 text-center text-slate-400 text-sm">
-<p>© 2024 Next Level Recreation Center. All Rights Reserved.</p>
+<footer class="bg-primary text-white py-16">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+<div>
+<div class="text-xl font-black font-headline mb-2">Next Level Recreation Center</div>
+<p class="text-slate-400 text-sm max-w-sm">Professional spaces for athletic and community excellence. Veteran owned and operated.</p>
+</div>
+<div class="text-slate-400 text-sm">
+<p>© 2024 NLRC. All rights reserved.</p>
+<p class="font-bold text-white mt-1">Veteran Owned &amp; Operated</p>
+</div>
 </div>
 </footer>
 

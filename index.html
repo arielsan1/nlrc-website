@@ -100,17 +100,15 @@
                 Next Level Recreation
             </div>
 <div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight">
-<a class="text-[#b51a1e] border-b-2 border-[#b51a1e] pb-1" href="index.html">Spaces</a>
-<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Events</a>
-<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Programs</a>
-<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Membership</a>
-<a class="text-[#002046] dark:text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">About</a>
+<a class="text-primary hover:text-secondary transition-colors" href="index.html#spaces">Spaces</a>
+<a class="text-primary hover:text-secondary transition-colors" href="events.html">Events</a>
+<a class="text-primary hover:text-secondary transition-colors" href="events.html">Programs</a>
+<a class="text-primary hover:text-secondary transition-colors" href="memberships.html">Membership</a>
+<a class="text-primary hover:text-secondary transition-colors" href="about.html">About</a>
 </div>
 <div class="flex items-center gap-4">
-<button class="hidden md:block px-6 py-2 text-[#002046] font-bold hover:bg-slate-100 transition-all rounded-lg">Login</button>
-<button onclick="window.location.href='booking.html'" class="bg-gradient-to-r from-primary to-primary-container text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all">
-                    Book Now
-                </button>
+<button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
+<span class="material-symbols-outlined text-3xl text-primary cursor-pointer" onclick="window.location.href='admin-login.html'">account_circle</span>
 </div>
 </div>
 </nav>
@@ -139,23 +137,23 @@
 </div>
 </div>
 </section>
-<!-- Filters & Discovery -->
-<section class="max-w-7xl mx-auto px-8 mb-12">
+<!-- Selection Filters & Discovery -->
+<section id="spaces" class="max-w-7xl mx-auto px-8 py-20">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-8 border-b-2 border-surface-container-high">
 <div>
 <h2 class="text-3xl font-extrabold text-primary font-headline mb-2">Available Spaces</h2>
 <p class="text-on-surface-variant font-medium">Select a venue that fits your mission.</p>
 </div>
 <div class="flex flex-wrap gap-4">
-<button class="px-6 py-3 rounded-full bg-primary text-white font-bold flex items-center gap-2 transition-all">
+<button onclick="filterSpaces('all', this)" class="filter-btn px-6 py-3 rounded-full bg-primary text-white font-bold flex items-center gap-2 transition-all active-filter">
 <span class="material-symbols-outlined text-sm">grid_view</span>
                         All Spaces
                     </button>
-<button class="px-6 py-3 rounded-full bg-surface-container-highest text-primary font-bold flex items-center gap-2 hover:bg-slate-200 transition-all">
+<button onclick="filterSpaces('athletic', this)" class="filter-btn px-6 py-3 rounded-full bg-surface-container-highest text-primary font-bold flex items-center gap-2 hover:bg-slate-200 transition-all">
 <span class="material-symbols-outlined text-sm">sports_basketball</span>
                         Athletic
                     </button>
-<button class="px-6 py-3 rounded-full bg-surface-container-highest text-primary font-bold flex items-center gap-2 hover:bg-slate-200 transition-all">
+<button onclick="filterSpaces('community', this)" class="filter-btn px-6 py-3 rounded-full bg-surface-container-highest text-primary font-bold flex items-center gap-2 hover:bg-slate-200 transition-all">
 <span class="material-symbols-outlined text-sm">groups</span>
                         Community/Private Event
                     </button>
@@ -166,7 +164,7 @@
 <section class="max-w-7xl mx-auto px-8 pb-24">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
 <!-- Main Feature: Full Court -->
-<div class="md:col-span-8 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-transform hover:-translate-y-2">
+<div data-category="athletic" class="space-card md:col-span-8 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-all duration-500 hover:-translate-y-2">
 <div class="h-96 relative overflow-hidden">
 <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="professional indoor full basketball court with polished hardwood and glass backboards under bright arena lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPkMmpGO6CXrszLRLlB0ISN2SwOb1EW_9eyQQYqjY-RhADk_0qI7C7oUHbfmym--vyvZXNLdvpw7T9HqIVU6GmqaUmnFLwgtyFepR10rd1JJq6kxtipT4pnFpxQuEbXxsYvie_X3qyRzcs0MshWoCGjaoeqWabk3Xu_JJYmAios-1Bu1fm1Y0uj709Fgrq6BlJyZ1phodr_TfeHySKwD7ew4QBlALtxZDM1RI35ERwpRyuaXlxudAzJP1Yej_aq68StFXM9RKZwjrF"/>
 <div class="absolute top-6 left-6 flex gap-2">
@@ -207,7 +205,7 @@
 </div>
 </div>
 <!-- Side Card: Half Court -->
-<div class="md:col-span-4 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-transform hover:-translate-y-2">
+<div data-category="athletic" class="space-card md:col-span-4 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-all duration-500 hover:-translate-y-2">
 <div class="h-64 relative overflow-hidden">
 <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="half basketball court setup with focused training area and single hoop in a high-end indoor facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOVaOaDjGfineX9F8MMeRgXofH_CNxtZi79jhq8kiuuFNtoSPDFaVHtwu2V2Va9zlYgxTwLxMgMB_5dc7RBmhRHb-XZcp23AbLPZoG63BDT5g5pTtFVghH-23BVSxOoAU7B9FMWHMNTAC2pwFEy-HcMRgIy0ix7ybaCLzKEcUlmD0ggw4o8J0Gx7T7MCVPs-Jpt1FxC1jv2Nq-97m2uN1PGlvygvJfByvPNg73uvPGhEmK9N3gjTq1pt8QUcL3Q4XVLIOPx3t0SxS1"/>
 <div class="absolute top-4 left-4">
@@ -231,7 +229,7 @@
 </div>
 </div>
 <!-- Bottom Large: Multi-use Event Hall -->
-<div class="md:col-span-12 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col md:flex-row transition-transform hover:-translate-y-2">
+<div data-category="community" class="space-card md:col-span-12 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col md:flex-row transition-all duration-500 hover:-translate-y-2">
 <div class="md:w-1/2 h-80 md:h-auto relative overflow-hidden">
 <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="modern industrial event hall with high ceilings exposed beams and ambient lighting set up for a community gathering" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDdwx9jTT2MmMkl5huhRGdIVy_isXwZVMuvNuB-Zfwq00Z-a4KXJMNDEPNDpI0tWFQ3b-wPIBGujM-f-uVUAG7fC9sk_KGrcOI14mHajIAMV4_nn551cZxY25OK3lFh06Nn7oP26Zj7_N6HngXDoFDaQxZGPFubxhnNQDfV5AqENYphJ3PhNTMCzhXVUyYiA1uDshljiLZbVeWFW3qA9ipMVYDozEIFvPPj8x5kO668SYRKKIhmvLHXmw-TDGaixzjhQutjFGkYN10"/>
 <div class="absolute top-6 left-6">
@@ -257,7 +255,7 @@
 </div>
 </div>
 <!-- Secondary Small Feature: Recovery Zone -->
-<div class="md:col-span-6 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-transform hover:-translate-y-2">
+<div data-category="athletic" class="space-card md:col-span-6 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-all duration-500 hover:-translate-y-2">
 <div class="h-64 relative overflow-hidden">
 <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="modern athlete recovery zone with therapy beds and high-end fitness equipment in a clean bright environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaFXnjLvbrNoo-uvqK2BZJbf598ZYmSwtnGaIracYUDe_JaIiaWNbKBfvfBWr-SoFUH29mwkO_jdM6a3ZBixhfYSyHX76S_RW5uOFhAHRodKF4rHcB86VJfdueLyI1BeC4rrUkRMpRkJBCKf8322Zfn-6otaAS6wpf4UQD-8UQ1a8yWwzODnQQAp9aYtAxqU5EjFM2yNJH7Bep24yGsVLAMEMk8QzOp-jQroCMTCynKn25BXViEP1-syUj3ABmd0OAKnqbRUx0ZtzD"/>
 </div>
@@ -271,7 +269,7 @@
 </div>
 </div>
 <!-- Secondary Small Feature: Meeting Room -->
-<div class="md:col-span-6 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-transform hover:-translate-y-2">
+<div data-category="community" class="space-card md:col-span-6 group relative overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col transition-all duration-500 hover:-translate-y-2">
 <div class="h-64 relative overflow-hidden">
 <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="professional glass walled meeting room with high end furniture and modern conference technology" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0ZvvSvoQo73NBVLrGbXhk3_XnfOoU7m2NTx36t_U2jYzUFImSpQJE3wt2JurteXM6pE3crqTllZQ-LGpNLsSrKN0TP8d3FvgyC_W4upScHkdOWixsT-4So4GBJL3NsnDN7SM07-PaMrfF5Z-KhutdUbElAgQBdxW4sTwgAF_UmdxqlvoDKbYhox0J12_3FyxTGkUyhTeAlAykjwKwdEKmTSqolQyF3ixWmFNGrPHtzLgkkbTS1-zjisCUbXUqjNtdZ_cf9dvf7P3f"/>
 </div>
@@ -327,38 +325,39 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-[#002046] dark:bg-black mt-auto">
-<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full text-white font-['Public_Sans'] font-normal text-sm">
-<div class="mb-8 md:mb-0">
-<div class="text-xl font-black text-white mb-4 font-headline">Next Level Recreation Center</div>
-<p class="text-slate-300 max-w-xs mb-6">
-                    Professional spaces for athletic and community excellence. Veteran owned and operated with a mission to serve.
-                </p>
-<div class="flex gap-4">
-<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-all" href="#">
-<span class="material-symbols-outlined text-white">social_leaderboard</span>
-</a>
-<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-all" href="#">
-<span class="material-symbols-outlined text-white">camera</span>
-</a>
+<footer class="bg-primary text-white py-16">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+<div>
+<div class="text-xl font-black font-headline mb-2">Next Level Recreation Center</div>
+<p class="text-slate-400 text-sm max-w-sm">Professional spaces for athletic and community excellence. Veteran owned and operated.</p>
 </div>
-</div>
-<div class="grid grid-cols-2 gap-12 mb-8 md:mb-0">
-<div class="flex flex-col gap-3">
-<span class="text-white font-bold uppercase tracking-widest text-xs mb-2">Legal</span>
-<a class="text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Privacy Policy</a>
-<a class="text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Terms of Service</a>
-</div>
-<div class="flex flex-col gap-3">
-<span class="text-white font-bold uppercase tracking-widest text-xs mb-2">Support</span>
-<a class="text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Facility Rules</a>
-<a class="text-slate-300 hover:text-[#b51a1e] transition-colors" href="#">Contact Us</a>
-</div>
-</div>
-<div class="text-center md:text-right">
-<p class="mb-2">© 2024 Next Level Recreation Center. All Rights Reserved.</p>
-<p class="text-slate-400 font-bold">Veteran Owned &amp; Operated.</p>
+<div class="text-slate-400 text-sm">
+<p>© 2024 NLRC. All rights reserved.</p>
+<p class="font-bold text-white mt-1">Veteran Owned &amp; Operated</p>
 </div>
 </div>
 </footer>
+<script>
+    function filterSpaces(category, btn) {
+        // Update button states
+        document.querySelectorAll('.filter-btn').forEach(b => {
+             b.classList.remove('bg-primary', 'text-white', 'active-filter');
+             b.classList.add('bg-surface-container-highest', 'text-primary');
+        });
+        btn.classList.add('bg-primary', 'text-white', 'active-filter');
+        btn.classList.remove('bg-surface-container-highest');
+
+        // Filter cards
+        const cards = document.querySelectorAll('.space-card');
+        cards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category) {
+                card.style.display = 'flex';
+                setTimeout(() => card.style.opacity = '1', 10);
+            } else {
+                card.style.opacity = '0';
+                setTimeout(() => card.style.display = 'none', 500);
+            }
+        });
+    }
+</script>
 </body></html>

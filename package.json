@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Next Level Recreation Center - Static Site",
   "scripts": {
-    "start": "npx serve ."
+    "dev": "npx serve .",
+    "start": "npx serve .",
+    "build": "echo 'No build step required for static site'"
   },
   "keywords": [],
   "author": "",
