@@ -1,170 +1,202 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>About | NLRC - Next Level Recreation Center</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      "colors": {
-        "primary": "#002046",
-        "secondary": "#b51a1e",
-        "surface": "#f8f9fa",
-        "on-surface": "#191c1d",
-        "on-surface-variant": "#44474e",
-        "surface-container-low": "#f3f4f5",
-        "surface-container-highest": "#e1e3e4",
-        "primary-container": "#1b365d"
-      },
-      "fontFamily": {
-        "headline": ["Manrope"],
-        "body": ["Public Sans"]
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>About | NLRC - Next Level Recreation Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#002046",
+            "secondary": "#b51a1e",
+            "surface": "#f8f9fa",
+            "on-surface": "#191c1d",
+            "on-surface-variant": "#44474e",
+            "surface-container-low": "#f3f4f5",
+            "surface-container-highest": "#e1e3e4",
+            "primary-container": "#1b365d"
+          },
+          "fontFamily": {
+            "headline": ["Manrope"],
+            "body": ["Public Sans"]
+          }
+        }
       }
     }
-  }
-}
-</script>
-<style>
-.material-symbols-outlined { vertical-align: middle; }
-</style>
+  </script>
+  <style>
+    .material-symbols-outlined {
+      vertical-align: middle;
+    }
+  </style>
 </head>
+
 <body class="bg-surface font-body text-on-surface antialiased min-h-screen">
 
-<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm h-20">
-<div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
-<div class="text-2xl font-black text-primary tracking-tighter font-headline cursor-pointer" onclick="window.location.href='index.html'">
-Next Level Recreation
-</div>
-<div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight">
-<a class="text-primary hover:text-secondary transition-colors" href="index.html#spaces">Spaces</a>
-<a class="text-primary hover:text-secondary transition-colors" href="events.html">Events</a>
-<a class="text-primary hover:text-secondary transition-colors" href="events.html">Programs</a>
-<a class="text-primary hover:text-secondary transition-colors" href="memberships.html">Membership</a>
-<a class="text-secondary border-b-2 border-secondary pb-1" href="about.html">About</a>
-</div>
-<div class="flex items-center gap-4">
-<button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
-<span class="material-symbols-outlined text-3xl text-primary cursor-pointer" onclick="window.location.href='admin-login.html'">account_circle</span>
-</div>
-</div>
-</nav>
+  <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm h-20">
+    <div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
+      <div class="text-2xl font-black text-primary tracking-tighter font-headline cursor-pointer"
+        onclick="window.location.href='index.html'">
+        Next Level Recreation
+      </div>
+      <div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight">
+        <a class="text-primary hover:text-secondary transition-colors" href="index.html#spaces">Spaces</a>
+        <a class="text-primary hover:text-secondary transition-colors" href="events.html">Events</a>
+        <a class="text-primary hover:text-secondary transition-colors" href="events.html">Programs</a>
+        <a class="text-primary hover:text-secondary transition-colors" href="memberships.html">Membership</a>
+        <a class="text-secondary border-b-2 border-secondary pb-1" href="about.html">About</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <button
+          class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all"
+          onclick="window.location.href='donations.html'">Donate</button>
+        <span class="material-symbols-outlined text-3xl text-primary cursor-pointer"
+          onclick="window.location.href='admin-login.html'">account_circle</span>
+      </div>
+    </div>
+  </nav>
 
-<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
-<header class="mb-16 text-center md:text-left">
-<span class="inline-block px-4 py-1.5 bg-secondary/10 text-secondary font-bold text-xs uppercase tracking-widest mb-6 rounded-full">Our Story</span>
-<h1 class="text-5xl md:text-7xl font-extrabold text-primary font-headline tracking-tighter mb-4">About <span class="text-secondary">NLRC</span></h1>
-<p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed">Discover our vision, our mission, and what drives us at Next Level Recreation Center.</p>
-</header>
+  <main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
+    <header class="mb-16 text-center md:text-left">
+      <span
+        class="inline-block px-4 py-1.5 bg-secondary/10 text-secondary font-bold text-xs uppercase tracking-widest mb-6 rounded-full">Our
+        Team</span>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-primary font-headline tracking-tighter mb-4">About <span
+          class="text-secondary">NLRC</span></h1>
+      <p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed">Discover our vision, our mission, and what
+        drives us. Meet Stevea Smith, a proud 24 year retired Army veteran and founder of Next Level Recreation Center (NLRC).</p>
+    </header>
 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-<!-- Mission & Vision -->
-<div class="space-y-12">
-<div class="bg-white p-10 rounded-3xl shadow-sm border border-surface-container-highest group hover:shadow-xl transition-all duration-500">
-<h3 class="text-3xl font-black text-primary font-headline mb-4 flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary text-4xl">flag</span>
-Mission
-</h3>
-<p class="text-lg text-on-surface-variant leading-relaxed">Empower veterans, youth, and community members through sports, mentorship, and wellness programs in a safe, inclusive indoor environment.</p>
-</div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Mission & Vision -->
+      <div class="space-y-12">
+        <div
+          class="bg-white p-10 rounded-3xl shadow-sm border border-surface-container-highest group hover:shadow-xl transition-all duration-500">
+          <h3 class="text-3xl font-black text-primary font-headline mb-4 flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary text-4xl">flag</span>
+            Mission
+          </h3>
+          <p class="text-lg text-on-surface-variant leading-relaxed">Empower veterans, youth, and community members
+            through sports, mentorship, and wellness programs in a safe, inclusive indoor environment.</p>
+        </div>
 
-<div class="bg-white p-10 rounded-3xl shadow-sm border border-surface-container-highest group hover:shadow-xl transition-all duration-500">
-<h3 class="text-3xl font-black text-primary font-headline mb-4 flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary text-4xl">visibility</span>
-Vision
-</h3>
-<p class="text-lg text-on-surface-variant leading-relaxed">To become the regional hub for veteran camaraderie, youth development, and community engagement through recreation and physical fitness.</p>
-</div>
-</div>
+        <div
+          class="bg-white p-10 rounded-3xl shadow-sm border border-surface-container-highest group hover:shadow-xl transition-all duration-500">
+          <h3 class="text-3xl font-black text-primary font-headline mb-4 flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary text-4xl">visibility</span>
+            Vision
+          </h3>
+          <p class="text-lg text-on-surface-variant leading-relaxed">To become the regional hub for veteran camaraderie,
+            youth development, and community engagement through recreation and physical fitness.</p>
+        </div>
+      </div>
 
-<!-- Snapshot & Funding -->
-<div class="space-y-12">
-<div class="bg-primary text-white p-10 rounded-3xl shadow-lg border border-primary-container">
-<h3 class="text-3xl font-black font-headline mb-4 flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary text-4xl">info</span>
-Snapshot
-</h3>
-<p class="text-lg leading-relaxed text-slate-200 mb-6">Next Level Recreation Center will be a 26,000 sq. ft. indoor recreational facility with multi-use courts, veteran-mentorship programming, youth development, leagues, camps, and community events.</p>
-<p class="text-lg leading-relaxed text-slate-200">The facility targets financial sustainability by Year 3 through memberships, program fees, rentals, concessions, sponsorships, and grants.</p>
-</div>
+      <!-- Snapshot & Funding -->
+      <div class="space-y-12">
+        <div class="bg-primary text-white p-10 rounded-3xl shadow-lg border border-primary-container">
+          <h3 class="text-3xl font-black font-headline mb-4 flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary text-4xl">info</span>
+            Snapshot
+          </h3>
+          <p class="text-lg leading-relaxed text-slate-200 mb-6">Next Level Recreation Center will be a 26,000 sq. ft.
+            indoor recreational facility with multi-use courts, veteran-mentorship programming, youth development,
+            leagues, camps, and community events.</p>
+          <p class="text-lg leading-relaxed text-slate-200">The facility targets financial sustainability by Year 3
+            through memberships, program fees, rentals, concessions, sponsorships, and grants.</p>
+        </div>
 
-<div class="bg-surface-container-low p-10 rounded-3xl shadow-sm border border-surface-container-highest">
-<h3 class="text-2xl font-black text-primary font-headline mb-4 flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary text-3xl">storefront</span>
-Location & Ownership
-</h3>
-<ul class="space-y-4">
-<li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary">location_on</span>
-<div>
-<p class="font-bold text-primary">Dayton, Texas</p>
-<p class="text-on-surface-variant">Serving Dayton and Liberty County.</p>
-</div>
-</li>
-<li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary">military_tech</span>
-<div>
-<p class="font-bold text-primary">100% Veteran-Owned</p>
-<p class="text-on-surface-variant">Operated by Next Level Recreation Center LLC.</p>
-</div>
-</li>
-</ul>
-</div>
+        <div class="bg-surface-container-low p-10 rounded-3xl shadow-sm border border-surface-container-highest">
+          <h3 class="text-2xl font-black text-primary font-headline mb-4 flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary text-3xl">storefront</span>
+            Location & Ownership
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-secondary">location_on</span>
+              <div>
+                <p class="font-bold text-primary">Dayton, Texas</p>
+                <p class="text-on-surface-variant">Serving Dayton and Liberty County.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-secondary">military_tech</span>
+              <div>
+                <p class="font-bold text-primary">100% Veteran-Owned</p>
+                <p class="text-on-surface-variant">Operated by Next Level Recreation Center LLC.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
 
-</div>
-</div>
+      </div>
+    </div>
 
-<div class="mt-12 bg-white p-10 rounded-3xl shadow-sm border border-surface-container-highest group hover:shadow-xl transition-all duration-500">
-<h3 class="text-2xl font-black text-primary font-headline mb-4 flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary text-3xl">volunteer_activism</span>
-Community Funding Goals
-</h3>
-<p class="text-lg text-on-surface-variant leading-relaxed mb-6">Join us in bringing the Next Level Recreation Center to life. We are actively seeking community support, sponsorships, and grants to complete our pre-opening initiatives and ensure accessible programming.</p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="p-6 bg-surface-container-low rounded-xl border border-surface-container-highest flex items-center gap-4">
-<div class="bg-primary/10 p-3 rounded-full text-primary">
-<span class="material-symbols-outlined text-3xl">description</span>
-</div>
-<div>
-<p class="text-3xl font-bold text-primary font-headline">$400k</p>
-<p class="text-sm text-on-surface-variant font-bold uppercase tracking-wider">Targeted Grants</p>
-</div>
-</div>
-<div class="p-6 bg-surface-container-low rounded-xl border border-surface-container-highest flex items-center gap-4">
-<div class="bg-secondary/10 p-3 rounded-full text-secondary">
-<span class="material-symbols-outlined text-3xl">handshake</span>
-</div>
-<div>
-<p class="text-3xl font-bold text-primary font-headline">$200k</p>
-<p class="text-sm text-on-surface-variant font-bold uppercase tracking-wider">Sponsorships &amp; Donations</p>
-</div>
-</div>
-</div>
-<div class="mt-8 flex justify-end">
-<button class="bg-primary text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-secondary transition-all shadow-lg" onclick="window.open('https://www.gofundme.com/f/help-build-next-level-recreation-center-veteranowned-co', '_blank')">
-Support Our Mission
-<span class="material-symbols-outlined">arrow_forward</span>
-</button>
-</div>
-</div>
-</main>
+    <div
+      class="mt-12 bg-white p-10 rounded-3xl shadow-sm border border-surface-container-highest group hover:shadow-xl transition-all duration-500">
+      <h3 class="text-2xl font-black text-primary font-headline mb-4 flex items-center gap-3">
+        <span class="material-symbols-outlined text-secondary text-3xl">volunteer_activism</span>
+        Community Funding Goals
+      </h3>
+      <p class="text-lg text-on-surface-variant leading-relaxed mb-6">Join us in bringing the Next Level Recreation
+        Center to life. We are actively seeking community support, sponsorships, and grants to complete our pre-opening
+        initiatives and ensure accessible programming.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div
+          class="p-6 bg-surface-container-low rounded-xl border border-surface-container-highest flex items-center gap-4">
+          <div class="bg-primary/10 p-3 rounded-full text-primary">
+            <span class="material-symbols-outlined text-3xl">description</span>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-primary font-headline">$400k</p>
+            <p class="text-sm text-on-surface-variant font-bold uppercase tracking-wider">Targeted Grants</p>
+          </div>
+        </div>
+        <div
+          class="p-6 bg-surface-container-low rounded-xl border border-surface-container-highest flex items-center gap-4">
+          <div class="bg-secondary/10 p-3 rounded-full text-secondary">
+            <span class="material-symbols-outlined text-3xl">handshake</span>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-primary font-headline">$200k</p>
+            <p class="text-sm text-on-surface-variant font-bold uppercase tracking-wider">Sponsorships &amp; Donations
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 flex justify-end">
+        <button
+          class="bg-primary text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-secondary transition-all shadow-lg"
+          onclick="window.open('https://www.gofundme.com/f/help-build-next-level-recreation-center-veteranowned-co', '_blank')">
+          Support Our Mission
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+  </main>
 
-<footer class="bg-primary text-white py-16 mt-20">
-<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
-<div>
-<div class="text-xl font-black font-headline mb-2">Next Level Recreation Center</div>
-<p class="text-slate-400 text-sm max-w-sm">Professional spaces for athletic and community excellence. Veteran owned and operated.</p>
-</div>
-<div class="text-slate-400 text-sm">
-<p>&copy; 2024 NLRC. All rights reserved.</p>
-<p class="font-bold text-white mt-1">Veteran Owned &amp; Operated</p>
-</div>
-</div>
-</footer>
-</body></html>
+  <footer class="bg-primary text-white py-16 mt-20">
+    <div
+      class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+      <div>
+        <div class="text-xl font-black font-headline mb-2">Next Level Recreation Center</div>
+        <p class="text-slate-400 text-sm max-w-sm">Professional spaces for athletic and community excellence. Veteran
+          owned and operated.</p>
+      </div>
+      <div class="text-slate-400 text-sm">
+        <p>&copy; 2024 NLRC. All rights reserved.</p>
+        <p class="font-bold text-white mt-1">Veteran Owned &amp; Operated</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
