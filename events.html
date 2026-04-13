@@ -88,33 +88,10 @@
   <div class="gcal-wrapper w-full mb-12">
     <iframe
       id="nlrc-google-calendar"
-      src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID_HERE&ctz=America%2FChicago&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH&bgcolor=%23f8f9fa&color=%23002046"
-      style="width:100%; height:700px; frameborder:0; scrolling:no;"
+      src="https://calendar.google.com/calendar/embed?src=af900598d5e673c969444e062a372c0b5d52cf0f779afc5e46c4c85e5a1beed9%40group.calendar.google.com&ctz=America%2FChicago&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH&bgcolor=%23f8f9fa&color=%23002046"
+      style="width:100%; height:700px; border:none;"
       allowfullscreen>
     </iframe>
-  </div>
-
-  <!-- Setup Instructions Card (visible until calendar is configured) -->
-  <div id="setup-instructions" class="mb-12 bg-white border-2 border-dashed border-secondary/30 rounded-3xl p-10">
-    <div class="flex items-start gap-5">
-      <div class="bg-secondary/10 p-4 rounded-2xl shrink-0">
-        <span class="material-symbols-outlined text-secondary text-3xl">settings</span>
-      </div>
-      <div>
-        <h3 class="font-headline font-black text-primary text-xl mb-2">📋 Google Calendar Setup Instructions</h3>
-        <p class="text-on-surface-variant mb-4">To activate the live calendar, complete these steps:</p>
-        <ol class="space-y-3 text-sm text-on-surface-variant list-decimal list-inside">
-          <li><strong class="text-primary">Create a Google Calendar</strong> — Go to <a href="https://calendar.google.com" target="_blank" class="text-secondary underline">calendar.google.com</a>, click the "+" next to "Other calendars", and name it "NLRC Events".</li>
-          <li><strong class="text-primary">Make it public</strong> — Calendar Settings → "NLRC Events" → Access permissions → check <em>"Make available to public"</em>.</li>
-          <li><strong class="text-primary">Copy your Calendar ID</strong> — Settings → "Integrate calendar" → copy the Calendar ID (looks like <code class="bg-surface-container-low px-1 rounded">abc123@group.calendar.google.com</code>).</li>
-          <li><strong class="text-primary">Share the ID with your developer</strong> — Replace <code class="bg-surface-container-low px-1 rounded">YOUR_CALENDAR_ID_HERE</code> in <code class="bg-surface-container-low px-1 rounded">events.html</code> with your actual Calendar ID.</li>
-          <li><strong class="text-primary">Share calendar access with admin</strong> — Add your admin team's Google accounts with "Make changes to events" permission so they can add/edit events.</li>
-        </ol>
-        <div class="mt-6 p-4 bg-primary/5 rounded-xl">
-          <p class="text-xs font-bold text-primary">✅ Once configured, the calendar updates automatically — no code changes needed to add/edit events!</p>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- Subscribe Section -->
