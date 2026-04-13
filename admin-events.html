@@ -1,0 +1,471 @@
+<!-- Admin Events Management -->
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Events | NLRC Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-lowest": "#ffffff",
+          "inverse-on-surface": "#f0f1f2",
+          "surface-container-low": "#f3f4f5",
+          "secondary-fixed": "#ffdad6",
+          "surface-bright": "#f8f9fa",
+          "on-background": "#191c1d",
+          "surface-container-high": "#e7e8e9",
+          "on-primary": "#ffffff",
+          "on-surface": "#191c1d",
+          "inverse-primary": "#aec7f7",
+          "primary-fixed-dim": "#aec7f7",
+          "on-surface-variant": "#44474e",
+          "secondary-container": "#d93633",
+          "on-primary-fixed-variant": "#2e476f",
+          "primary-container": "#1b365d",
+          "surface": "#f8f9fa",
+          "secondary": "#b51a1e",
+          "primary-fixed": "#d6e3ff",
+          "outline-variant": "#c4c6cf",
+          "surface-container-highest": "#e1e3e4",
+          "surface-container": "#edeeef",
+          "primary": "#002046",
+          "outline": "#74777f"
+        },
+        "fontFamily": {
+          "headline": ["Manrope"],
+          "body": ["Public Sans"],
+          "label": ["Public Sans"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  body { font-family: 'Public Sans', sans-serif; }
+  h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+  #event-modal { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,32,70,0.5); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
+  #event-modal.active { display: flex; }
+</style>
+</head>
+<body class="bg-surface text-on-surface">
+
+<!-- Add/Edit Event Modal -->
+<div id="event-modal" onclick="closeEventModal()">
+  <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden relative flex flex-col mx-4" onclick="event.stopPropagation()">
+    <div class="bg-primary p-8">
+      <h2 id="modal-title" class="text-3xl font-black text-white font-headline tracking-tighter">Add New Event</h2>
+      <p class="text-slate-300 mt-1 text-sm">Events are synced to the public NLRC Google Calendar.</p>
+    </div>
+    <div class="p-8 space-y-6 overflow-y-auto max-h-[70vh]">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="md:col-span-2 space-y-2">
+          <label class="block text-xs font-black uppercase tracking-widest text-primary/60">Event Title *</label>
+          <input id="evt-title" type="text" placeholder="e.g. Advanced Defensive Clinic" class="w-full border-b-2 border-surface-container-highest focus:border-secondary outline-none py-3 text-lg font-headline font-bold text-primary bg-transparent transition-all"/>
+        </div>
+        <div class="space-y-2">
+          <label class="block text-xs font-black uppercase tracking-widest text-primary/60">Date *</label>
+          <input id="evt-date" type="date" class="w-full border-b-2 border-surface-container-highest focus:border-secondary outline-none py-3 text-lg font-bold text-primary bg-transparent transition-all"/>
+        </div>
+        <div class="space-y-2">
+          <label class="block text-xs font-black uppercase tracking-widest text-primary/60">Time *</label>
+          <input id="evt-time" type="time" class="w-full border-b-2 border-surface-container-highest focus:border-secondary outline-none py-3 text-lg font-bold text-primary bg-transparent transition-all"/>
+        </div>
+        <div class="space-y-2">
+          <label class="block text-xs font-black uppercase tracking-widest text-primary/60">Category</label>
+          <select id="evt-category" class="w-full border-b-2 border-surface-container-highest focus:border-secondary outline-none py-3 text-lg font-bold text-primary bg-transparent transition-all">
+            <option value="athletic">Athletic Clinic</option>
+            <option value="community">Community Event</option>
+            <option value="workshop">Workshop</option>
+            <option value="celebration">Celebration</option>
+            <option value="youth">Youth Program</option>
+            <option value="veteran">Veteran Program</option>
+          </select>
+        </div>
+        <div class="space-y-2">
+          <label class="block text-xs font-black uppercase tracking-widest text-primary/60">Location / Venue</label>
+          <input id="evt-location" type="text" placeholder="e.g. Court A, Grand Hall" class="w-full border-b-2 border-surface-container-highest focus:border-secondary outline-none py-3 text-lg font-bold text-primary bg-transparent transition-all"/>
+        </div>
+        <div class="md:col-span-2 space-y-2">
+          <label class="block text-xs font-black uppercase tracking-widest text-primary/60">Description</label>
+          <textarea id="evt-description" rows="3" placeholder="Brief event description..." class="w-full border-b-2 border-surface-container-highest focus:border-secondary outline-none py-3 text-base font-bold text-primary bg-transparent transition-all resize-none"></textarea>
+        </div>
+        <!-- Google Calendar deep link note -->
+        <div class="md:col-span-2 bg-primary/5 border border-primary/20 rounded-2xl p-4 flex items-start gap-3">
+          <span class="material-symbols-outlined text-primary shrink-0">info</span>
+          <p class="text-sm text-on-surface-variant"><strong class="text-primary">To add this event to Google Calendar:</strong> Click "Save Event" below, then use the link to add it directly to the NLRC Google Calendar. This ensures it appears on the public events page automatically.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 pt-4">
+        <button onclick="saveEvent()" class="flex-1 py-4 bg-primary text-white rounded-2xl font-headline font-bold text-lg hover:bg-secondary transition-all shadow-xl">Save Event</button>
+        <button onclick="addToGoogleCalendar()" class="flex-1 py-4 bg-white border-2 border-primary text-primary rounded-2xl font-headline font-bold text-lg hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined">calendar_add_on</span> Add to Google Calendar
+        </button>
+      </div>
+      <button onclick="closeEventModal()" class="w-full py-3 text-on-surface-variant hover:text-primary font-bold text-sm transition-colors">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-64 z-50 bg-[#002046] flex flex-col py-8 shadow-2xl shadow-[#002046]/20">
+  <div class="px-6 mb-10">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center cursor-pointer" onclick="window.location.href='index.html'">
+        <span class="material-symbols-outlined text-primary">hub</span>
+      </div>
+      <div>
+        <h2 class="font-headline font-black text-white tracking-tighter text-lg leading-tight cursor-pointer" onclick="window.location.href='index.html'">Kinetic Admin</h2>
+        <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">The Disciplined Hub</p>
+      </div>
+    </div>
+  </div>
+  <nav class="flex-grow">
+    <a class="text-slate-300 hover:bg-white/5 px-6 py-4 flex items-center gap-4 transition-all hover:text-white group" href="admin-dashboard.html">
+      <span class="material-symbols-outlined">dashboard</span>
+      <span class="font-body font-medium text-sm">Dashboard</span>
+    </a>
+    <a class="text-slate-300 hover:bg-white/5 px-6 py-4 flex items-center gap-4 transition-all hover:text-white group" href="admin-bookings.html">
+      <span class="material-symbols-outlined">calendar_month</span>
+      <span class="font-body font-medium text-sm">Booking Schedule</span>
+    </a>
+    <!-- Events Tab (ACTIVE) -->
+    <a class="bg-gradient-to-r from-[#002046] to-[#1b365d] text-white border-l-4 border-[#b51a1e] px-6 py-4 flex items-center gap-4 translate-x-1" href="admin-events.html">
+      <span class="material-symbols-outlined">event_note</span>
+      <span class="font-body font-medium text-sm">Manage Events</span>
+    </a>
+    <a class="text-slate-300 hover:bg-white/5 px-6 py-4 flex items-center gap-4 transition-all hover:text-white group" href="admin-members.html">
+      <span class="material-symbols-outlined">group</span>
+      <span class="font-body font-medium text-sm">Membership Database</span>
+    </a>
+    <a class="text-slate-300 hover:bg-white/5 px-6 py-4 flex items-center gap-4 transition-all hover:text-white group" href="admin-donations.html">
+      <span class="material-symbols-outlined">volunteer_activism</span>
+      <span class="font-body font-medium text-sm">Donation Database</span>
+    </a>
+  </nav>
+  <div class="px-6 mt-auto space-y-4">
+    <button onclick="openEventModal()" class="w-full bg-secondary text-white py-3 rounded-xl font-bold text-sm shadow-lg shadow-secondary/20 hover:scale-105 transition-transform flex items-center justify-center gap-2">
+      <span class="material-symbols-outlined text-sm">add</span> New Event
+    </button>
+    <div class="pt-6 border-t border-white/10 space-y-2">
+      <a class="text-slate-400 hover:text-white flex items-center gap-4 px-2 py-2 transition-colors" href="#">
+        <span class="material-symbols-outlined text-sm">help</span>
+        <span class="text-xs">Support</span>
+      </a>
+      <a class="text-slate-400 hover:text-white flex items-center gap-4 px-2 py-2 transition-colors" href="index.html">
+        <span class="material-symbols-outlined text-sm">logout</span>
+        <span class="text-xs">Log Out</span>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<!-- Top Bar -->
+<header class="fixed top-0 right-0 z-40 bg-white/80 backdrop-blur-md flex justify-between items-center h-16 px-8 shadow-sm" style="left:256px;">
+  <div class="flex items-center gap-8">
+    <h1 class="font-headline font-black text-primary tracking-tighter text-xl">NLRC Event Manager</h1>
+    <div class="relative">
+      <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-sm">search</span>
+      <input class="bg-surface-container-highest border-none rounded-full py-1.5 pl-10 pr-4 text-sm w-64 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search events..." type="text" id="search-input" oninput="filterEvents()"/>
+    </div>
+  </div>
+  <div class="flex items-center gap-4">
+    <a href="events.html" target="_blank" class="flex items-center gap-2 text-xs font-bold text-primary hover:text-secondary transition-colors">
+      <span class="material-symbols-outlined text-sm">open_in_new</span> View Public Page
+    </a>
+    <button onclick="openEventModal()" class="bg-secondary text-white px-6 py-2 rounded-xl font-bold text-sm flex items-center gap-2 hover:bg-primary transition-all shadow-lg">
+      <span class="material-symbols-outlined text-sm">add</span> Add Event
+    </button>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="pt-24 pb-12 px-8" style="margin-left:256px;">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Page Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+      <div>
+        <span class="text-secondary font-bold text-xs uppercase tracking-widest bg-red-50 px-3 py-1 rounded-full">Events Hub</span>
+        <h2 class="text-4xl font-black text-primary mt-2 tracking-tight">Manage Events</h2>
+        <p class="text-on-surface-variant mt-1">Events saved here should also be added to Google Calendar to appear on the public events page.</p>
+      </div>
+      <div class="flex items-center bg-surface-container rounded-xl p-1.5 gap-1">
+        <button class="px-5 py-2 rounded-lg bg-white text-primary font-bold shadow-sm text-sm" onclick="setFilter('all', this)">All Events</button>
+        <button class="px-5 py-2 rounded-lg text-on-surface-variant hover:bg-white transition-all text-sm font-medium" onclick="setFilter('upcoming', this)">Upcoming</button>
+        <button class="px-5 py-2 rounded-lg text-on-surface-variant hover:bg-white transition-all text-sm font-medium" onclick="setFilter('past', this)">Past</button>
+      </div>
+    </div>
+
+    <!-- Google Calendar Integration Panel -->
+    <div class="mb-8 bg-primary rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-5">
+      <div class="bg-white/10 p-3 rounded-xl shrink-0">
+        <span class="material-symbols-outlined text-white text-3xl">calendar_month</span>
+      </div>
+      <div class="flex-grow">
+        <p class="font-headline font-black text-white text-lg">Google Calendar Connected</p>
+        <p class="text-slate-300 text-sm mt-0.5">Events added to Google Calendar automatically appear on the public Events page. Use the buttons below to manage the NLRC calendar.</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+        <a href="https://calendar.google.com/calendar/r" target="_blank" class="bg-white text-primary px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-secondary hover:text-white transition-all flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">open_in_new</span> Open Google Calendar
+        </a>
+        <button onclick="openEventModal()" class="bg-secondary text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-white hover:text-secondary transition-all flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">add_circle</span> New Event
+        </button>
+      </div>
+    </div>
+
+    <!-- Events Table -->
+    <div class="bg-white rounded-2xl shadow-sm border border-surface-container-highest overflow-hidden">
+      <div class="p-6 border-b border-surface-container-highest flex items-center justify-between">
+        <h3 class="font-headline font-black text-primary text-xl">Event List <span id="event-count" class="text-base font-bold text-on-surface-variant ml-2"></span></h3>
+        <span class="text-xs text-on-surface-variant font-bold uppercase tracking-widest">Sorted by date (newest first)</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead class="bg-surface-container-low">
+            <tr>
+              <th class="text-left px-6 py-4 text-xs font-black uppercase tracking-widest text-on-surface-variant">Date & Time</th>
+              <th class="text-left px-6 py-4 text-xs font-black uppercase tracking-widest text-on-surface-variant">Event</th>
+              <th class="text-left px-6 py-4 text-xs font-black uppercase tracking-widest text-on-surface-variant">Category</th>
+              <th class="text-left px-6 py-4 text-xs font-black uppercase tracking-widest text-on-surface-variant">Location</th>
+              <th class="text-left px-6 py-4 text-xs font-black uppercase tracking-widest text-on-surface-variant">Status</th>
+              <th class="text-right px-6 py-4 text-xs font-black uppercase tracking-widest text-on-surface-variant">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="events-table-body">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+        <div id="no-events" class="hidden text-center py-20 text-on-surface-variant">
+          <span class="material-symbols-outlined text-6xl mb-4 block opacity-30">event_busy</span>
+          <p class="font-bold text-lg">No events found</p>
+          <p class="text-sm mt-1">Add your first event using the "Add Event" button above.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-surface-container-highest text-center">
+        <p id="stat-total" class="text-3xl font-black text-primary font-headline">0</p>
+        <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mt-1">Total Events</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-surface-container-highest text-center">
+        <p id="stat-upcoming" class="text-3xl font-black text-secondary font-headline">0</p>
+        <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mt-1">Upcoming</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-surface-container-highest text-center">
+        <p id="stat-this-month" class="text-3xl font-black text-primary font-headline">0</p>
+        <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mt-1">This Month</p>
+      </div>
+      <div class="bg-primary rounded-2xl p-5 shadow-sm text-center cursor-pointer hover:bg-secondary transition-all" onclick="openEventModal()">
+        <span class="material-symbols-outlined text-white text-3xl">add_circle</span>
+        <p class="text-xs font-bold text-white uppercase tracking-widest mt-1">Add New Event</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FAB -->
+<button onclick="openEventModal()" class="fixed bottom-8 right-8 w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center shadow-2xl shadow-secondary/40 hover:scale-110 active:scale-95 transition-all z-50">
+  <span class="material-symbols-outlined text-3xl">add</span>
+</button>
+
+<script>
+  // ── Local event store (persists in localStorage) ──────────────────────────
+  const STORE_KEY = 'nlrc_events';
+  let events = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
+  let editingId = null;
+  let currentFilter = 'all';
+
+  // Seed with sample events if empty
+  if (events.length === 0) {
+    events = [
+      { id: 1, title: 'Advanced Defensive Principles', date: '2026-04-15', time: '18:00', category: 'athletic', location: 'Court A', description: 'Master elite interior defense fundamentals.', created: Date.now() },
+      { id: 2, title: 'Spring Town Hall Gala', date: '2026-05-02', time: '19:00', category: 'community', location: 'Grand Hall', description: 'Community leaders celebrate collective growth.', created: Date.now() },
+      { id: 3, title: 'Veteran Wellness Workshop', date: '2026-05-15', time: '10:00', category: 'veteran', location: 'Main Hall', description: 'Health and wellness resources for veterans.', created: Date.now() },
+      { id: 4, title: 'Youth Basketball Camp', date: '2026-06-01', time: '09:00', category: 'youth', location: 'Court B', description: 'Week-long youth development basketball camp.', created: Date.now() },
+    ];
+    saveEvents();
+  }
+
+  function saveEvents() { localStorage.setItem(STORE_KEY, JSON.stringify(events)); }
+
+  function openEventModal(id = null) {
+    editingId = id;
+    const modal = document.getElementById('event-modal');
+    if (id) {
+      const ev = events.find(e => e.id === id);
+      document.getElementById('modal-title').textContent = 'Edit Event';
+      document.getElementById('evt-title').value = ev.title;
+      document.getElementById('evt-date').value = ev.date;
+      document.getElementById('evt-time').value = ev.time;
+      document.getElementById('evt-category').value = ev.category;
+      document.getElementById('evt-location').value = ev.location;
+      document.getElementById('evt-description').value = ev.description;
+    } else {
+      document.getElementById('modal-title').textContent = 'Add New Event';
+      document.getElementById('evt-title').value = '';
+      document.getElementById('evt-date').value = '';
+      document.getElementById('evt-time').value = '';
+      document.getElementById('evt-category').value = 'athletic';
+      document.getElementById('evt-location').value = '';
+      document.getElementById('evt-description').value = '';
+    }
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEventModal() {
+    document.getElementById('event-modal').classList.remove('active');
+    document.body.style.overflow = '';
+    editingId = null;
+  }
+
+  function saveEvent() {
+    const title = document.getElementById('evt-title').value.trim();
+    const date = document.getElementById('evt-date').value;
+    const time = document.getElementById('evt-time').value;
+    if (!title || !date) { alert('Please fill in the event title and date.'); return; }
+    if (editingId) {
+      const idx = events.findIndex(e => e.id === editingId);
+      events[idx] = { ...events[idx], title, date, time, category: document.getElementById('evt-category').value, location: document.getElementById('evt-location').value, description: document.getElementById('evt-description').value };
+    } else {
+      events.unshift({ id: Date.now(), title, date, time, category: document.getElementById('evt-category').value, location: document.getElementById('evt-location').value, description: document.getElementById('evt-description').value, created: Date.now() });
+    }
+    saveEvents();
+    renderTable();
+    closeEventModal();
+  }
+
+  function deleteEvent(id) {
+    if (!confirm('Delete this event?')) return;
+    events = events.filter(e => e.id !== id);
+    saveEvents();
+    renderTable();
+  }
+
+  function addToGoogleCalendar() {
+    const title = encodeURIComponent(document.getElementById('evt-title').value || 'NLRC Event');
+    const date = document.getElementById('evt-date').value.replace(/-/g, '');
+    const time = (document.getElementById('evt-time').value || '09:00').replace(':', '') + '00';
+    const location = encodeURIComponent(document.getElementById('evt-location').value || 'Next Level Recreation Center, Dayton TX');
+    const description = encodeURIComponent(document.getElementById('evt-description').value);
+    const start = date + 'T' + time;
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${start}&location=${location}&details=${description}`;
+    window.open(url, '_blank');
+  }
+
+  const CATEGORY_COLORS = {
+    athletic: { bg: 'bg-blue-50', text: 'text-blue-700', label: 'Athletic Clinic' },
+    community: { bg: 'bg-red-50', text: 'text-red-700', label: 'Community Event' },
+    workshop: { bg: 'bg-purple-50', text: 'text-purple-700', label: 'Workshop' },
+    celebration: { bg: 'bg-yellow-50', text: 'text-yellow-700', label: 'Celebration' },
+    youth: { bg: 'bg-green-50', text: 'text-green-700', label: 'Youth Program' },
+    veteran: { bg: 'bg-indigo-50', text: 'text-indigo-700', label: 'Veteran Program' },
+  };
+
+  function isUpcoming(ev) { return new Date(ev.date) >= new Date(new Date().toDateString()); }
+  function isThisMonth(ev) { const d = new Date(ev.date); const n = new Date(); return d.getFullYear() === n.getFullYear() && d.getMonth() === n.getMonth(); }
+
+  function setFilter(f, btn) {
+    currentFilter = f;
+    document.querySelectorAll('[onclick^="setFilter"]').forEach(b => b.classList.remove('bg-white','text-primary','shadow-sm'));
+    btn.classList.add('bg-white','text-primary','shadow-sm');
+    renderTable();
+  }
+
+  function filterEvents() { renderTable(); }
+
+  function renderTable() {
+    const query = (document.getElementById('search-input').value || '').toLowerCase();
+    let filtered = events.filter(ev => {
+      if (currentFilter === 'upcoming') return isUpcoming(ev);
+      if (currentFilter === 'past') return !isUpcoming(ev);
+      return true;
+    }).filter(ev => !query || ev.title.toLowerCase().includes(query) || ev.location.toLowerCase().includes(query));
+
+    // Sort by date desc
+    filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const tbody = document.getElementById('events-table-body');
+    const noEvents = document.getElementById('no-events');
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = '';
+      noEvents.classList.remove('hidden');
+    } else {
+      noEvents.classList.add('hidden');
+      tbody.innerHTML = filtered.map(ev => {
+        const cat = CATEGORY_COLORS[ev.category] || { bg: 'bg-gray-50', text: 'text-gray-700', label: ev.category };
+        const upcoming = isUpcoming(ev);
+        const dateObj = new Date(ev.date + 'T12:00:00');
+        const timeStr = ev.time ? new Date('1970-01-01T' + ev.time + ':00').toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) : '';
+        return `
+          <tr class="border-t border-surface-container-highest hover:bg-surface-container-low transition-colors group">
+            <td class="px-6 py-5">
+              <p class="font-black text-primary font-headline">${dateObj.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</p>
+              <p class="text-sm text-on-surface-variant">${timeStr}</p>
+            </td>
+            <td class="px-6 py-5">
+              <p class="font-bold text-on-surface">${ev.title}</p>
+              <p class="text-sm text-on-surface-variant mt-0.5 line-clamp-1">${ev.description}</p>
+            </td>
+            <td class="px-6 py-5">
+              <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wide ${cat.bg} ${cat.text}">${cat.label}</span>
+            </td>
+            <td class="px-6 py-5 text-sm text-on-surface-variant font-medium">${ev.location || '—'}</td>
+            <td class="px-6 py-5">
+              <span class="px-3 py-1 rounded-full text-xs font-bold ${upcoming ? 'bg-green-50 text-green-700' : 'bg-surface-container-highest text-on-surface-variant'}">${upcoming ? 'Upcoming' : 'Past'}</span>
+            </td>
+            <td class="px-6 py-5 text-right">
+              <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <button onclick="openEventModal(${ev.id})" class="px-3 py-1.5 text-xs font-bold bg-primary text-white rounded-lg hover:bg-secondary transition-all">Edit</button>
+                <button onclick="addToGCal(${ev.id})" class="px-3 py-1.5 text-xs font-bold border border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-all flex items-center gap-1">
+                  <span class="material-symbols-outlined text-xs">calendar_add_on</span> GCal
+                </button>
+                <button onclick="deleteEvent(${ev.id})" class="p-1.5 text-on-surface-variant hover:text-secondary rounded-lg hover:bg-red-50 transition-all">
+                  <span class="material-symbols-outlined text-sm">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>`;
+      }).join('');
+    }
+
+    document.getElementById('event-count').textContent = `(${filtered.length})`;
+
+    // Update stats
+    document.getElementById('stat-total').textContent = events.length;
+    document.getElementById('stat-upcoming').textContent = events.filter(isUpcoming).length;
+    document.getElementById('stat-this-month').textContent = events.filter(isThisMonth).length;
+  }
+
+  function addToGCal(id) {
+    const ev = events.find(e => e.id === id);
+    if (!ev) return;
+    const title = encodeURIComponent(ev.title);
+    const date = ev.date.replace(/-/g, '');
+    const time = (ev.time || '09:00').replace(':', '') + '00';
+    const location = encodeURIComponent(ev.location || 'Next Level Recreation Center, Dayton TX');
+    const description = encodeURIComponent(ev.description);
+    const start = date + 'T' + time;
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${start}&location=${location}&details=${description}`;
+    window.open(url, '_blank');
+  }
+
+  // Initial render
+  renderTable();
+</script>
+</body>
+</html>

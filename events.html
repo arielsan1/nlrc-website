@@ -1,157 +1,170 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Events Calendar | NLRC - Next Level Recreation Center</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<meta name="description" content="View upcoming NLRC events, athletic clinics, community programs, and celebrations in Dayton, Texas."/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Public+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "primary": "#002046",
-                    "secondary": "#b51a1e",
-                    "surface": "#f8f9fa",
-                    "on-surface": "#191c1d",
-                    "on-surface-variant": "#44474e",
-                    "surface-container-low": "#f3f4f5",
-                    "surface-container-highest": "#e1e3e4",
-                    "primary-container": "#1b365d"
-            },
-            "fontFamily": {
-                    "headline": ["Manrope"],
-                    "body": ["Public Sans"]
-            }
-          }
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary": "#002046",
+          "secondary": "#b51a1e",
+          "surface": "#f8f9fa",
+          "on-surface": "#191c1d",
+          "on-surface-variant": "#44474e",
+          "surface-container-low": "#f3f4f5",
+          "surface-container-highest": "#e1e3e4",
+          "primary-container": "#1b365d"
+        },
+        "fontFamily": {
+          "headline": ["Manrope"],
+          "body": ["Public Sans"]
         }
       }
-    </script>
+    }
+  }
+</script>
 <style>
-      .material-symbols-outlined {
-        vertical-align: middle;
-      }
-    </style>
+  .material-symbols-outlined { vertical-align: middle; }
+  /* Style the Google Calendar iframe to blend with the site */
+  .gcal-wrapper { border-radius: 1.5rem; overflow: hidden; box-shadow: 0 4px 24px rgba(0,32,70,0.08); }
+  .gcal-wrapper iframe { display: block; border: none; }
+</style>
 </head>
 <body class="bg-surface font-body text-on-surface antialiased min-h-screen">
+
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm h-20">
-<div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
-<div class="text-2xl font-black text-primary tracking-tighter font-headline cursor-pointer" onclick="window.location.href='index.html'">
-                Next Level Recreation
-            </div>
-<div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight">
-<a class="text-primary hover:text-secondary transition-colors" href="index.html#spaces">Spaces</a>
-<a class="text-secondary border-b-2 border-secondary pb-1" href="events.html">Events</a>
-<a class="text-primary hover:text-secondary transition-colors" href="events.html">Programs</a>
-<a class="text-primary hover:text-secondary transition-colors" href="memberships.html">Membership</a>
-<a class="text-primary hover:text-secondary transition-colors" href="about.html">About</a>
-</div>
-<div class="flex items-center gap-4">
-<button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
-<span class="material-symbols-outlined text-3xl text-primary cursor-pointer" onclick="window.location.href='admin-login.html'">account_circle</span>
-</div>
-</div>
+  <div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
+    <div class="text-2xl font-black text-primary tracking-tighter font-headline cursor-pointer" onclick="window.location.href='index.html'">
+      Next Level Recreation
+    </div>
+    <div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight">
+      <a class="text-primary hover:text-secondary transition-colors" href="index.html#spaces">Spaces</a>
+      <a class="text-secondary border-b-2 border-secondary pb-1" href="events.html">Events</a>
+      <a class="text-primary hover:text-secondary transition-colors" href="events.html">Programs</a>
+      <a class="text-primary hover:text-secondary transition-colors" href="memberships.html">Membership</a>
+      <a class="text-primary hover:text-secondary transition-colors" href="about.html">About</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
+      <span class="material-symbols-outlined text-3xl text-primary cursor-pointer" onclick="window.location.href='admin-login.html'">account_circle</span>
+    </div>
+  </div>
 </nav>
 
 <main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
-<header class="mb-16 text-center md:text-left">
-<span class="inline-block px-4 py-1.5 bg-secondary/10 text-secondary font-bold text-xs uppercase tracking-widest mb-6 rounded-full">NLRC Calendar 2024</span>
-<h1 class="text-5xl md:text-7xl font-extrabold text-primary font-headline tracking-tighter mb-4">Level Up Your <span class="text-secondary">Community</span></h1>
-<p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed">From elite training camps to local heritage celebrations—discover where performance meets purpose.</p>
-</header>
+  <header class="mb-12 text-center md:text-left">
+    <span id="calendar-label" class="inline-block px-4 py-1.5 bg-secondary/10 text-secondary font-bold text-xs uppercase tracking-widest mb-6 rounded-full">NLRC Calendar 2026</span>
+    <h1 class="text-5xl md:text-7xl font-extrabold text-primary font-headline tracking-tighter mb-4">Level Up Your <span class="text-secondary">Community</span></h1>
+    <p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed">From elite training camps to local heritage celebrations—discover where performance meets purpose.</p>
+  </header>
 
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-<!-- Calendar Filters -->
-<div class="lg:col-span-3 space-y-8">
-<div class="bg-white p-6 rounded-2xl shadow-sm border border-surface-container-highest">
-<h3 class="font-headline font-bold text-primary mb-4 flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary">filter_alt</span>
-                        Filters
-                    </h3>
-<div class="space-y-4">
-<label class="flex items-center gap-3 cursor-pointer group">
-<input checked="" class="w-5 h-5 rounded border-surface-container-highest text-secondary focus:ring-secondary/20" type="checkbox"/>
-<span class="font-bold text-on-surface-variant group-hover:text-primary transition-colors">Athletics</span>
-</label>
-<label class="flex items-center gap-3 cursor-pointer group">
-<input checked="" class="w-5 h-5 rounded border-surface-container-highest text-secondary focus:ring-secondary/20" type="checkbox"/>
-<span class="font-bold text-on-surface-variant group-hover:text-primary transition-colors">Workshops</span>
-</label>
-<label class="flex items-center gap-3 cursor-pointer group">
-<input checked="" class="w-5 h-5 rounded border-surface-container-highest text-secondary focus:ring-secondary/20" type="checkbox"/>
-<span class="font-bold text-on-surface-variant group-hover:text-primary transition-colors">Celebrations</span>
-</label>
-</div>
-</div>
-</div>
+  <!-- Info banner about Google Calendar -->
+  <div class="mb-8 bg-primary/5 border border-primary/20 rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center gap-4">
+    <span class="material-symbols-outlined text-primary text-3xl shrink-0">calendar_month</span>
+    <div class="flex-grow">
+      <p class="font-bold text-primary font-headline">Live NLRC Event Calendar</p>
+      <p class="text-on-surface-variant text-sm mt-0.5">This calendar is managed by NLRC administrators and syncs in real time. You can also <a href="#subscribe" class="text-secondary font-bold hover:underline">subscribe to our Google Calendar</a> to get events directly in your calendar app.</p>
+    </div>
+    <a href="https://calendar.google.com/calendar/r" target="_blank" class="shrink-0 bg-primary text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-secondary transition-all flex items-center gap-2 whitespace-nowrap">
+      <span class="material-symbols-outlined text-base">open_in_new</span> Open in Google Calendar
+    </a>
+  </div>
 
-<!-- Events Feed -->
-<div class="lg:col-span-9 space-y-6">
-<!-- Event Card 1 -->
-<div class="bg-white p-8 rounded-3xl shadow-sm border border-surface-container-highest group hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row gap-8">
-<div class="md:w-1/4">
-<div class="text-center md:text-left">
-<p class="text-secondary font-black text-4xl font-headline tracking-tighter uppercase">Apr 15</p>
-<p class="text-on-surface-variant font-bold uppercase tracking-widest text-xs mt-1">Mon • 6:00 PM</p>
-<span class="inline-block mt-4 px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-black uppercase tracking-widest text-primary border border-surface-container-highest">Athletic Clinic</span>
-</div>
-</div>
-<div class="md:w-3/4">
-<h3 class="text-2xl font-black text-primary font-headline mb-2 group-hover:text-secondary transition-colors">Advanced Defensive Principles</h3>
-<p class="text-on-surface-variant leading-relaxed mb-6">Master the fundamentals of elite interior defense in this precision-focused workshop for varsity-level competitors.</p>
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary text-lg">location_on</span>
-<span class="text-sm font-bold text-primary">Court A</span>
-</div>
-<button class="ml-auto text-primary font-black uppercase tracking-widest text-xs flex items-center gap-2 hover:gap-3 transition-all">
-                                Register Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                            </button>
-</div>
-</div>
-</div>
+  <!-- Google Calendar Embed -->
+  <!-- IMPORTANT: Replace the CALENDAR_ID below with your actual Google Calendar ID.
+       To get it: Google Calendar → Settings → [Your Calendar] → "Integrate calendar" → Calendar ID
+       It will look like: abc123@group.calendar.google.com
+       Then make the calendar PUBLIC: Settings → [Your Calendar] → "Access permissions" → check "Make available to public"
+  -->
+  <div class="gcal-wrapper w-full mb-12">
+    <iframe
+      id="nlrc-google-calendar"
+      src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID_HERE&ctz=America%2FChicago&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH&bgcolor=%23f8f9fa&color=%23002046"
+      style="width:100%; height:700px; frameborder:0; scrolling:no;"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-<!-- Event Card 2 -->
-<div class="bg-white p-8 rounded-3xl shadow-sm border border-surface-container-highest group hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row gap-8 opacity-75 grayscale hover:grayscale-0 hover:opacity-100">
-<div class="md:w-1/4">
-<div class="text-center md:text-left">
-<p class="text-secondary font-black text-4xl font-headline tracking-tighter uppercase">May 02</p>
-<p class="text-on-surface-variant font-bold uppercase tracking-widest text-xs mt-1">Thu • 7:00 PM</p>
-<span class="inline-block mt-4 px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-black uppercase tracking-widest text-primary border border-surface-container-highest">Community Event</span>
-</div>
-</div>
-<div class="md:w-3/4">
-<h3 class="text-2xl font-black text-primary font-headline mb-2 group-hover:text-secondary transition-colors">Spring Town Hall Gala</h3>
-<p class="text-on-surface-variant leading-relaxed mb-6">Join NLRC and local community leaders for an evening dedicated to celebrating our collective growth and mission.</p>
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary text-lg">location_on</span>
-<span class="text-sm font-bold text-primary">Grand Hall</span>
-</div>
-<button class="ml-auto text-primary font-black uppercase tracking-widest text-xs flex items-center gap-2 hover:gap-3 transition-all">
-                                Reserve Seat <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                            </button>
-</div>
-</div>
-</div>
-</div>
-</div>
+  <!-- Setup Instructions Card (visible until calendar is configured) -->
+  <div id="setup-instructions" class="mb-12 bg-white border-2 border-dashed border-secondary/30 rounded-3xl p-10">
+    <div class="flex items-start gap-5">
+      <div class="bg-secondary/10 p-4 rounded-2xl shrink-0">
+        <span class="material-symbols-outlined text-secondary text-3xl">settings</span>
+      </div>
+      <div>
+        <h3 class="font-headline font-black text-primary text-xl mb-2">📋 Google Calendar Setup Instructions</h3>
+        <p class="text-on-surface-variant mb-4">To activate the live calendar, complete these steps:</p>
+        <ol class="space-y-3 text-sm text-on-surface-variant list-decimal list-inside">
+          <li><strong class="text-primary">Create a Google Calendar</strong> — Go to <a href="https://calendar.google.com" target="_blank" class="text-secondary underline">calendar.google.com</a>, click the "+" next to "Other calendars", and name it "NLRC Events".</li>
+          <li><strong class="text-primary">Make it public</strong> — Calendar Settings → "NLRC Events" → Access permissions → check <em>"Make available to public"</em>.</li>
+          <li><strong class="text-primary">Copy your Calendar ID</strong> — Settings → "Integrate calendar" → copy the Calendar ID (looks like <code class="bg-surface-container-low px-1 rounded">abc123@group.calendar.google.com</code>).</li>
+          <li><strong class="text-primary">Share the ID with your developer</strong> — Replace <code class="bg-surface-container-low px-1 rounded">YOUR_CALENDAR_ID_HERE</code> in <code class="bg-surface-container-low px-1 rounded">events.html</code> with your actual Calendar ID.</li>
+          <li><strong class="text-primary">Share calendar access with admin</strong> — Add your admin team's Google accounts with "Make changes to events" permission so they can add/edit events.</li>
+        </ol>
+        <div class="mt-6 p-4 bg-primary/5 rounded-xl">
+          <p class="text-xs font-bold text-primary">✅ Once configured, the calendar updates automatically — no code changes needed to add/edit events!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subscribe Section -->
+  <div id="subscribe" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+    <div class="bg-white p-8 rounded-3xl shadow-sm border border-surface-container-highest hover:shadow-xl transition-all duration-500 flex items-start gap-4">
+      <div class="bg-primary/10 p-3 rounded-xl shrink-0">
+        <span class="material-symbols-outlined text-primary text-2xl">event_available</span>
+      </div>
+      <div>
+        <h3 class="font-headline font-black text-primary mb-1">Subscribe to Calendar</h3>
+        <p class="text-sm text-on-surface-variant">Add NLRC events directly to Google Calendar, Apple Calendar, or Outlook.</p>
+      </div>
+    </div>
+    <div class="bg-white p-8 rounded-3xl shadow-sm border border-surface-container-highest hover:shadow-xl transition-all duration-500 flex items-start gap-4">
+      <div class="bg-secondary/10 p-3 rounded-xl shrink-0">
+        <span class="material-symbols-outlined text-secondary text-2xl">notifications_active</span>
+      </div>
+      <div>
+        <h3 class="font-headline font-black text-primary mb-1">Event Reminders</h3>
+        <p class="text-sm text-on-surface-variant">Get notified of upcoming NLRC events, clinics, and community gatherings.</p>
+      </div>
+    </div>
+    <div class="bg-primary p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 flex items-start gap-4">
+      <div class="bg-white/10 p-3 rounded-xl shrink-0">
+        <span class="material-symbols-outlined text-white text-2xl">add_circle</span>
+      </div>
+      <div>
+        <h3 class="font-headline font-black text-white mb-1">Host an Event</h3>
+        <p class="text-sm text-slate-300">Interested in hosting at NLRC? <a href="rentals.html" class="text-secondary font-bold hover:underline">View our rental options →</a></p>
+      </div>
+    </div>
+  </div>
 </main>
 
 <footer class="bg-primary text-white py-16 mt-20">
-<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
-<div>
-<div class="text-xl font-black font-headline mb-2">Next Level Recreation Center</div>
-<p class="text-slate-400 text-sm max-w-sm">Professional spaces for athletic and community excellence. Veteran owned and operated.</p>
-</div>
-<div class="text-slate-400 text-sm">
-<p>© 2024 NLRC. All rights reserved.</p>
-<p class="font-bold text-white mt-1">Veteran Owned &amp; Operated</p>
-</div>
-</div>
+  <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+    <div>
+      <div class="text-xl font-black font-headline mb-2">Next Level Recreation Center</div>
+      <p class="text-slate-400 text-sm max-w-sm">Professional spaces for athletic and community excellence. Veteran owned and operated.</p>
+    </div>
+    <div class="text-slate-400 text-sm">
+      <p>© 2026 NLRC. All rights reserved.</p>
+      <p class="font-bold text-white mt-1">Veteran Owned &amp; Operated</p>
+    </div>
+  </div>
 </footer>
-</body></html>
+
+<script>
+  // Dynamically update the year label
+  document.getElementById('calendar-label').textContent = `NLRC Calendar ${new Date().getFullYear()}`;
+</script>
+</body>
+</html>
