@@ -159,10 +159,10 @@
 </div>
 <div class="flex items-center gap-3 pl-6 border-l border-outline-variant/30">
 <div class="text-right hidden sm:block">
-<p class="text-sm font-bold text-[#002046]">Admin User</p>
+<p class="text-sm font-bold text-[#002046] admin-profile-name">Admin User</p>
 <p class="text-[10px] text-on-surface-variant font-medium">System Controller</p>
 </div>
-<img alt="Administrator Profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary-container/20" data-alt="professional portrait of a confident middle-aged man in business attire, clean studio lighting, neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvZ_EWgfTyeIk_gzxRJyija1duXJ-w91iYG84VI9suNyVJxjvNtFHS2P2U0PhWXepApxdtKniWi0TRW9bPwRhpXsnSmV98ESVsD-2nWUdyp0Fftj9raV5Z8m4JdgyYmUfc3R17AmSWOQigVQMAJEg7vypfI1nL68pc94orGa6qFNmvIf6vLMo2r6JglgwzPOW0QOdoIViyrFVaafpAHGvKZl6ZTvu8YnSdAUv-GF0RvSvzKJxLGIbmmf3ZHBfOXN989ayqmGu2aMnd"/>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary-container/20 admin-profile-photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvZ_EWgfTyeIk_gzxRJyija1duXJ-w91iYG84VI9suNyVJxjvNtFHS2P2U0PhWXepApxdtKniWi0TRW9bPwRhpXsnSmV98ESVsD-2nWUdyp0Fftj9raV5Z8m4JdgyYmUfc3R17AmSWOQigVQMAJEg7vypfI1nL68pc94orGa6qFNmvIf6vLMo2r6JglgwzPOW0QOdoIViyrFVaafpAHGvKZl6ZTvu8YnSdAUv-GF0RvSvzKJxLGIbmmf3ZHBfOXN989ayqmGu2aMnd"/>
 </div>
 </div>
 </header>
@@ -191,28 +191,28 @@
 <div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
 <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Total Members</p>
 <div class="flex items-end gap-2">
-<span class="text-3xl font-black text-primary">1,284</span>
+<span class="text-3xl font-black text-primary" id="total-members-count">...</span>
 <span class="text-xs text-emerald-600 font-bold mb-1.5 flex items-center">+4%</span>
 </div>
 </div>
 <div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
 <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Active Now</p>
 <div class="flex items-end gap-2">
-<span class="text-3xl font-black text-primary">1,102</span>
+<span class="text-3xl font-black text-primary" id="active-members-count">...</span>
 <span class="text-xs text-on-surface-variant font-bold mb-1.5">85.8%</span>
 </div>
 </div>
 <div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
 <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Veteran Accounts</p>
 <div class="flex items-end gap-2">
-<span class="text-3xl font-black text-primary">342</span>
+<span class="text-3xl font-black text-primary" id="veteran-members-count">...</span>
 <span class="bg-secondary-container/10 text-secondary px-2 py-0.5 rounded text-[10px] mb-2 font-bold">HONOR</span>
 </div>
 </div>
 <div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
 <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Expiring Soon</p>
 <div class="flex items-end gap-2">
-<span class="text-3xl font-black text-secondary">28</span>
+<span class="text-3xl font-black text-secondary">0</span>
 <span class="text-xs text-on-surface-variant font-bold mb-1.5 flex items-center">Next 30d</span>
 </div>
 </div>
@@ -252,6 +252,27 @@
 </div>
 
 <!-- Scripts -->
+<script type="module">
+    import { db, collection, onSnapshot, query, where } from "./js/firebase-config.js";
+
+    // Global Stats
+    onSnapshot(collection(db, "members"), (snapshot) => {
+        document.getElementById('total-members-count').innerText = snapshot.size.toLocaleString();
+        
+        let activeCount = 0;
+        let veteranCount = 0;
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            if (data.status === 'active') activeCount++;
+            if (data.tier === 'Veteran') veteranCount++;
+        });
+
+        document.getElementById('active-members-count').innerText = activeCount.toLocaleString();
+        document.getElementById('veteran-members-count').innerText = veteranCount.toLocaleString();
+    });
+
+    // Table handled by the script already present in the file
+</script>
 <script type="module">
     import { db, collection, onSnapshot, query, orderBy } from "./js/firebase-config.js";
 

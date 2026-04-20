@@ -39,6 +39,7 @@ window.handleSignOut = handleSignOut;
 
 // Track Auth State for UI updates
 onAuthStateChanged(auth, (user) => {
+    // 1. General Header (Account Icon)
     const authButtons = document.querySelectorAll('.auth-trigger');
     authButtons.forEach(btn => {
         if (user) {
@@ -49,4 +50,20 @@ onAuthStateChanged(auth, (user) => {
             btn.onclick = signInWithGoogle;
         }
     });
+
+    // 2. Admin Portal Sidebar Profile
+    const adminNames = document.querySelectorAll('.admin-profile-name');
+    const adminPhotos = document.querySelectorAll('.admin-profile-photo');
+    
+    if (user) {
+        adminNames.forEach(n => n.innerText = user.displayName);
+        adminPhotos.forEach(p => {
+            p.src = user.photoURL;
+            p.title = user.displayName;
+        });
+    } else if (window.location.pathname.includes('admin-')) {
+        // If on an admin page and NOT logged in, redirect to login (optional but recommended)
+        // For now, just show placeholders
+        adminNames.forEach(n => n.innerText = "Guest Admin");
+    }
 });

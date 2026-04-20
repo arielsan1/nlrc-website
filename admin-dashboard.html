@@ -161,8 +161,8 @@
 <span class="material-symbols-outlined text-on-surface-variant cursor-pointer p-2 hover:bg-surface-container rounded-full transition-all" data-icon="settings">settings</span>
 <div class="h-8 w-[1px] bg-outline-variant/30 mx-2"></div>
 <div class="flex items-center gap-3">
-<span class="text-sm font-semibold text-primary">Admin</span>
-<img alt="Administrator Profile" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="Close-up portrait of a professional male administrator in a clean modern office setting, soft corporate lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9fOVtb5kMsp4w20HHOVpiVR6NtefAT6S878ErTkUgknILmalfew5CEoIB9zKCFw6lamq3SCvwxW0BVVoBc1eZL54mA2iu9WpqKeMWa0NWOzxd3R504jzzNyBf_YM4v3OWaaEF5AhqI-5qnvMFyy29JjKgpsBhoTc0bzRaPxKm9i4k4U6ETP_BLvugmrDTJ-b2g2uh-yF4TfIhtZWxGrsonw6KBZU1xIzfXIaZYGfSvJPaAM__tOZhMtgpyjj2yhQKlwd9t89W1VfR"/>
+<span class="text-sm font-semibold text-primary admin-profile-name">Admin</span>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover admin-profile-photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9fOVtb5kMsp4w20HHOVpiVR6NtefAT6S878ErTkUgknILmalfew5CEoIB9zKCFw6lamq3SCvwxW0BVVoBc1eZL54mA2iu9WpqKeMWa0NWOzxd3R504jzzNyBf_YM4v3OWaaEF5AhqI-5qnvMFyy29JjKgpsBhoTc0bzRaPxKm9i4k4U6ETP_BLvugmrDTJ-b2g2uh-yF4TfIhtZWxGrsonw6KBZU1xIzfXIaZYGfSvJPaAM__tOZhMtgpyjj2yhQKlwd9t89W1VfR"/>
 </div>
 </div>
 </header>
@@ -177,7 +177,7 @@
 <div class="relative z-10 max-w-2xl">
 <span class="bg-secondary px-3 py-1 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-full inline-block mb-4">Daily Operations</span>
 <h3 class="font-headline text-5xl font-extrabold text-white mb-2 tracking-tighter">Turning Potential Into Performance</h3>
-<p class="text-on-primary-container text-lg font-light">Welcome back, Admin. Your facility is currently operating at 82% peak capacity.</p>
+<p class="text-on-primary-container text-lg font-light">Welcome back, <span class="admin-profile-name">Admin</span>. Your facility operations are live.</p>
 </div>
 </section>
 <!-- Stats Bento Grid -->
@@ -195,7 +195,7 @@
 </div>
 <div class="mt-8">
 <p class="text-on-surface-variant font-medium text-sm">Active Members</p>
-<h4 class="text-4xl font-headline font-black text-primary" id="active-members-count">1,284</h4>
+<h4 class="text-4xl font-headline font-black text-primary" id="active-members-count">...</h4>
 </div>
 </div>
 <!-- Total Bookings -->
@@ -211,7 +211,7 @@
 </div>
 <div class="mt-8">
 <p class="text-on-surface-variant font-medium text-sm">Total Bookings</p>
-<h4 class="text-4xl font-headline font-black text-primary" id="total-bookings-count">342</h4>
+<h4 class="text-4xl font-headline font-black text-primary" id="total-bookings-count">...</h4>
 </div>
 </div>
 <!-- Monthly Donations -->
@@ -227,7 +227,7 @@
 </div>
 <div class="mt-8">
 <p class="text-on-surface-variant font-medium text-sm">Monthly Donations</p>
-<h4 class="text-4xl font-headline font-black text-primary" id="monthly-donations-amount">$42,500</h4>
+<h4 class="text-4xl font-headline font-black text-primary" id="monthly-donations-amount">...</h4>
 </div>
 </div>
 </div>
@@ -239,55 +239,12 @@
 <button onclick="window.location.href='admin-bookings.html'" class="text-sm font-bold text-secondary flex items-center gap-1 hover:underline">
                             View Full Schedule <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
 </button>
-</div>
-<div class="space-y-4">
-<!-- Calendar Item -->
-<div class="flex items-center gap-6 p-4 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-low transition-colors">
-<div class="flex flex-col items-center justify-center bg-primary text-white w-14 h-14 rounded-xl">
-<span class="text-[10px] font-bold uppercase">Oct</span>
-<span class="text-xl font-headline font-black leading-none">12</span>
-</div>
-<div class="flex-grow">
-<h6 class="font-bold text-primary">Veteran Recovery Program</h6>
-<p class="text-xs text-on-surface-variant">08:00 AM - 10:00 AM • Main Studio</p>
-</div>
-<div class="flex -space-x-2">
-<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhDz9jq8GrNuc8C5mfi1JF0jx3MqxgwshX3UG_L5HRkS5ouWSKaf1zEynBVRaDlFJ5nSVOB9udcBWZJ5Cjfyt4H5ZqrWlVWk873Vv4XBxjDfh1EtCrYFTfyXJrj0kOPEbeJnVYN6Em6FyaSRZI8RIrHMIwnoRooo0rurYrGOxqXCEr8t-b0KA-PflDsw3YimF7poIv5gpdv0v4OX8RbWrKuc__egin2RvXg2kL7AI0Bv8x1mhGgXMwDKGmsfPiqgUIiR5JNxZwP_Yp"/>
-<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZv4Grf4aXQyK8zR6hNbPmpQxfbhzW_kWazk1P5L1CvfH3mz9cHSbZUeGnxxSHMDZ6dW80arXI56JYdj1aCPIW_6N0KrHFM_zViEjxnZpwQuDWHYX9qbYvPK0bIlMQvYwx2zp0DGaw9cHzP8FUTD-QBrWpZase8fuf6JH477X26x-kLob23lASO93LOecNqucjb3wYPcxvGD7PuC5--ZwX6ZiuvAeEj-NlsY3AborUlAfo4xIPcMZ9GAMwrUnW3vAGH6I7C99adc5Y"/>
-<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+12</div>
-</div>
-</div>
-<!-- Calendar Item -->
-<div class="flex items-center gap-6 p-4 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-low transition-colors">
-<div class="flex flex-col items-center justify-center bg-surface-container-highest text-primary w-14 h-14 rounded-xl">
-<span class="text-[10px] font-bold uppercase">Oct</span>
-<span class="text-xl font-headline font-black leading-none">14</span>
-</div>
-<div class="flex-grow">
-<h6 class="font-bold text-primary">Elite Youth Basketball</h6>
-<p class="text-xs text-on-surface-variant">04:00 PM - 06:00 PM • Court A</p>
-</div>
-<div class="flex -space-x-2">
-<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIb5xz5zAyxY7yafw3qS2CyFceOmOuIWBfOuXec-LL6g9MKryNmtaNd0wtY3GbCsN1jWN-CAXuLQRMr-NcSAdDTb_d8CrbCsWsZ_T2dqGcj1l8wbPj18kB9rDAx_pNhX_XUMFTFj3qzh9ohg37z7EePMOMjBXaebLEOfJROqNlWGSZTrWBcuekmrNqU04C9884hTG2jw-5IHPhU4Hpypii-Nlbo4B0TkSDdcxpJsDvcPZ-vmaE_39t-7n5PXaij-6fMY2Xxki01aJ7"/>
-<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+28</div>
-</div>
-</div>
-<!-- Calendar Item -->
-<div class="flex items-center gap-6 p-4 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-low transition-colors">
-<div class="flex flex-col items-center justify-center bg-surface-container-highest text-primary w-14 h-14 rounded-xl">
-<span class="text-[10px] font-bold uppercase">Oct</span>
-<span class="text-xl font-headline font-black leading-none">15</span>
-</div>
-<div class="flex-grow">
-<h6 class="font-bold text-primary">Mobility Workshop</h6>
-<p class="text-xs text-on-surface-variant">11:00 AM - 12:30 PM • Training Room 2</p>
-</div>
-<div class="flex -space-x-2">
-<img alt="Attendee" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="avatar 4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzYk2Os-qsu5DZ73iDP6_VtWs-dQLOerG-EW640w9Bes3N03GekrFfzS-YLQ08Zm4C0kPzUs89q_eBqbC_TbTMcAIUzkbFXPcHUF7R9wRFyBSeSJqinAWjms44P6D3G3dQZ9vskEbvhid4PahDyYFAoj_rKWUiKK4KLi1TUXn07V8fkjpAG7KygO9Fya-zceVJti9kZGbdta0uj5lyUYLHx8HiJsyQe2a4zXv64GnV91K8wddx16dm-WbhnvckARDFZ980bABtOtCc"/>
-<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+8</div>
-</div>
-</div>
-</div>
+                <div class="space-y-4" id="sessions-list">
+                    <!-- Dynamic sessions will appear here -->
+                    <div class="text-center py-10 text-on-surface-variant/50 italic text-sm">Loading today's sessions...</div>
+                </div>
+            </div>
+
 </div>
 <!-- Recent Activity -->
 <div class="lg:col-span-5 bg-[#f3f4f5] rounded-[2rem] p-8">
@@ -366,8 +323,31 @@
         document.getElementById('monthly-donations-amount').innerText = "$" + total.toLocaleString();
     });
 
-    // Recent Activity - Listen for latest docs
-    // (This is a simplified version that just logs to console or could append to the list)
+        // Recent Activity handled above
+    
+    // Sessions List - Listen to Bookings
+    onSnapshot(query(collection(db, "bookings"), orderBy("date", "asc"), limit(3)), (snapshot) => {
+        const sessionsList = document.getElementById('sessions-list');
+        let html = [];
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            const dateObj = data.date ? new Date(data.date) : new Date();
+            html.push(`
+                <div class="flex items-center gap-6 p-4 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+                    <div class="flex flex-col items-center justify-center bg-primary text-white w-14 h-14 rounded-xl">
+                        <span class="text-[10px] font-bold uppercase">${dateObj.toLocaleString('default', { month: 'short' })}</span>
+                        <span class="text-xl font-headline font-black leading-none">${dateObj.getDate()}</span>
+                    </div>
+                    <div class="flex-grow">
+                        <h6 class="font-bold text-primary">${data.space || 'Reserved Session'}</h6>
+                        <p class="text-xs text-on-surface-variant">Confirmed • ${data.email || 'Admin'}</p>
+                    </div>
+                </div>
+            `);
+        });
+        if (html.length > 0) sessionsList.innerHTML = html.join('');
+    });
+
     console.log("Firebase Dashboard Controller Initialized");
 </script>
 </body></html>

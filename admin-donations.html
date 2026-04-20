@@ -157,15 +157,13 @@
 </button>
 </div>
 <div class="h-8 w-[1px] bg-outline-variant/30"></div>
-<div class="flex items-center gap-3">
-<span class="text-right hidden sm:block">
-<p class="text-xs font-bold text-primary block leading-none">Admin User</p>
-<p class="text-[10px] text-on-surface-variant block uppercase tracking-tighter">System Controller</p>
-</span>
-<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden">
-<img alt="Administrator Profile" data-alt="Close up portrait of a professional administrator in a clean white business shirt, soft daylight, studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClyaClxnQRzu4lUxhVfqWhLH1ij_SwCyueDwfCI0pkSPwyeOk4ApNGu-P_c0ilGGIyIT2bVSEth-4DEWnhxEfiPgQlxge1LsZpwye4VpI19gx-1Upr78NUc0t-aheJanMsR-fvwTQk752e42MKbgFi6kfwxzp-ArWI48Pss9vO771KIeagwFYvwJh9hgQ1i3eUWaPJvQPKV9R5rP0vXlB0L2TavYpRVQG3n_RwKap0TVvZyfY3LMJSrt1dXtcFH4sWla8Y1dgTWHsg"/>
-</div>
-</div>
+                        <div class="flex items-center gap-3">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-xs font-bold text-primary block leading-none admin-profile-name">Admin User</p>
+                                <p class="text-[9px] text-[#002046]/40 font-bold uppercase tracking-wider mt-1">Operations</p>
+                            </div>
+                            <img alt="Administrator Profile" class="w-10 h-10 rounded-full border border-primary/10 object-cover admin-profile-photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClyaClxnQRzu4lUxhVfqWhLH1ij_SwCyueDwfCI0pkSPwyeOk4ApNGu-P_c0ilGGIyIT2bVSEth-4DEWnhxEfiPgQlxge1LsZpwye4VpI19gx-1Upr78NUc0t-aheJanMsR-fvwTQk752e42MKbgFi6kfwxzp-ArWI48Pss9vO771KIeagwFYvwJh9hgQ1i3eUWaPJvQPKV9R5rP0vXlB0L2TavYpRVQG3n_RwKap0TVvZyfY3LMJSrt1dXtcFH4sWla8Y1dgTWHsg"/>
+                        </div>
 </div>
 </header>
 <!-- Page Content -->
@@ -195,7 +193,7 @@
 <span class="inline-block px-3 py-1 bg-secondary text-white text-[10px] font-black uppercase tracking-[0.2em] rounded mb-4">Current Month Status</span>
 <h3 class="text-white/70 text-sm font-medium uppercase tracking-widest mb-1">Total Donations This Month</h3>
 <div class="flex items-baseline gap-3">
-<span class="text-5xl font-black text-white tracking-tighter">$142,850.00</span>
+<span class="text-4xl font-headline font-black text-primary leading-none" id="total_donations_amount">...</span>
 <span class="text-emerald-400 font-bold flex items-center text-sm">
 <span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
                                 12.4%
@@ -221,7 +219,7 @@
 <div>
 <span class="material-symbols-outlined text-secondary text-3xl mb-4" data-icon="architecture">architecture</span>
 <h3 class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Active Projects</h3>
-<p class="text-3xl font-black text-primary tracking-tighter">08</p>
+<span class="text-3xl font-black text-primary leading-none" id="donation_count">...</span>
 </div>
 <div class="mt-4 pt-4 border-t border-outline-variant/20">
 <p class="text-[10px] text-on-surface-variant font-medium">Top: Youth Scholarship</p>
@@ -327,12 +325,19 @@
 
                 donationTable.innerHTML = rows.join('') || '<tr><td colspan="6" class="p-10 text-center italic text-on-surface-variant/50">No donations recorded yet.</td></tr>';
                 if (totalDonationTitle) totalDonationTitle.innerText = '$' + total.toLocaleString();
+                
+                // Update stats cards if they exist
+                const donationCountElem = document.getElementById('donation_count');
+                if (donationCountElem) donationCountElem.innerText = snapshot.size.toLocaleString();
+                
+                const totalAmountElem = document.getElementById('total_donations_amount');
+                if (totalAmountElem) totalAmountElem.innerText = '$' + total.toLocaleString();
             });
         </script>
 </table>
 </div>
 <div class="px-8 py-6 border-t border-surface-container-high flex justify-between items-center bg-surface-container-low/20">
-<p class="text-xs font-medium text-on-surface-variant">Showing 1 to 5 of 1,240 contributions</p>
+<p class="text-xs font-medium text-on-surface-variant" id="donation-pagination-info">Showing recent record set</p>
 <div class="flex gap-2">
 <button class="p-2 border border-outline-variant/30 rounded-lg hover:bg-surface-container-high transition-all">
 <span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>

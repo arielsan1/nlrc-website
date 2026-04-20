@@ -176,10 +176,19 @@
       <input class="bg-surface-container-highest border-none rounded-full py-1.5 pl-10 pr-4 text-sm w-64 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search events..." type="text" id="search-input" oninput="filterEvents()"/>
     </div>
   </div>
-  <div class="flex items-center gap-4">
-    <a href="events.html" target="_blank" class="flex items-center gap-2 text-xs font-bold text-primary hover:text-secondary transition-colors">
-      <span class="material-symbols-outlined text-sm">open_in_new</span> View Public Page
-    </a>
+  <div class="flex items-center gap-6">
+    <div class="flex items-center gap-4">
+        <button class="p-2 text-slate-500 hover:text-secondary transition-colors">
+            <span class="material-symbols-outlined">notifications</span>
+        </button>
+    </div>
+    <div class="flex items-center gap-3 pl-6 border-l border-surface-container-highest">
+        <div class="text-right hidden sm:block">
+            <p class="text-sm font-bold text-primary admin-profile-name">Admin User</p>
+            <p class="text-[10px] text-on-surface-variant font-medium">Event Coordinator</p>
+        </div>
+        <img alt="Administrator Profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary/10 admin-profile-photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvZ_EWgfTyeIk_gzxRJyija1duXJ-w91iYG84VI9suNyVJxjvNtFHS2P2U0PhWXepApxdtKniWi0TRW9bPwRhpXsnSmV98ESVsD-2nWUdyp0Fftj9raV5Z8m4JdgyYmUfc3R17AmSWOQigVQMAJEg7vypfI1nL68pc94orGa6qFNmvIf6vLMo2r6JglgwzPOW0QOdoIViyrFVaafpAHGvKZl6ZTvu8YnSdAUv-GF0RvSvzKJxLGIbmmf3ZHBfOXN989ayqmGu2aMnd"/>
+    </div>
     <button onclick="openEventModal()" class="bg-secondary text-white px-6 py-2 rounded-xl font-bold text-sm flex items-center gap-2 hover:bg-primary transition-all shadow-lg">
       <span class="material-symbols-outlined text-sm">add</span> Add Event
     </button>
