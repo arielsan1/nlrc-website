@@ -67,7 +67,44 @@
         <header class="sticky top-0 right-0 z-40 h-16 px-8 flex justify-between items-center bg-white/80 backdrop-blur-md border-b border-outline-variant/10">
             <h2 class="font-headline font-bold text-primary text-xl">Next Level Recreation Center</h2>
             <div class="flex items-center gap-4">
-                <div class="flex items-center gap-3 bg-surface-container rounded-full px-4 py-1.5 border border-outline-variant/5">
+                <!-- Contextual Notifications -->
+                <div class="relative group">
+                    <span class="material-symbols-outlined text-primary cursor-pointer p-2 hover:bg-surface-container rounded-full transition-all">notifications</span>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full border-2 border-white" id="booking-notif-dot"></span>
+                    
+                    <div class="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-outline-variant/10 overflow-hidden hidden group-hover:block z-50">
+                        <div class="p-4 bg-primary text-white flex justify-between items-center">
+                            <h4 class="font-bold text-xs uppercase tracking-widest">Booking Alerts</h4>
+                            <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded">NEW</span>
+                        </div>
+                        <div id="booking-notif-list" class="max-h-80 overflow-y-auto">
+                            <div class="p-8 text-center text-on-surface-variant/40 italic text-xs">No recent booking changes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page Settings -->
+                <div class="relative group">
+                    <span class="material-symbols-outlined text-primary cursor-pointer p-2 hover:bg-surface-container rounded-full transition-all">settings</span>
+                    <div class="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-outline-variant/10 overflow-hidden hidden group-hover:block z-50">
+                        <div class="p-4 border-b border-outline-variant/10">
+                            <h4 class="font-bold text-primary text-sm">Schedule Configuration</h4>
+                        </div>
+                        <div class="p-4 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-medium text-on-surface-variant">Public Sync</span>
+                                <div class="w-8 h-4 bg-secondary rounded-full relative cursor-pointer"><div class="absolute right-1 top-1 w-2 h-2 bg-white rounded-full"></div></div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-medium text-on-surface-variant">Automated Alerts</span>
+                                <div class="w-8 h-4 bg-surface-container-highest rounded-full relative cursor-pointer"><div class="absolute left-1 top-1 w-2 h-2 bg-white rounded-full"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-8 w-[1px] bg-outline-variant/20 mx-2"></div>
+                <div class="flex items-center gap-3 bg-surface-container rounded-full px-4 py-1.5 border border-outline-variant/20">
                     <span class="admin-profile-name text-xs font-bold text-primary">Admin</span>
                     <img class="admin-profile-photo w-6 h-6 rounded-full border-2 border-white shadow-sm" src="https://via.placeholder.com/150">
                 </div>
@@ -244,6 +281,39 @@
                 alert('Database Error: ' + err.message);
             }
         };
+        // Contextual Booking Notifications
+        const bookingNotifList = document.getElementById('booking-notif-list');
+        const bookingNotifDot = document.getElementById('booking-notif-dot');
+        let bookingActivities = [];
+
+        onSnapshot(query(collection(db, "bookings"), orderBy("updatedAt", "desc"), limit(5)), (snapshot) => {
+            snapshot.docChanges().forEach(change => {
+                const data = change.doc.data();
+                const type = change.type === 'added' ? 'New' : 'Update';
+                
+                bookingActivities.unshift({
+                    id: change.doc.id,
+                    title: `${type}: ${data.space || 'Unknown Space'}`,
+                    desc: data.email || 'System Action',
+                    time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                });
+
+                bookingActivities = bookingActivities.slice(0, 5);
+                renderBookingNotifs();
+            });
+        });
+
+        function renderBookingNotifs() {
+            if (!bookingNotifList) return;
+            bookingNotifList.innerHTML = bookingActivities.map(act => `
+                <div class="px-5 py-4 border-b border-outline-variant/5 hover:bg-surface-container-low transition-colors cursor-pointer">
+                    <p class="text-[11px] font-bold text-primary mb-0.5">${act.title}</p>
+                    <p class="text-[10px] text-on-surface-variant truncate">${act.desc}</p>
+                    <p class="text-[9px] text-slate-400 mt-1 uppercase font-medium">${act.time}</p>
+                </div>
+            `).join('');
+            if (bookingNotifDot) bookingNotifDot.classList.remove('hidden');
+        }
     </script>
     <script type="module" src="js/auth-handler.js"></script>
 </body>

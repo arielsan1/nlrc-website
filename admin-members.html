@@ -149,14 +149,37 @@
 </div>
 </div>
 <div class="flex items-center gap-6">
-<div class="flex items-center gap-4">
-<button class="p-2 text-slate-500 hover:text-[#b51a1e] transition-colors">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-</button>
-<button class="p-2 text-slate-500 hover:text-[#b51a1e] transition-colors">
-<span class="material-symbols-outlined" data-icon="settings">settings</span>
-</button>
-</div>
+        <!-- Contextual Notifications (Memberships) -->
+        <div class="relative group">
+            <span class="material-symbols-outlined text-primary cursor-pointer p-2 hover:bg-surface-container-low rounded-full transition-all" id="member-notif-bell">notifications</span>
+            <span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full border-2 border-white hidden" id="member-notif-dot"></span>
+            
+            <div class="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-outline-variant/10 overflow-hidden hidden group-hover:block z-50">
+                <div class="p-4 bg-primary text-white flex justify-between items-center">
+                    <h4 class="font-bold text-xs uppercase tracking-widest">Member Alerts</h4>
+                    <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded">NEW</span>
+                </div>
+                <div id="member-notif-list" class="max-h-80 overflow-y-auto font-body">
+                    <div class="p-8 text-center text-on-surface-variant/40 italic text-xs">No recent membership activity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Membership Settings -->
+        <div class="relative group">
+            <span class="material-symbols-outlined text-primary cursor-pointer p-2 hover:bg-surface-container-low rounded-full transition-all">settings</span>
+            <div class="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-outline-variant/10 overflow-hidden hidden group-hover:block z-50">
+                <div class="p-4 border-b border-outline-variant/10">
+                    <h4 class="font-bold text-primary text-sm font-headline">Member Portal Settings</h4>
+                </div>
+                <div class="p-4 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-medium text-on-surface-variant">Self-Service Edits</span>
+                        <div class="w-8 h-4 bg-secondary rounded-full relative cursor-pointer"><div class="absolute right-1 top-1 w-2 h-2 bg-white rounded-full"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 <div class="flex items-center gap-3 pl-6 border-l border-outline-variant/30">
 <div class="text-right hidden sm:block">
 <p class="text-sm font-bold text-[#002046] admin-profile-name">Admin User</p>
@@ -272,6 +295,33 @@
     });
 
     // Table handled by the script already present in the file
+    // Member-Specific Notifications
+    const memberNotifList = document.getElementById('member-notif-list');
+    const memberNotifDot = document.getElementById('member-notif-dot');
+    let memberLog = [];
+
+    onSnapshot(query(collection(db, "members"), orderBy("joinedDate", "desc"), limit(5)), (snapshot) => {
+        snapshot.docChanges().forEach(change => {
+            const data = change.doc.data();
+            memberLog.unshift({
+                id: change.doc.id,
+                title: `${change.type === 'added' ? 'New Member' : 'Member Update'}`,
+                desc: data.name || data.email || 'Admin Action',
+                time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            });
+            memberLog = memberLog.slice(0, 5);
+            if (memberNotifList) {
+                memberNotifList.innerHTML = memberLog.map(act => `
+                    <div class="px-5 py-4 border-b border-outline-variant/5 hover:bg-surface-container-low transition-colors cursor-pointer">
+                        <p class="text-[11px] font-bold text-primary mb-0.5">${act.title}</p>
+                        <p class="text-[10px] text-on-surface-variant truncate">${act.desc}</p>
+                        <p class="text-[9px] text-slate-400 mt-1 uppercase font-medium">${act.time}</p>
+                    </div>
+                `).join('');
+                if (memberNotifDot) memberNotifDot.classList.remove('hidden');
+            }
+        });
+    });
 </script>
 <script type="module">
     import { db, collection, onSnapshot, query, orderBy } from "./js/firebase-config.js";
