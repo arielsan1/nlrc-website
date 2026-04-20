@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
@@ -58,7 +58,7 @@
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-3xl text-primary cursor-pointer md:hidden" onclick="toggleMenu()">menu</span>
 <button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
-<span class="material-symbols-outlined text-3xl text-primary cursor-pointer" onclick="window.location.href='admin-login.html'">account_circle</span>
+<div class="auth-trigger flex items-center justify-center cursor-pointer" id="header-auth-trigger"><span class="material-symbols-outlined text-3xl text-primary">account_circle</span></div>
 </div>
 </div>
 </nav>
@@ -174,4 +174,5 @@
         }
     }
 </script>
-</body></html>
+<script type="module" src="js/auth-handler.js"></script></body></html>
+

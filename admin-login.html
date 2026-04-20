@@ -143,10 +143,21 @@
 </label>
 </div>
 <!-- CTA -->
-<button class="w-full py-4 px-6 bg-gradient-to-r from-primary to-primary-container text-white font-headline font-bold text-lg rounded-xl shadow-lg hover:shadow-primary/20 hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-3" type="submit">
-<span>Sign In</span>
-<span class="material-symbols-outlined">login</span>
-</button>
+    <button class="w-full py-4 px-6 bg-gradient-to-r from-primary to-primary-container text-white font-headline font-bold text-lg rounded-xl shadow-lg hover:shadow-primary/20 hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-3" type="submit">
+        <span>Sign In</span>
+        <span class="material-symbols-outlined">login</span>
+    </button>
+    
+    <div class="relative flex items-center py-5">
+        <div class="flex-grow border-t border-surface-container-highest"></div>
+        <span class="flex-shrink mx-4 text-xs font-black text-on-surface-variant uppercase tracking-widest">Or</span>
+        <div class="flex-grow border-t border-surface-container-highest"></div>
+    </div>
+
+    <button type="button" onclick="signInWithGoogle().then(u => {if(u) window.location.href='admin-dashboard.html'})" class="w-full py-4 px-6 bg-white border border-surface-container-highest text-primary font-headline font-bold text-lg rounded-xl shadow-sm hover:bg-surface-container-low transition-all flex items-center justify-center gap-3">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/action/google.svg" class="w-6 h-6" alt="Google Logo">
+        <span>Sign in with Google</span>
+    </button>
 <div class="mt-6 p-4 bg-primary/5 border border-primary/10 rounded-xl flex gap-3">
 <span class="material-symbols-outlined text-primary text-sm">key</span>
 <p class="text-[11px] leading-normal text-on-surface-variant/80 font-medium">
@@ -174,4 +185,5 @@
 </footer>
 </div>
 </main>
+<script type="module" src="js/auth-handler.js"></script>
 </body></html>
