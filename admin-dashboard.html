@@ -195,7 +195,7 @@
 </div>
 <div class="mt-8">
 <p class="text-on-surface-variant font-medium text-sm">Active Members</p>
-<h4 class="text-4xl font-headline font-black text-primary">1,284</h4>
+<h4 class="text-4xl font-headline font-black text-primary" id="active-members-count">1,284</h4>
 </div>
 </div>
 <!-- Total Bookings -->
@@ -211,7 +211,7 @@
 </div>
 <div class="mt-8">
 <p class="text-on-surface-variant font-medium text-sm">Total Bookings</p>
-<h4 class="text-4xl font-headline font-black text-primary">342</h4>
+<h4 class="text-4xl font-headline font-black text-primary" id="total-bookings-count">342</h4>
 </div>
 </div>
 <!-- Monthly Donations -->
@@ -227,7 +227,7 @@
 </div>
 <div class="mt-8">
 <p class="text-on-surface-variant font-medium text-sm">Monthly Donations</p>
-<h4 class="text-4xl font-headline font-black text-primary">$42,500</h4>
+<h4 class="text-4xl font-headline font-black text-primary" id="monthly-donations-amount">$42,500</h4>
 </div>
 </div>
 </div>
@@ -341,4 +341,32 @@
 </div>
 </div>
 </main>
+<script type="module">
+    import { db, collection, onSnapshot, query, orderBy, limit } from "./js/firebase-config.js";
+
+    // Listen to Members
+    onSnapshot(collection(db, "members"), (snapshot) => {
+        const count = snapshot.size;
+        document.getElementById('active-members-count').innerText = count.toLocaleString();
+    });
+
+    // Listen to Bookings
+    onSnapshot(collection(db, "bookings"), (snapshot) => {
+        const count = snapshot.size;
+        document.getElementById('total-bookings-count').innerText = count.toLocaleString();
+    });
+
+    // Listen to Donations
+    onSnapshot(collection(db, "donations"), (snapshot) => {
+        let total = 0;
+        snapshot.forEach((doc) => {
+            total += parseFloat(doc.data().amount || 0);
+        });
+        document.getElementById('monthly-donations-amount').innerText = "$" + total.toLocaleString();
+    });
+
+    // Recent Activity - Listen for latest docs
+    // (This is a simplified version that just logs to console or could append to the list)
+    console.log("Firebase Dashboard Controller Initialized");
+</script>
 </body></html>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en"><head>
 <meta charset="utf-8"/>
@@ -34,9 +34,6 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .hero-gradient {
-            background: linear-gradient(135deg, #002046 0%, #1b365d 100%);
-        }
     </style>
 </head>
 <body class="bg-surface font-body text-on-surface antialiased flex flex-col min-h-screen">
@@ -60,17 +57,12 @@
 <!-- Left Column: Payment Details -->
 <div class="lg:col-span-7 space-y-10">
 <section>
-<h1 class="font-headline text-5xl font-black tracking-tight text-primary mb-3">Finalize Booking</h1>
-<p class="text-on-surface-variant text-lg">Complete your reservation securely with NLRC.</p>
+<h1 class="font-headline text-5xl font-black tracking-tight text-primary mb-3">Finalize Mission</h1>
+<p class="text-on-surface-variant text-lg">Your community excellence starts here. Complete your transaction securely.</p>
 <!-- Payment Card -->
 <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-surface-container-highest space-y-8 mt-10">
 <div class="flex items-center justify-between">
-<h2 class="font-headline text-2xl font-black text-primary">Payment Details</h2>
-<div class="flex gap-2">
-<div class="w-12 h-8 bg-surface-container-low rounded-lg flex items-center justify-center border border-surface-container-highest">
-<span class="material-symbols-outlined text-lg text-primary">credit_card</span>
-</div>
-</div>
+<h2 class="font-headline text-2xl font-black text-primary">Secure Payment</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div class="md:col-span-2 space-y-3">
@@ -79,10 +71,7 @@
 </div>
 <div class="md:col-span-2 space-y-3">
 <label class="text-[10px] font-black uppercase tracking-widest text-primary/60">Card Number</label>
-<div class="relative">
-<input class="w-full bg-surface-container-low border-b-2 border-surface-container-highest focus:border-secondary outline-none h-14 px-4 font-headline font-bold text-lg" placeholder="â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢" type="text"/>
-<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-primary/40">contactless</span>
-</div>
+<input class="w-full bg-surface-container-low border-b-2 border-surface-container-highest focus:border-secondary outline-none h-14 px-4 font-headline font-bold text-lg" placeholder="•••• •••• •••• ••••" type="text"/>
 </div>
 <div class="space-y-3">
 <label class="text-[10px] font-black uppercase tracking-widest text-primary/60">Expiry Date</label>
@@ -94,57 +83,43 @@
 </div>
 </div>
 <div class="flex items-start gap-4 p-5 bg-surface-container-low rounded-2xl border border-surface-container-highest">
-<span class="material-symbols-outlined text-secondary" data-weight="fill">shield_check</span>
-<p class="text-sm text-on-surface-variant leading-relaxed">
-                                Your transaction is protected by 256-bit SSL encryption. Next Level Recreation Center maintains elite security standards for our community.
-                            </p>
+    <span class="material-symbols-outlined text-secondary" data-weight="fill">shield_check</span>
+    <p class="text-sm text-on-surface-variant leading-relaxed">
+        Your transaction is protected by 256-bit SSL encryption. Secure community infrastructure.
+    </p>
 </div>
-<button onclick="document.getElementById('success-state').classList.remove('hidden')" class="w-full py-5 bg-primary text-white font-headline font-black text-xl rounded-2xl shadow-xl hover:bg-secondary transition-all flex items-center justify-center gap-3">
-                            Confirm &amp; Pay $90.00
-                            <span class="material-symbols-outlined">arrow_forward</span>
+<button onclick="processPayment()" class="w-full py-5 bg-primary text-white font-headline font-black text-xl rounded-2xl shadow-xl hover:bg-secondary transition-all flex items-center justify-center gap-3">
+    Confirm & Secure Payment
+    <span class="material-symbols-outlined">arrow_forward</span>
 </button>
 </div>
 </section>
 </div>
+
 <!-- Right Column: Summary Card -->
 <aside class="lg:col-span-5">
 <div class="bg-primary text-white p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden sticky top-32">
-<div class="absolute -top-10 -right-10 opacity-5 pointer-events-none">
-<span class="material-symbols-outlined text-[15rem]">verified_user</span>
-</div>
 <h3 class="font-headline text-3xl font-black mb-10 relative z-10 tracking-tight">NLRC Summary</h3>
 <div class="space-y-8 relative z-10 font-headline">
 <div class="flex items-start gap-5">
 <div class="w-24 h-24 rounded-2xl overflow-hidden shadow-lg border-2 border-white/10">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCccceJpJyhlPmwt3Mi4w8WhyPorG3NVc19a_iy7dg4vPKEgmQ_wOx0hElsNAUILCyQ0SFFo7P2ULrA52URv9aPl2xabFfUFjm16xMmS0pUWEXANk6DmYHSOom7FXhTPjq8riia2DJf_5Sct9zVOOgXSyMyLQ9BES4RTIAG0A_Abp7zfGMoFdaffa2iyT5ewvUj0gu6pONExwTPhScMm3kub7HJ4p5bJOta2xTTo362PUGpS_E434Vp0-PmjnYO-Z-MuGwbp8Z9KPj5"/>
+<img class="w-full h-full object-cover" id="summary-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCccceJpJyhlPmwt3Mi4w8WhyPorG3NVc19a_iy7dg4vPKEgmQ_wOx0hElsNAUILCyQ0SFFo7P2ULrA52URv9aPl2xabFfUFjm16xMmS0pUWEXANk6DmYHSOom7FXhTPjq8riia2DJf_5Sct9zVOOgXSyMyLQ9BES4RTIAG0A_Abp7zfGMoFdaffa2iyT5ewvUj0gu6pONExwTPhScMm3kub7HJ4p5bJOta2xTTo362PUGpS_E434Vp0-PmjnYO-Z-MuGwbp8Z9KPj5"/>
 </div>
 <div>
-<h4 class="font-black text-xl">Elite Court A</h4>
+<h4 class="font-black text-xl" id="summary-title">Elite Recreation Space</h4>
 <p class="text-slate-400 font-bold uppercase tracking-widest text-[10px] mt-1">NLRC Performance Hub</p>
 </div>
 </div>
 <div class="border-t border-white/10 pt-8 space-y-6">
 <div class="flex justify-between items-center text-lg">
-<span class="font-bold opacity-60">Date</span>
-<span class="font-black">Tuesday, Dec 10</span>
-</div>
-<div class="flex justify-between items-center text-lg">
-<span class="font-bold opacity-60">Time</span>
-<span class="font-black">10:00 AM - 11:00 AM</span>
+<span class="font-bold opacity-60">Status</span>
+<span class="font-black">Ready for Activation</span>
 </div>
 </div>
 <div class="border-t border-white/10 pt-8 space-y-4">
-<div class="flex justify-between text-sm">
-<span class="opacity-60 font-bold">Rental Rate</span>
-<span>$85.00</span>
-</div>
-<div class="flex justify-between text-sm">
-<span class="opacity-60 font-bold">Facility Service</span>
-<span>$5.00</span>
-</div>
 <div class="flex justify-between items-end pt-6 border-t border-dashed border-white/20">
-<span class="font-black text-2xl">Total Amount</span>
-<span class="font-black text-4xl text-secondary">$90.00</span>
+<span class="font-black text-2xl">Amount Due</span>
+<span class="font-black text-4xl text-secondary" id="summary-price">$90.00</span>
 </div>
 </div>
 </div>
@@ -158,14 +133,10 @@
 <div class="w-24 h-24 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl shadow-secondary/20">
 <span class="material-symbols-outlined text-white text-5xl" data-weight="fill">check_circle</span>
 </div>
-<h2 class="font-headline text-4xl font-black text-primary tracking-tighter">Performance Confirmed!</h2>
-<p class="text-on-surface-variant text-lg">Your reservation at Next Level Recreation Center is locked in. We've sent the mission details to your inbox.</p>
-<div class="bg-surface-container-low p-6 rounded-2xl text-left border-l-8 border-secondary">
-<p class="text-[10px] font-black uppercase tracking-widest text-secondary mb-2">Confirmation ID</p>
-<p class="font-headline font-black text-primary text-xl">NLRC-2026-EXCELLENCE</p>
-</div>
+<h2 class="font-headline text-4xl font-black text-primary tracking-tighter">Registration Confirmed!</h2>
+<p class="text-on-surface-variant text-lg">Your data has been logged to the NLRC Mission Control. Your excellence journey begins now.</p>
 <button onclick="window.location.href='index.html'" class="w-full py-5 bg-primary text-white font-black font-headline text-xl rounded-2xl hover:bg-secondary transition-all shadow-xl">
-                Return to Mission Control
+                Return to Home
             </button>
 </div>
 </div>
@@ -174,21 +145,47 @@
   <div class="max-w-7xl mx-auto px-8 text-left">
     <div class="text-xl font-black font-headline mb-2">Next Level Recreation Center</div>
     <p class="text-slate-400 text-sm max-w-sm">Professional spaces for athletic and community excellence.</p>
-    <div class="flex gap-4 mt-6">
-      <a class="text-slate-400 hover:text-white transition-colors" href="https://www.facebook.com/profile.php?id=61584869476875" rel="noopener noreferrer" target="_blank">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
-      </a>
-      <a class="text-slate-400 hover:text-white transition-colors" href="https://www.instagram.com/nlrctexas" rel="noopener noreferrer" target="_blank">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" fill-rule="evenodd"></path></svg>
-      </a>
-      <a class="text-slate-400 hover:text-white transition-colors" href="https://www.linkedin.com/company/next-level-recreation-center-llc/" rel="noopener noreferrer" target="_blank">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
-      </a>
-      <a class="text-slate-400 hover:text-white transition-colors" href="mailto:info.nextlevelrec@gmail.com">
-        <span class="material-symbols-outlined text-2xl">mail</span>
-      </a>
-    </div>
   </div>
 </footer>
-</body></html>
 
+<script type="module">
+    import { db, collection, addDoc } from "./js/firebase-config.js";
+
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type') || 'booking';
+    const tier = params.get('tier');
+    const item = params.get('item');
+
+    // Update UI based on params
+    if (type === 'membership') {
+        document.getElementById('summary-title').innerText = tier + " Membership";
+        document.getElementById('summary-price').innerText = tier === 'Family' ? '$89.00' : (tier === 'Veteran' ? '$29.00' : '$49.00');
+    } else if (item) {
+        document.getElementById('summary-title').innerText = item.replace(/([A-Z])/g, ' $1').trim();
+    }
+
+    async function processPayment() {
+        try {
+            if (type === 'membership') {
+                await addDoc(collection(db, "members"), {
+                    tier: tier || 'Individual',
+                    date: new Date().toISOString(),
+                    status: 'active'
+                });
+            } else {
+                await addDoc(collection(db, "bookings"), {
+                    item: item || 'Elite Court A',
+                    date: new Date().toISOString(),
+                    type: 'rental'
+                });
+            }
+            // Show success state
+            document.getElementById('success-state').classList.remove('hidden');
+        } catch (e) {
+            console.error("Error adding document: ", e);
+            alert("Firebase Error: Make sure you have initialized your Firebase config with valid keys.");
+        }
+    }
+    window.processPayment = processPayment;
+</script>
+</body></html>
