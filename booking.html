@@ -53,11 +53,29 @@
 <a class="text-primary hover:text-secondary transition-colors" href="about.html">About</a>
 </div>
 <div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl text-primary cursor-pointer md:hidden" onclick="toggleMenu()">menu</span>
 <button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
 <span class="material-symbols-outlined text-3xl text-primary cursor-pointer" onclick="window.location.href='admin-login.html'">account_circle</span>
 </div>
 </div>
 </nav>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="hidden fixed inset-0 z-[60] bg-white pt-24 px-8">
+  <button class="absolute top-8 right-8 text-primary" onclick="toggleMenu()">
+    <span class="material-symbols-outlined text-4xl">close</span>
+  </button>
+  <div class="flex flex-col space-y-6 text-2xl font-headline font-bold text-primary">
+    <a href="index.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Home</a>
+    <a href="rentals.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Booking</a>
+    <a href="events.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Events</a>
+    <a href="events.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Programs</a>
+    <a href="memberships.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Membership</a>
+    <a href="about.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">About</a>
+    <div class="pt-6 border-t border-surface-container-highest">
+        <button class="bg-primary text-white w-full py-4 rounded-xl shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate Now</button>
+    </div>
+  </div>
+</div>
 
 <main class="flex-grow pt-32 pb-20 px-8 max-w-7xl mx-auto w-full">
 <!-- Selected Space Header -->
@@ -192,5 +210,18 @@
         document.getElementById('calendly-embed').classList.remove('hidden');
     }
 </script>
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+        if (!menu.classList.contains('hidden')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }
+</script>
 </body></html>
+
+
 
