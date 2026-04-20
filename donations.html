@@ -1,185 +1,92 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Donate & Support | NLRC - Next Level Recreation Center</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "primary": "#002046",
-                      "secondary": "#b51a1e",
-                      "surface": "#f8f9fa",
-                      "on-surface": "#191c1d",
-                      "on-surface-variant": "#44474e",
-                      "surface-container-low": "#f3f4f5",
-                      "surface-container-highest": "#e1e3e4",
-                      "primary-container": "#1b365d"
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Donate | Next Level Recreation Center</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Public+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+    <script id="tailwind-config">
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                "colors": {
+                        "primary": "#002046",
+                        "secondary": "#b51a1e",
+                        "surface": "#f8f9fa"
+                },
+                "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Public Sans"]
+                }
               },
-              "fontFamily": {
-                      "headline": ["Manrope"],
-                      "body": ["Public Sans"]
-              }
             },
-          },
-        }
-      </script>
-<style type="text/tailwindcss">
-        @layer base {
-            .material-symbols-outlined {
-                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            }
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #002046 0%, #1b365d 100%);
-        }
-      </style></head>
-<body class="bg-surface font-body text-on-surface antialiased min-h-screen flex flex-col">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm h-20">
-<div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
-<div class="text-2xl font-black text-primary tracking-tighter font-headline cursor-pointer" onclick="window.location.href='index.html'">
+          }
+    </script>
+</head>
+<body class="bg-surface font-body text-[#191c1d]">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm h-20">
+        <div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
+            <div class="text-2xl font-black text-primary tracking-tighter font-headline cursor-pointer" onclick="window.location.href='index.html'">
                 Next Level Recreation
             </div>
-<div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight">
-<a class="text-primary hover:text-secondary transition-colors" href="index.html">Home</a>
-<a class="text-primary hover:text-secondary transition-colors" href="rentals.html">Booking</a>
-<a class="text-primary hover:text-secondary transition-colors" href="events.html">Events</a>
-<a class="text-primary hover:text-secondary transition-colors" href="events.html">Programs</a>
-<a class="text-primary hover:text-secondary transition-colors" href="memberships.html">Membership</a>
+            <div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight">
+                <a class="text-primary hover:text-secondary transition-colors" href="index.html">Home</a>
+                <a class="text-primary hover:text-secondary transition-colors" href="rentals.html">Booking</a>
+                <a class="text-primary hover:text-secondary transition-colors" href="events.html">Events</a>
+                <a class="text-primary hover:text-secondary transition-colors" href="events.html">Programs</a>
+                <a class="text-primary hover:text-secondary transition-colors" href="memberships.html">Membership</a>
                 <a class="text-primary hover:text-secondary transition-colors" href="about.html">About</a>
                 <a class="text-slate-400 hover:text-primary transition-colors border-l border-slate-300 pl-6 ml-6 text-xs font-bold uppercase tracking-widest hidden md:inline-block" href="admin-login.html">Admin Console</a>
-</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-3xl text-primary cursor-pointer md:hidden" onclick="toggleMenu()">menu</span>
-<button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
-<div class="auth-trigger flex items-center justify-center cursor-pointer" id="header-auth-trigger"><span class="material-symbols-outlined text-3xl text-primary">account_circle</span></div>
-</div>
-</div>
-</nav>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-3xl text-primary cursor-pointer md:hidden" onclick="toggleMenu()">menu</span>
+                <button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
+                <div class="auth-trigger flex items-center justify-center cursor-pointer" id="header-auth-trigger"><span class="material-symbols-outlined text-3xl text-primary">account_circle</span></div>
+            </div>
+        </div>
+    </nav>
 
-<!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="hidden fixed inset-0 z-[60] bg-white pt-24 px-8">
-  <button class="absolute top-8 right-8 text-primary" onclick="toggleMenu()">
-    <span class="material-symbols-outlined text-4xl">close</span>
-  </button>
-  <div class="flex flex-col space-y-6 text-2xl font-headline font-bold text-primary">
-    <a href="index.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Home</a>
-    <a href="rentals.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Booking</a>
-    <a href="events.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Events</a>
-    <a href="events.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Programs</a>
-    <a href="memberships.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Membership</a>
-    <a href="about.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">About</a>
-    <div class="pt-6 border-t border-surface-container-highest">
-        <button class="bg-primary text-white w-full py-4 rounded-xl shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate Now</button>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-[60] bg-white pt-24 px-8">
+      <button class="absolute top-8 right-8 text-primary" onclick="toggleMenu()"><span class="material-symbols-outlined text-4xl">close</span></button>
+      <div class="flex flex-col space-y-6 text-2xl font-headline font-bold text-primary">
+        <a href="index.html" onclick="toggleMenu()">Home</a>
+        <a href="rentals.html" onclick="toggleMenu()">Booking</a>
+        <a href="events.html" onclick="toggleMenu()">Events</a>
+        <a href="events.html" onclick="toggleMenu()">Programs</a>
+        <a href="memberships.html" onclick="toggleMenu()">Membership</a>
+        <a href="about.html" onclick="toggleMenu()">About</a>
+        <a href="admin-login.html" onclick="toggleMenu()">Admin Console</a>
+      </div>
     </div>
-  </div>
-</div>
 
-<main class="min-h-screen pt-20">
-<!-- Hero Section -->
-<section class="relative hero-gradient pt-24 pb-32 px-8 overflow-hidden">
-<div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]"></div>
-<div class="max-w-4xl mx-auto text-center relative z-10">
-<span class="inline-block bg-secondary text-white px-4 py-1.5 rounded-sm text-xs font-bold uppercase tracking-[0.2em] mb-8">Build-Out Phase</span>
-<h2 class="font-headline text-5xl md:text-8xl font-extrabold text-white leading-[0.9] tracking-tighter mb-10">Support Our <br/><span class="text-secondary italic">Legacy.</span></h2>
-<p class="text-slate-300 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed mb-12">
-                    We are building a veteran-owned, next-level recreation center in Greater Houston. Your contribution directly funds the legacy of performance and connection.
-                </p>
-<div class="flex flex-col sm:flex-row gap-6 justify-center">
-<a class="bg-secondary hover:bg-red-700 text-white px-10 py-5 rounded-2xl font-headline font-bold text-xl shadow-2xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3" href="https://www.gofundme.com/f/help-build-next-level-recreation-center-veteranowned-co" target="_blank">
-                        Donate via GoFundMe
-                        <span class="material-symbols-outlined text-2xl">volunteer_activism</span>
-</a>
-</div>
-</div>
-</section>
+    <main class="pt-32 px-8 max-w-7xl mx-auto">
+        <div class="max-w-3xl mx-auto text-center mb-16">
+            <h1 class="text-6xl font-black text-primary font-headline tracking-tighter mb-6">Support Our Mission</h1>
+            <p class="text-xl text-slate-500">Your contributions help us provide better equipment, programs, and opportunities for the community.</p>
+        </div>
 
-<!-- Primary Campaign Highlight -->
-<section class="max-w-6xl mx-auto px-8 -mt-16 relative z-20 mb-24">
-<div class="bg-white rounded-[3rem] shadow-2xl p-10 md:p-20 text-center border border-surface-container-highest">
-<div class="max-w-3xl mx-auto">
-<h3 class="font-headline text-4xl font-black text-primary mb-8 tracking-tighter">Official Build-Out Campaign</h3>
-<p class="text-on-surface-variant text-xl leading-relaxed mb-12">
-            NLRC is more than just a facility. It's a sanctuary for veteran connection, family wellness, and athletic growth. Join the mission today.
-        </p>
-<div class="grid sm:grid-cols-3 gap-10 mb-16">
-<div class="flex flex-col items-center gap-5">
-<div class="size-24 rounded-full flex items-center justify-center overflow-hidden bg-surface-container-low border-4 border-surface-container-highest shadow-inner">
-<img class="w-full h-full object-cover" src="strength_floor_icon_1775352832849.png" alt="Strength Floor Illustration"/>
-</div>
-<span class="font-headline font-bold text-primary text-sm uppercase tracking-widest">Strength Floor</span>
-</div>
-<div class="flex flex-col items-center gap-5">
-<div class="size-24 rounded-full flex items-center justify-center overflow-hidden bg-surface-container-low border-4 border-surface-container-highest shadow-inner">
-<img class="w-full h-full object-cover" src="veteran_lounge_icon_1775352883426.png" alt="Veteran Lounge Illustration"/>
-</div>
-<span class="font-headline font-bold text-primary text-sm uppercase tracking-widest">Veteran Lounge</span>
-</div>
-<div class="flex flex-col items-center gap-5">
-<div class="size-24 rounded-full flex items-center justify-center overflow-hidden bg-surface-container-low border-4 border-surface-container-highest shadow-inner">
-<img class="w-full h-full object-cover" src="community_court_icon_donations_1775352899697.png" alt="Community Court Illustration"/>
-</div>
-<span class="font-headline font-bold text-primary text-sm uppercase tracking-widest">Community Court</span>
-</div>
-</div>
-<div class="flex flex-col items-center gap-4">
-<a class="inline-flex items-center gap-3 text-secondary font-black text-xl group hover:opacity-80 transition-opacity" href="https://www.gofundme.com/f/help-build-next-level-recreation-center-veteranowned-co" target="_blank">
-            Track Progress on GoFundMe 
-            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-<button id="sim-donate" class="mt-4 px-6 py-2 bg-surface-container-low text-primary font-bold rounded-lg text-sm hover:bg-secondary hover:text-white transition-all shadow-sm">Simulate $50 Donation (for Dashboard test)</button>
-</div>
-</div>
-</div>
-</section>
-</main>
+        <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl p-12 border border-slate-100">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <button class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:border-secondary hover:text-secondary transition-all">$10</button>
+                <button class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:border-secondary hover:text-secondary transition-all">$25</button>
+                <button class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:border-secondary hover:text-secondary transition-all">$50</button>
+                <button class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:border-secondary hover:text-secondary transition-all">Custom</button>
+            </div>
+            <button class="w-full bg-secondary text-white py-5 rounded-2xl font-black text-xl shadow-xl shadow-secondary/20 hover:scale-[1.02] transition-all">Complete Donation</button>
+            <p class="text-center text-slate-400 mt-6 text-sm italic">Next Level Recreation Center is a registered 501(c)(3) organization.</p>
+        </div>
+    </main>
 
-<footer class="bg-primary text-white py-12">
-  <div class="max-w-7xl mx-auto px-8 text-left">
-    <div class="text-xl font-black font-headline mb-2">Next Level Recreation Center</div>
-    <p class="text-slate-400 text-sm max-w-sm">Professional spaces for athletic and community excellence.</p>
-  </div>
-        <div class="mt-8 pt-8 border-t border-white/10 flex justify-between items-center">
-      <p class="text-slate-500 text-xs">© 2024 Next Level Recreation Center. All rights reserved.</p>
-      <a href="admin-login.html" class="text-slate-500 hover:text-white text-xs transition-colors font-bold uppercase tracking-widest">Admin Portal</a>
-    </div>
-  </footer>
-
-<script type="module">
-    import { db, collection, addDoc } from "./js/firebase-config.js";
-    document.getElementById('sim-donate').onclick = async () => {
-        try {
-            await addDoc(collection(db, "donations"), {
-                amount: 50.00,
-                date: new Date().toISOString(),
-                contributor: "Community Member"
-            });
-            alert("Donation logged to Firebase! Check your Admin Dashboard.");
-        } catch (e) {
-            console.error(e);
-            alert("Firebase Error: Check configuration.");
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
-    };
-</script>
-<script>
-    function toggleMenu() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-        if (!menu.classList.contains('hidden')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    }
-</script>
-<script type="module" src="js/auth-handler.js"></script></body></html>
-
-
-
+    </script>
+    <script type="module" src="js/auth-handler.js"></script>
+</body>
+</html>

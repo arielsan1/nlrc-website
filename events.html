@@ -1,196 +1,105 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Events Calendar | NLRC - Next Level Recreation Center</title>
-<meta name="description" content="View upcoming NLRC events, athletic clinics, community programs, and celebrations in Dayton, Texas."/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Public+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        "colors": {
-          "primary": "#002046",
-          "secondary": "#b51a1e",
-          "surface": "#f8f9fa",
-          "on-surface": "#191c1d",
-          "on-surface-variant": "#44474e",
-          "surface-container-low": "#f3f4f5",
-          "surface-container-highest": "#e1e3e4",
-          "primary-container": "#1b365d"
-        },
-        "fontFamily": {
-          "headline": ["Manrope"],
-          "body": ["Public Sans"]
-        }
-      }
-    }
-  }
-</script>
-<style>
-  .material-symbols-outlined { vertical-align: middle; }
-  /* Style the Google Calendar iframe to blend with the site */
-  .gcal-wrapper { border-radius: 1.5rem; overflow: hidden; box-shadow: 0 4px 24px rgba(0,32,70,0.08); }
-  .gcal-wrapper iframe { display: block; border: none; }
-</style>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Events & Programs | Next Level Recreation Center</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Public+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+    <script id="tailwind-config">
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                "colors": {
+                        "primary": "#002046",
+                        "secondary": "#b51a1e",
+                        "surface": "#f8f9fa"
+                },
+                "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Public Sans"]
+                }
+              },
+            },
+          }
+    </script>
 </head>
-<body class="bg-surface font-body text-on-surface antialiased min-h-screen">
-
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm h-20">
-  <div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
-    <div class="text-2xl font-black text-primary tracking-tighter font-headline cursor-pointer" onclick="window.location.href='index.html'">
-      Next Level Recreation
-    </div>
-    <div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight">
-      <a class="text-primary hover:text-secondary transition-colors" href="index.html">Home</a>
-<a class="text-primary hover:text-secondary transition-colors" href="rentals.html">Booking</a>
-      <a class="text-secondary border-b-2 border-secondary pb-1" href="events.html">Events</a>
-      <a class="text-primary hover:text-secondary transition-colors" href="events.html">Programs</a>
-      <a class="text-primary hover:text-secondary transition-colors" href="memberships.html">Membership</a>
-                      <a class="text-primary hover:text-secondary transition-colors" href="about.html">About</a>
+<body class="bg-surface font-body text-[#191c1d]">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm h-20">
+        <div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
+            <div class="text-2xl font-black text-primary tracking-tighter font-headline cursor-pointer" onclick="window.location.href='index.html'">
+                Next Level Recreation
+            </div>
+            <div class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight">
+                <a class="text-primary hover:text-secondary transition-colors" href="index.html">Home</a>
+                <a class="text-primary hover:text-secondary transition-colors" href="rentals.html">Booking</a>
+                <a class="text-secondary border-b-2 border-secondary pb-1" href="events.html">Events</a>
+                <a class="text-primary hover:text-secondary transition-colors" href="events.html">Programs</a>
+                <a class="text-primary hover:text-secondary transition-colors" href="memberships.html">Membership</a>
+                <a class="text-primary hover:text-secondary transition-colors" href="about.html">About</a>
                 <a class="text-slate-400 hover:text-primary transition-colors border-l border-slate-300 pl-6 ml-6 text-xs font-bold uppercase tracking-widest hidden md:inline-block" href="admin-login.html">Admin Console</a>
-    </div>
-    <div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-3xl text-primary cursor-pointer md:hidden" onclick="toggleMenu()">menu</span>
-      <button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
-      <div class="auth-trigger flex items-center justify-center cursor-pointer" id="header-auth-trigger"><span class="material-symbols-outlined text-3xl text-primary">account_circle</span></div>
-    </div>
-  </div>
-</nav>
-<!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="hidden fixed inset-0 z-[60] bg-white pt-24 px-8">
-  <button class="absolute top-8 right-8 text-primary" onclick="toggleMenu()">
-    <span class="material-symbols-outlined text-4xl">close</span>
-  </button>
-  <div class="flex flex-col space-y-6 text-2xl font-headline font-bold text-primary">
-    <a href="index.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Home</a>
-    <a href="rentals.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Booking</a>
-    <a href="events.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Events</a>
-    <a href="events.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Programs</a>
-    <a href="memberships.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">Membership</a>
-    <a href="about.html" class="hover:text-secondary transition-colors" onclick="toggleMenu()">About</a>
-    <div class="pt-6 border-t border-surface-container-highest">
-        <button class="bg-primary text-white w-full py-4 rounded-xl shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate Now</button>
-    </div>
-  </div>
-</div>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-3xl text-primary cursor-pointer md:hidden" onclick="toggleMenu()">menu</span>
+                <button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold shadow-lg hover:bg-secondary transition-all" onclick="window.location.href='donations.html'">Donate</button>
+                <div class="auth-trigger flex items-center justify-center cursor-pointer" id="header-auth-trigger"><span class="material-symbols-outlined text-3xl text-primary">account_circle</span></div>
+            </div>
+        </div>
+    </nav>
 
-<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
-  <header class="mb-12 text-center md:text-left">
-    <span id="calendar-label" class="inline-block px-4 py-1.5 bg-secondary/10 text-secondary font-bold text-xs uppercase tracking-widest mb-6 rounded-full">NLRC Calendar 2026</span>
-    <h1 class="text-5xl md:text-7xl font-extrabold text-primary font-headline tracking-tighter mb-4">Level Up Your <span class="text-secondary">Community</span></h1>
-    <p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed">From elite training camps to local heritage celebrations—discover where performance meets purpose.</p>
-  </header>
-
-  <!-- Info banner about Google Calendar -->
-  <div class="mb-8 bg-primary/5 border border-primary/20 rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center gap-4">
-    <span class="material-symbols-outlined text-primary text-3xl shrink-0">calendar_month</span>
-    <div class="flex-grow">
-      <p class="font-bold text-primary font-headline">Live NLRC Event Calendar</p>
-      <p class="text-on-surface-variant text-sm mt-0.5">This calendar is managed by NLRC administrators and syncs in real time. You can also <a href="#subscribe" class="text-secondary font-bold hover:underline">subscribe to our Google Calendar</a> to get events directly in your calendar app.</p>
-    </div>
-    <a href="https://calendar.google.com/calendar/r" target="_blank" class="shrink-0 bg-primary text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-secondary transition-all flex items-center gap-2 whitespace-nowrap">
-      <span class="material-symbols-outlined text-base">open_in_new</span> Open in Google Calendar
-    </a>
-  </div>
-
-  <!-- Google Calendar Embed -->
-  <!-- IMPORTANT: Replace the CALENDAR_ID below with your actual Google Calendar ID.
-       To get it: Google Calendar → Settings → [Your Calendar] → "Integrate calendar" → Calendar ID
-       It will look like: abc123@group.calendar.google.com
-       Then make the calendar PUBLIC: Settings → [Your Calendar] → "Access permissions" → check "Make available to public"
-  -->
-  <div class="gcal-wrapper w-full mb-12">
-    <iframe
-      id="nlrc-google-calendar"
-      src="https://calendar.google.com/calendar/embed?src=af900598d5e673c969444e062a372c0b5d52cf0f779afc5e46c4c85e5a1beed9%40group.calendar.google.com&ctz=America%2FChicago&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH&bgcolor=%23f8f9fa&color=%23002046"
-      style="width:100%; height:700px; border:none;"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- Subscribe Section -->
-  <div id="subscribe" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-    <div class="bg-white p-8 rounded-3xl shadow-sm border border-surface-container-highest hover:shadow-xl transition-all duration-500 flex items-start gap-4">
-      <div class="bg-primary/10 p-3 rounded-xl shrink-0">
-        <span class="material-symbols-outlined text-primary text-2xl">event_available</span>
-      </div>
-      <div>
-        <h3 class="font-headline font-black text-primary mb-1">Subscribe to Calendar</h3>
-        <p class="text-sm text-on-surface-variant">Add NLRC events directly to Google Calendar, Apple Calendar, or Outlook.</p>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-[60] bg-white pt-24 px-8">
+      <button class="absolute top-8 right-8 text-primary" onclick="toggleMenu()"><span class="material-symbols-outlined text-4xl">close</span></button>
+      <div class="flex flex-col space-y-6 text-2xl font-headline font-bold text-primary">
+        <a href="index.html" onclick="toggleMenu()">Home</a>
+        <a href="rentals.html" onclick="toggleMenu()">Booking</a>
+        <a href="events.html" onclick="toggleMenu()">Events</a>
+        <a href="events.html" onclick="toggleMenu()">Programs</a>
+        <a href="memberships.html" onclick="toggleMenu()">Membership</a>
+        <a href="about.html" onclick="toggleMenu()">About</a>
+        <a href="admin-login.html" onclick="toggleMenu()">Admin Console</a>
       </div>
     </div>
-    <div class="bg-white p-8 rounded-3xl shadow-sm border border-surface-container-highest hover:shadow-xl transition-all duration-500 flex items-start gap-4">
-      <div class="bg-secondary/10 p-3 rounded-xl shrink-0">
-        <span class="material-symbols-outlined text-secondary text-2xl">notifications_active</span>
-      </div>
-      <div>
-        <h3 class="font-headline font-black text-primary mb-1">Event Reminders</h3>
-        <p class="text-sm text-on-surface-variant">Get notified of upcoming NLRC events, clinics, and community gatherings.</p>
-      </div>
-    </div>
-    <div class="bg-primary p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 flex items-start gap-4">
-      <div class="bg-white/10 p-3 rounded-xl shrink-0">
-        <span class="material-symbols-outlined text-white text-2xl">add_circle</span>
-      </div>
-      <div>
-        <h3 class="font-headline font-black text-white mb-1">Host an Event</h3>
-        <p class="text-sm text-slate-300">Interested in hosting at NLRC? <a href="rentals.html" class="text-secondary font-bold hover:underline">View our rental options →</a></p>
-      </div>
-    </div>
-  </div>
-</main>
 
-<footer class="bg-primary text-white py-12">
-  <div class="max-w-7xl mx-auto px-8 text-left">
-    <div class="text-xl font-black font-headline mb-2">Next Level Recreation Center</div>
-    <p class="text-slate-400 text-sm max-w-sm">Professional spaces for athletic and community excellence.</p>
-    <div class="flex gap-4 mt-6">
-      <a class="text-slate-400 hover:text-white transition-colors" href="https://www.facebook.com/profile.php?id=61584869476875" rel="noopener noreferrer" target="_blank">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
-      </a>
-      <a class="text-slate-400 hover:text-white transition-colors" href="https://www.instagram.com/nlrctexas" rel="noopener noreferrer" target="_blank">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" fill-rule="evenodd"></path></svg>
-      </a>
-      <a class="text-slate-400 hover:text-white transition-colors" href="https://www.linkedin.com/company/next-level-recreation-center-llc/" rel="noopener noreferrer" target="_blank">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
-      </a>
-      <a class="text-slate-400 hover:text-white transition-colors" href="mailto:info.nextlevelrec@gmail.com">
-        <span class="material-symbols-outlined text-2xl">mail</span>
-      </a>
-    </div>
-  </div>
-        <div class="mt-8 pt-8 border-t border-white/10 flex justify-between items-center">
-      <p class="text-slate-500 text-xs">© 2024 Next Level Recreation Center. All rights reserved.</p>
-      <a href="admin-login.html" class="text-slate-500 hover:text-white text-xs transition-colors font-bold uppercase tracking-widest">Admin Portal</a>
-    </div>
-  </footer>
+    <main class="pt-32 px-8 max-w-7xl mx-auto">
+        <div class="mb-12">
+            <h1 class="text-5xl font-black text-primary font-headline tracking-tighter mb-4">Upcoming Events & Programs</h1>
+            <p class="text-xl text-slate-500">Join our community for training sessions, leagues, and special events.</p>
+        </div>
 
-<script>
-  // Dynamically update the year label
-  document.getElementById('calendar-label').textContent = `NLRC Calendar ${new Date().getFullYear()}`;
-</script>
-<script>
-    function toggleMenu() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-        if (!menu.classList.contains('hidden')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+            <!-- Program 1 -->
+            <div class="bg-white rounded-3xl shadow-lg p-8 border border-slate-100">
+                <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block">Youth Program</span>
+                <h3 class="text-2xl font-bold mb-4">Elite Youth Training</h3>
+                <p class="text-slate-500 mb-6">Developing the next generation of athletes with professional coaching and skills training.</p>
+                <button class="w-full bg-primary text-white py-3 rounded-xl font-bold">Register Now</button>
+            </div>
+            <!-- Program 2 -->
+            <div class="bg-white rounded-3xl shadow-lg p-8 border border-slate-100">
+                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block">Leagues</span>
+                <h3 class="text-2xl font-bold mb-4">NLRC Basketball League</h3>
+                <p class="text-slate-500 mb-6">Competitive league play for adults and youth. Seasonal registrations now open.</p>
+                <button class="w-full bg-primary text-white py-3 rounded-xl font-bold">Join League</button>
+            </div>
+            <!-- Program 3 -->
+            <div class="bg-white rounded-3xl shadow-lg p-8 border border-slate-100">
+                <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block">Special Event</span>
+                <h3 class="text-2xl font-bold mb-4">Community Open Day</h3>
+                <p class="text-slate-500 mb-6">Experience our facilities and meet the team. Free for all community members.</p>
+                <button class="w-full bg-slate-200 text-slate-600 py-3 rounded-xl font-bold">Learn More</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
-    }
-</script>
-<script type="module" src="js/auth-handler.js"></script></body>
+    </script>
+    <script type="module" src="js/auth-handler.js"></script>
+</body>
 </html>
-
-
-
-
-
-
