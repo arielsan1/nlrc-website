@@ -111,7 +111,7 @@
 <p class="text-secondary text-sm font-semibold uppercase tracking-widest">Authorized Personnel Only</p>
 </div>
 </div>
-<form action="admin-dashboard.html" method="GET" class="space-y-6">
+<form id="admin-login-form" class="space-y-6">
 <!-- Email Field -->
 <div class="space-y-2">
 <label class="block font-label text-sm font-semibold text-on-surface-variant ml-1" for="email">Admin Email</label>
@@ -119,7 +119,7 @@
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-outline text-xl">alternate_email</span>
 </div>
-<input class="block w-full pl-11 pr-4 py-4 bg-surface-container-highest border-transparent rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all font-body text-on-surface placeholder:text-outline" id="email" name="email" placeholder="name@kineticcommunity.com" required="" type="email"/>
+<input class="block w-full pl-11 pr-4 py-4 bg-surface-container-highest border-transparent rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all font-body text-on-surface placeholder:text-outline" id="email" name="email" placeholder="admin@kineticcommunity.com" required="" type="email"/>
 </div>
 </div>
 <!-- Password Field -->
@@ -147,6 +147,15 @@
         <span>Sign In</span>
         <span class="material-symbols-outlined">login</span>
     </button>
+
+    <script type="module">
+        document.getElementById('admin-login-form').onsubmit = (e) => {
+            e.preventDefault();
+            const email = e.target.email.value;
+            const password = e.target.password.value;
+            window.signInAdmin(email, password);
+        };
+    </script>
     
     <div class="relative flex items-center py-5">
         <div class="flex-grow border-t border-surface-container-highest"></div>
