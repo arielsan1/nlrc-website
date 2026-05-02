@@ -149,7 +149,7 @@
     </button>
 
     <script type="module">
-        import { signInAdmin, signInWithGoogle } from "./js/auth-handler.js";
+        import { signInAdmin, signInAdminWithGoogle } from "./js/auth-handler.js";
 
         document.getElementById('admin-login-form').onsubmit = async (e) => {
             e.preventDefault();
@@ -158,14 +158,8 @@
             await signInAdmin(email, password);
         };
 
-        // Make Google sign-in available to the button
         window.handleGoogleAdmin = async () => {
-            const user = await signInWithGoogle();
-            if (user) {
-                // The auth-handler will automatically redirect if they are an admin
-                // But we add a double-check here
-                window.location.href = "admin-dashboard.html";
-            }
+            await signInAdminWithGoogle();
         };
     </script>
     
