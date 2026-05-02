@@ -149,11 +149,23 @@
     </button>
 
     <script type="module">
-        document.getElementById('admin-login-form').onsubmit = (e) => {
+        import { signInAdmin, signInWithGoogle } from "./js/auth-handler.js";
+
+        document.getElementById('admin-login-form').onsubmit = async (e) => {
             e.preventDefault();
             const email = e.target.email.value;
             const password = e.target.password.value;
-            window.signInAdmin(email, password);
+            await signInAdmin(email, password);
+        };
+
+        // Make Google sign-in available to the button
+        window.handleGoogleAdmin = async () => {
+            const user = await signInWithGoogle();
+            if (user) {
+                // The auth-handler will automatically redirect if they are an admin
+                // But we add a double-check here
+                window.location.href = "admin-dashboard.html";
+            }
         };
     </script>
     
@@ -163,7 +175,7 @@
         <div class="flex-grow border-t border-surface-container-highest"></div>
     </div>
 
-    <button type="button" onclick="signInWithGoogle().then(u => {if(u) window.location.href='admin-dashboard.html'})" class="w-full py-4 px-6 bg-white border border-surface-container-highest text-primary font-headline font-bold text-lg rounded-xl shadow-sm hover:bg-surface-container-low transition-all flex items-center justify-center gap-3">
+    <button type="button" onclick="handleGoogleAdmin()" class="w-full py-4 px-6 bg-white border border-surface-container-highest text-primary font-headline font-bold text-lg rounded-xl shadow-sm hover:bg-surface-container-low transition-all flex items-center justify-center gap-3">
         <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/action/google.svg" class="w-6 h-6" alt="Google Logo">
         <span>Sign in with Google</span>
     </button>

@@ -5,7 +5,7 @@ import {
 } from "./firebase-config.js";
 
 // --- Admin Authentication ---
-async function signInAdmin(email, password) {
+export async function signInAdmin(email, password) {
     try {
         const result = await signInWithEmailAndPassword(auth, email, password);
         const user = result.user;
@@ -29,7 +29,7 @@ async function signInAdmin(email, password) {
 }
 
 // --- Member Authentication ---
-async function signInMember(email, password) {
+export async function signInMember(email, password) {
     try {
         const result = await signInWithEmailAndPassword(auth, email, password);
         window.location.href = 'member-portal.html';
@@ -40,7 +40,7 @@ async function signInMember(email, password) {
     }
 }
 
-async function signUpMember(email, password, name) {
+export async function signUpMember(email, password, name) {
     try {
         const result = await createUserWithEmailAndPassword(auth, email, password);
         const user = result.user;
@@ -63,7 +63,7 @@ async function signUpMember(email, password, name) {
     }
 }
 
-async function signInWithGoogle() {
+export async function signInWithGoogle() {
     try {
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
@@ -90,7 +90,7 @@ async function signInWithGoogle() {
     }
 }
 
-async function handleSignOut() {
+export async function handleSignOut() {
     await signOut(auth);
     window.location.href = 'index.html';
 }
