@@ -186,8 +186,8 @@
     <script type="module">
         import { auth, db, doc, getDoc, setDoc, collection, query, where, onSnapshot } from "./js/firebase-config.js";
 
-        // Section Toggling Logic
-        window.showSection = (sectionId) => {
+        // Global function for layout switching
+        const showSection = (sectionId) => {
             const dash = document.getElementById('dashboard-section');
             const sett = document.getElementById('settings-section');
             const title = document.getElementById('portal-title');
@@ -195,8 +195,19 @@
             if (dash && sett) {
                 dash.classList.toggle('hidden', sectionId !== 'dashboard');
                 sett.classList.toggle('hidden', sectionId !== 'settings');
-                if (title) title.innerText = sectionId === 'settings' ? 'Account Settings' : 'Member Overview';
+                if (title) title.innerHTML = sectionId === 'settings' ? 'Account Settings' : 'Welcome Back, <span class="user-first-name">Member</span>';
+                
+                // Re-trigger name update if we just went back to dashboard
+                if (sectionId === 'dashboard') updateNameDisplays();
             }
+        };
+        window.showSection = showSection;
+
+        let currentUserName = "Member";
+
+        const updateNameDisplays = () => {
+            document.querySelectorAll('.user-full-name').forEach(el => el.innerText = currentUserName);
+            document.querySelectorAll('.user-first-name').forEach(el => el.innerText = currentUserName.split(' ')[0]);
         };
 
         auth.onAuthStateChanged(async (user) => {
@@ -208,18 +219,16 @@
             const userRef = doc(db, "members", user.uid);
             
             const renderProfile = (userData) => {
-                const displayName = userData.name || user.displayName || user.email.split('@')[0];
+                currentUserName = userData.name || user.displayName || user.email.split('@')[0];
                 const email = user.email;
                 const photo = userData.photo || user.photoURL || '';
                 
-                // Update Name Displays
-                document.querySelectorAll('.user-full-name').forEach(el => el.innerText = displayName);
-                document.querySelectorAll('.user-first-name').forEach(el => el.innerText = displayName.split(' ')[0]);
+                updateNameDisplays();
                 document.querySelectorAll('.user-email-display').forEach(el => el.innerText = email);
                 
-                // Update Profile Photos
+                // Update Profile Photos (Initials)
                 document.querySelectorAll('.user-profile-photo').forEach(el => {
-                    el.src = photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=002046&color=fff`;
+                    el.src = photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUserName)}&background=002046&color=fff&bold=true`;
                 });
                 
                 // Update Tier & Date
@@ -245,7 +254,7 @@
             // 1. Try to get existing record
             let userSnap = await getDoc(userRef);
             
-            // 2. If missing (test account), create it automatically
+            // 2. If missing, create it automatically
             if (!userSnap.exists()) {
                 const newData = {
                     name: user.displayName || user.email.split('@')[0],
@@ -277,20 +286,24 @@
                         }, { merge: true });
                         
                         alert("Profile updated successfully!");
-                        window.location.reload(); // Refresh to propagate changes
+                        window.location.reload(); 
                     } catch (error) {
                         console.error("Update error:", error);
-                        alert("Failed to update profile. Check your database permissions.");
+                        alert("Failed to update profile.");
                     }
                 };
             }
 
             // Real-time Bookings Count
-            const bookingsQuery = query(collection(db, "bookings"), where("userId", "==", user.uid));
-            onSnapshot(bookingsQuery, (snapshot) => {
-                const countEl = document.getElementById('user-bookings-count');
-                if (countEl) countEl.innerText = snapshot.size;
-            });
+            try {
+                const bookingsQuery = query(collection(db, "bookings"), where("userId", "==", user.uid));
+                onSnapshot(bookingsQuery, (snapshot) => {
+                    const countEl = document.getElementById('user-bookings-count');
+                    if (countEl) countEl.innerText = snapshot.size;
+                });
+            } catch (e) {
+                console.error("Booking query failed:", e);
+            }
         });
     </script>
     <script type="module" src="js/auth-handler.js"></script>
