@@ -71,13 +71,20 @@
         </div>
 
         <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl p-12 border border-slate-100">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <button class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:border-secondary hover:text-secondary transition-all">$10</button>
-                <button class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:border-secondary hover:text-secondary transition-all">$25</button>
-                <button class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:border-secondary hover:text-secondary transition-all">$50</button>
-                <button class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:border-secondary hover:text-secondary transition-all">Custom</button>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <button onclick="selectPreset(10, this)" class="donation-btn py-4 border-2 border-slate-200 rounded-xl font-bold text-slate-800 hover:border-secondary hover:text-secondary transition-all">$10</button>
+                <button onclick="selectPreset(25, this)" class="donation-btn py-4 border-2 border-slate-200 rounded-xl font-bold text-slate-800 hover:border-secondary hover:text-secondary transition-all">$25</button>
+                <button onclick="selectPreset(50, this)" class="donation-btn py-4 border-2 border-slate-200 rounded-xl font-bold text-slate-800 hover:border-secondary hover:text-secondary transition-all">$50</button>
+                <button onclick="selectCustom(this)" class="donation-btn py-4 border-2 border-slate-200 rounded-xl font-bold text-slate-800 hover:border-secondary hover:text-secondary transition-all">Custom</button>
             </div>
-            <button class="w-full bg-secondary text-white py-5 rounded-2xl font-black text-xl shadow-xl shadow-secondary/20 hover:scale-[1.02] transition-all">Complete Donation</button>
+
+            <!-- Custom Amount Input Container -->
+            <div id="custom-amount-container" class="hidden mb-6 transition-all duration-300">
+                <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Custom Amount ($)</label>
+                <input type="number" id="custom-amount" min="1" class="w-full px-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none font-bold text-primary" placeholder="Enter custom amount">
+            </div>
+
+            <button onclick="redirectToGoFundMe()" class="w-full bg-secondary text-white py-5 rounded-2xl font-black text-xl shadow-xl shadow-secondary/20 hover:scale-[1.02] transition-all">Complete Donation</button>
             <p class="text-center text-slate-400 mt-6 text-sm italic">Next Level Recreation Center is a registered 501(c)(3) organization.</p>
         </div>
     </main>
@@ -86,6 +93,47 @@
         function toggleMenu() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
+
+        let selectedAmount = null;
+
+        function clearSelection() {
+            const buttons = document.querySelectorAll('.donation-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('border-secondary', 'text-secondary', 'bg-red-50/50');
+                btn.classList.add('border-slate-200', 'text-slate-800');
+            });
+            document.getElementById('custom-amount-container').classList.add('hidden');
+        }
+
+        function selectPreset(amount, element) {
+            clearSelection();
+            selectedAmount = amount;
+            element.classList.remove('border-slate-200', 'text-slate-800');
+            element.classList.add('border-secondary', 'text-secondary', 'bg-red-50/50');
+        }
+
+        function selectCustom(element) {
+            clearSelection();
+            selectedAmount = 'custom';
+            element.classList.remove('border-slate-200', 'text-slate-800');
+            element.classList.add('border-secondary', 'text-secondary', 'bg-red-50/50');
+            document.getElementById('custom-amount-container').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('custom-amount').focus();
+            }, 50);
+        }
+
+        function redirectToGoFundMe() {
+            window.open('https://www.gofundme.com/f/help-build-next-level-recreation-center-veteranowned-co', '_blank');
+        }
+
+        // Pre-select $25 on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const presetButtons = document.querySelectorAll('.donation-btn');
+            if (presetButtons.length >= 2) {
+                selectPreset(25, presetButtons[1]);
+            }
+        });
     </script>
     <script type="module" src="js/auth-handler.js"></script>
 </body>
